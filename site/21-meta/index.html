@@ -126,23 +126,23 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">第二十一章：Meta的模型</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">介绍</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#the-meta-family-of-models">The Meta Family of Models</a>
+    <li class="toctree-l2"><a class="reference internal" href="#meta_1">Meta家族模型</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#llama-31">Llama 3.1</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#native-function-calling">Native Function Calling</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">本地函数调用</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#llama-32">Llama 3.2</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#multimodal-support-with-llama-32">Multimodal Support with Llama 3.2</a>
+    <li class="toctree-l3"><a class="reference internal" href="#llama-32_1">Llama 3.2的多模态支持</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#learning-does-not-stop-here-continue-the-journey">Learning does not stop here, continue the Journey</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">学习不会止步于此，继续学习之旅</a>
     </li>
     </ul>
                 </li>
@@ -170,49 +170,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="building-with-the-meta-family-models">Building With the Meta Family Models</h1>
-<h2 id="introduction">Introduction</h2>
-<p>This lesson will cover: </p>
+                <h1 id="meta">基于Meta家族模型构建</h1>
+<h2 id="_1">介绍</h2>
+<p>本课将涵盖：</p>
 <ul>
-<li>Exploring the two main Meta family models - Llama 3.1 and Llama 3.2 </li>
-<li>Understanding the use-cases and scenarios for each model </li>
-<li>Code sample to show the unique features of each model </li>
+<li>探索Meta家族的两大主要模型——Llama 3.1和Llama 3.2</li>
+<li>了解每个模型的使用场景和适用情况</li>
+<li>展示每个模型独特特性的代码示例</li>
 </ul>
-<h2 id="the-meta-family-of-models">The Meta Family of Models</h2>
-<p>In this lesson, we will explore 2 models from the Meta family or "Llama Herd" - Llama 3.1 and Llama 3.2 </p>
-<p>These models come in different variants and are available on the Github Model marketplace. Here are more details on using Github Models to <a href="https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst">prototype with AI models</a>.</p>
-<p>Model Variants: 
-- Llama 3.1 - 70B Instruct 
-- Llama 3.1 - 405B Instruct 
-- Llama 3.2 - 11B Vision Instruct 
-- Llama 3.2 - 90B Vision Instruct </p>
-<p><em>Note: Llama 3 is also available on Github Models but won't be covered in this lesson</em></p>
+<h2 id="meta_1">Meta家族模型</h2>
+<p>在本课中，我们将探索Meta家族或称为“Llama群”中的两个模型——Llama 3.1和Llama 3.2</p>
+<p>这些模型有不同的变体，且可在Github Model marketplace获得。以下是使用Github Models进行<a href="https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst">原型设计与AI模型</a>的更多详细信息。</p>
+<p>模型变体:
+- Llama 3.1 - 70B 指令
+- Llama 3.1 - 405B 指令
+- Llama 3.2 - 11B 视觉指令
+- Llama 3.2 - 90B 视觉指令</p>
+<p><em>注意: Llama 3也可以在Github Models上找到，但本课不做覆盖</em></p>
 <h2 id="llama-31">Llama 3.1</h2>
-<p>At 405 Billion Parameters, Llama 3.1 fits into the open source LLM category. </p>
-<p>The mode is an upgrade to the earlier release Llama 3 by offering: </p>
+<p>Llama 3.1具有4050亿参数，属于开源LLM类别。</p>
+<p>该模型是对早期版本Llama 3的升级，提供：</p>
 <ul>
-<li>Larger context window - 128k tokens vs 8k tokens </li>
-<li>Larger Max Output Tokens - 4096 vs 2048 </li>
-<li>Better Multilingual Support - due to increase in training tokens </li>
+<li>更大的上下文窗口——128k tokens vs 8k tokens</li>
+<li>更大的最大输出Token数——4096 vs 2048</li>
+<li>更好的多语言支持——由于训练token数量增加</li>
 </ul>
-<p>These enables Llama 3.1 to handle more complex use cases  when building GenAI applications including: 
-- Native Function Calling - the ability to call external tools and functions outside of the LLM workflow
-- Better RAG Performance - due to the higher context window 
-- Synthetic Data Generation - the ability to create effective data for tasks such as fine-tuning </p>
-<h3 id="native-function-calling">Native Function Calling</h3>
-<p>Llama 3.1 has been fine-tuned to be more effective at making function or tool calls. It also has two built-in tools that the model can identify as needing to be used based on the prompt from the user. These tools are: </p>
+<p>这些使得Llama 3.1能够在构建GenAI应用时处理更复杂的用例，包括：
+- 本地函数调用——能够调用LLM工作流之外的外部工具和函数
+- 更好的RAG性能——由于更高的上下文窗口
+- 合成数据生成——能够创建有效的数据用于诸如微调的任务</p>
+<h3 id="_2">本地函数调用</h3>
+<p>Llama 3.1已被微调以更有效地进行函数或工具调用。它还具有两个内置工具，模型可以根据用户的提示自行决定是否需要使用这些工具。这些工具包括：</p>
 <ul>
-<li><strong>Brave Search</strong> - Can be used to get up-to-date information like the weather by performing a web search </li>
-<li><strong>Wolfram Alpha</strong> - Can be used for more complex mathematical calculations so writing your own functions is not required. </li>
+<li><strong>Brave Search</strong>——可以通过进行网页搜索获取最新信息，如天气情况</li>
+<li><strong>Wolfram Alpha</strong>——可以用于更复杂的数学计算，因此无需编写自己的函数</li>
 </ul>
-<p>You can also create your own custom tools that LLM can call. </p>
-<p>In the code example below: </p>
+<p>你也可以创建自己的自定义工具供LLM调用。</p>
+<p>在下面的代码示例中：</p>
 <ul>
-<li>We define the available tools (brave_search, wolfram_alpha) in the system prompt. </li>
-<li>Send a user prompt that asks about the weather in a certain city. </li>
-<li>The LLM will respond with a tool call to the Brave Search tool which will look like this <code>&lt;|python_tag|&gt;brave_search.call(query="Stockholm weather")</code> </li>
+<li>我们在系统提示中定义了可用的工具（brave_search，wolfram_alpha）。</li>
+<li>发送一个用户提示，询问某个城市的天气。</li>
+<li>LLM将通过调用Brave Search工具回复，这看起来像这样<code>&lt;|python_tag|&gt;brave_search.call(query="Stockholm weather")</code></li>
 </ul>
-<p>*Note: This example only make the tool call, if you would like to get the results, you will need to create a free account on the Brave API page and define the function itself` </p>
+<p><em>注意：此示例仅进行工具调用。如果您希望获取结果，则需要在Brave API页面上创建一个免费账户并定义函数本身`</em></p>
 <pre><code class="language-python">import os
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import AssistantMessage, SystemMessage, UserMessage
@@ -250,14 +250,14 @@ response = client.complete(messages=messages, model=model_name)
 print(response.choices[0].message.content)
 </code></pre>
 <h2 id="llama-32">Llama 3.2</h2>
-<p>Despite being a LLM, one limitation that Llama 3.1 has is multimodality. That is, being able to use different types of input such as images as prompts and providing responses. This ability is one of the main features of Llama 3.2. These features also include: </p>
+<p>尽管Llama 3.1是一种LLM，但其一个局限性是多模态支持。也就是说，无法使用诸如图像等不同类型的输入作为提示并提供响应。这种能力是Llama 3.2的主要特性之一。这些特性还包括：</p>
 <ul>
-<li>Multimodality -  has the ability to evaluate both text and image prompts </li>
-<li>Small to Medium size variations (11B and 90B) - this provides flexible deployment options, </li>
-<li>Text-only variations (1B and 3B) - this allows the model to be deployed on edge / mobile devices and provides low latency </li>
+<li>多模态——能够评估文本和图像提示</li>
+<li>小到中等大小的变体（11B和90B）——提供灵活的部署选项</li>
+<li>仅文本变体（1B和3B）——允许模型部署在边缘/移动设备上并提供低延迟</li>
 </ul>
-<p>The multimodal support represents a big step in the world of open source models. The code example below takes both an image and text prompt to get an analysis of the image from Llama 3.2 90B. </p>
-<h3 id="multimodal-support-with-llama-32">Multimodal Support with Llama 3.2</h3>
+<p>多模态支持代表了开源模型领域的一大进步。下面的代码示例使用Llama 3.2 90B接受图像和文本提示以获得图像分析。</p>
+<h3 id="llama-32_1">Llama 3.2的多模态支持</h3>
 <pre><code class="language-python">import os
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import (
@@ -301,8 +301,8 @@ response = client.complete(
 
 print(response.choices[0].message.content)
 </code></pre>
-<h2 id="learning-does-not-stop-here-continue-the-journey">Learning does not stop here, continue the Journey</h2>
-<p>After completing this lesson, check out our <a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">Generative AI Learning collection</a> to continue leveling up your Generative AI knowledge!</p>
+<h2 id="_3">学习不会止步于此，继续学习之旅</h2>
+<p>完成本课后，请浏览我们的<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">生成式AI学习合集</a>，继续提升您的生成式AI知识！</p>
               
             </div>
           </div><footer>
