@@ -42,25 +42,25 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">课程介绍和学习环境设置</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-executing-assignments">1. Executing Assignments</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1">1. 执行任务</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#11-python-assignments">1.1 Python Assignments</a>
+    <li class="toctree-l3"><a class="reference internal" href="#11-python">1.1 Python 任务</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-configuring-providers">2. Configuring Providers</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2. 配置提供商</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#21-create-env-file">2.1. Create .env file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#21-env">2.1 创建 .env 文件</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#22-populate-env-file">2.2. Populate .env file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#22-env">2.2 填写 .env 文件</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#23-configure-azure-from-portal">2.3 Configure Azure: From Portal</a>
+    <li class="toctree-l3"><a class="reference internal" href="#23-azure-azure">2.3 在 Azure 门户中配置 Azure</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#24-configure-azure-from-studio">2.4 Configure Azure: From Studio</a>
+    <li class="toctree-l3"><a class="reference internal" href="#24-studio-azure">2.4 在 Studio 中配置 Azure</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#25-configure-openai-from-profile">2.5 Configure OpenAI: From Profile</a>
+    <li class="toctree-l3"><a class="reference internal" href="#25-openai">2.5 从个人资料中配置 OpenAI</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#26-configure-hugging-face-from-profile">2.6 Configure Hugging Face: From Profile</a>
+    <li class="toctree-l3"><a class="reference internal" href="#26-hugging-face">2.6 从个人资料中配置 Hugging Face</a>
     </li>
         </ul>
     </li>
@@ -174,58 +174,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="setup-your-dev-environment">Setup Your Dev Environment</h1>
-<p>We setup this repository and course with a <a href="https://containers.dev?WT.mc_id=academic-105485-koreyst">development container</a> that has a Universal runtime that can support Python3, .NET, Node.js and Java development. The related configuration is defined in the <code>devcontainer.json</code> file located in the <code>.devcontainer/</code> folder at the root of this repository.</p>
-<p>To activate the dev container, launch it in <a href="https://docs.github.com/en/codespaces/overview?WT.mc_id=academic-105485-koreyst">GitHub Codespaces</a> (for a cloud-hosted runtime) or in <a href="https://docs.docker.com/desktop/?WT.mc_id=academic-105485-koreyst">Docker Desktop</a> (for a local device-hosted runtime). Read <a href="https://code.visualstudio.com/docs/devcontainers/containers?WT.mc_id=academic-105485-koreyst">this documentation</a> for more details on how dev containers work within VS Code.  </p>
+                <h1 id="_1">设置您的开发环境</h1>
+<p>我们使用<a href="https://containers.dev?WT.mc_id=academic-105485-koreyst">开发容器</a>设置了此存储库和课程，该容器具有支持 Python3、.NET、Node.js 和 Java 开发的通用运行时。相关配置在存储库根目录下的 <code>.devcontainer/</code> 文件夹中的 <code>devcontainer.json</code> 文件中定义。</p>
+<p>要激活开发容器，请在 <a href="https://docs.github.com/en/codespaces/overview?WT.mc_id=academic-105485-koreyst">GitHub Codespaces</a>（用于云托管运行时）或 <a href="https://docs.docker.com/desktop/?WT.mc_id=academic-105485-koreyst">Docker Desktop</a>（用于本地设备托管运行时）中启动它。阅读<a href="https://code.visualstudio.com/docs/devcontainers/containers?WT.mc_id=academic-105485-koreyst">此文档</a>了解 VS Code 中的开发容器的工作原理。 </p>
 <blockquote>
-<p>[!TIP]<br />
-We recommend using GitHub Codespaces for a quick start with minimal effort. It provides a generous <a href="https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts?WT.mc_id=academic-105485-koreyst">free usage quota</a> for personal accounts. Configure <a href="https://docs.github.com/codespaces/setting-your-user-preferences/setting-your-timeout-period-for-github-codespaces?WT.mc_id=academic-105485-koreyst">timeouts</a> to stop or delete inactive codespaces to maximize your quota usage.</p>
+<p>[!提示]<br />
+我们推荐使用 GitHub Codespaces 以最小的努力实现快速启动。它为个人账户提供了慷慨的<a href="https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts?WT.mc_id=academic-105485-koreyst">免费使用配额</a>。配置<a href="https://docs.github.com/codespaces/setting-your-user-preferences/setting-your-timeout-period-for-github-codespaces?WT.mc_id=academic-105485-koreyst">超时设置</a>以停止或删除不活动的代码空间，以最大化配额使用。</p>
 </blockquote>
-<h2 id="1-executing-assignments">1. Executing Assignments</h2>
-<p>Each lesson will have <em>optional</em> assignments that may be provided in one or more programming languages including: Python, .NET/C#, Java and JavaScript/TypeScript. This section provides general guidance related to executing those assignments.</p>
-<h3 id="11-python-assignments">1.1 Python Assignments</h3>
-<p>Python assignments are provided either as applications (<code>.py</code> files) or Jupyter notebooks (<code>.ipynb</code> files). 
-- To run the notebook, open it in Visual Studio Code then click <em>Select Kernel</em> (at top right) and select the default Python 3 option shown. You can now <em>Run All</em> to execute the notebook.
-- To run Python applications from command-line, follow assignment-specific instructions to ensure you select the right files and provide required arguments</p>
-<h2 id="2-configuring-providers">2. Configuring Providers</h2>
-<p>Assignments <strong>may</strong> also be setup to work against one or more Large Language Model (LLM) deployments through a supported service provider like OpenAI, Azure or Hugging Face. These provide a <em>hosted endpoint</em> (API) that we can access programmatically with the right credentials (API key or token). In this course, we discuss these providers:</p>
+<h2 id="1">1. 执行任务</h2>
+<p>每节课将有 <em>可选</em> 的任务，可能提供一种或多种编程语言，包括：Python、.NET/C#、Java 和 JavaScript/TypeScript。本节提供了与执行这些任务相关的一般指导。</p>
+<h3 id="11-python">1.1 Python 任务</h3>
+<p>Python 任务将作为应用程序（<code>.py</code> 文件）或 Jupyter notebook（<code>.ipynb</code> 文件）提供。
+- 要运行 notebook， 在 Visual Studio Code 中打开它，然后点击 <em>选择内核</em>（右上角），选择显示的默认 Python 3 选项。现在可以 <em>全部运行</em> 以执行 notebook。
+- 要从命令行运行 Python 应用程序，请按照特定任务说明进行操作，确保选择正确的文件并提供所需的参数。</p>
+<h2 id="2">2. 配置提供商</h2>
+<p>任务 <strong>可能</strong> 还可以设置为通过支持的服务提供商（如 OpenAI、Azure 或 Hugging Face）在一个或多个大型语言模型(LLM)部署中工作。这些提供我们可以使用正确凭据（API 密钥或令牌）以编程方式访问的 <em>托管端点</em>（API）。在本课程中，我们讨论这些提供商：</p>
 <ul>
-<li><a href="https://platform.openai.com/docs/models?WT.mc_id=academic-105485-koreyst">OpenAI</a> with diverse models including the core GPT series.</li>
-<li><a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">Azure OpenAI</a> for OpenAI models with enterprise readiness in focus</li>
-<li><a href="https://huggingface.co/docs/hub/index?WT.mc_id=academic-105485-koreyst">Hugging Face</a> for open-source models and inference server</li>
+<li><a href="https://platform.openai.com/docs/models?WT.mc_id=academic-105485-koreyst">OpenAI</a> 提供包括核心 GPT 系列在内的多样化模型。</li>
+<li>专注于企业准备度的 <a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">Azure OpenAI</a> 提供 OpenAI 模型。</li>
+<li>提供开源模型和推理服务器的 <a href="https://huggingface.co/docs/hub/index?WT.mc_id=academic-105485-koreyst">Hugging Face</a>。</li>
 </ul>
-<p><strong>You will need to use your own accounts for these exercises</strong>. Assignments are optional so you can choose to setup one, all - or none - of the providers based on your interests. Some guidance for signup:</p>
+<p><strong>您需要使用自己的账户进行这些练习</strong>。任务是可选的，因此您可以根据兴趣选择设置一个、全部或没有任何提供商。注册的一些指导：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Signup</th>
-<th style="text-align: left;">Cost</th>
-<th style="text-align: left;">API Key</th>
+<th style="text-align: left;">注册</th>
+<th style="text-align: left;">费用</th>
+<th style="text-align: left;">API 密钥</th>
 <th style="text-align: left;">Playground</th>
-<th style="text-align: left;">Comments</th>
+<th style="text-align: left;">注释</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><a href="https://platform.openai.com/signup?WT.mc_id=academic-105485-koreyst">OpenAI</a></td>
-<td style="text-align: left;"><a href="https://openai.com/pricing#language-models?WT.mc_id=academic-105485-koreyst">Pricing</a></td>
-<td style="text-align: left;"><a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">Project-based</a></td>
-<td style="text-align: left;"><a href="https://platform.openai.com/playground?WT.mc_id=academic-105485-koreyst">No-Code, Web</a></td>
-<td style="text-align: left;">Multiple Models Available</td>
+<td style="text-align: left;"><a href="https://openai.com/pricing#language-models?WT.mc_id=academic-105485-koreyst">定价</a></td>
+<td style="text-align: left;"><a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">基于项目</a></td>
+<td style="text-align: left;"><a href="https://platform.openai.com/playground?WT.mc_id=academic-105485-koreyst">无代码，Web</a></td>
+<td style="text-align: left;">多种模型可用</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://aka.ms/azure/free?WT.mc_id=academic-105485-koreyst">Azure</a></td>
-<td style="text-align: left;"><a href="https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/?WT.mc_id=academic-105485-koreyst">Pricing</a></td>
-<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">SDK Quickstart</a></td>
-<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">Studio Quickstart</a></td>
-<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">Must Apply Ahead For Access</a></td>
+<td style="text-align: left;"><a href="https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/?WT.mc_id=academic-105485-koreyst">定价</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">SDK 快速入门</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">Studio 快速入门</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">必须提前申请访问权限</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://huggingface.co/join?WT.mc_id=academic-105485-koreyst">Hugging Face</a></td>
-<td style="text-align: left;"><a href="https://huggingface.co/pricing">Pricing</a></td>
-<td style="text-align: left;"><a href="https://huggingface.co/docs/hub/security-tokens?WT.mc_id=academic-105485-koreyst">Access Tokens</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/pricing">定价</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/docs/hub/security-tokens?WT.mc_id=academic-105485-koreyst">访问令牌</a></td>
 <td style="text-align: left;"><a href="https://huggingface.co/chat/?WT.mc_id=academic-105485-koreyst">Hugging Chat</a></td>
-<td style="text-align: left;"><a href="https://huggingface.co/chat/models?WT.mc_id=academic-105485-koreyst">Hugging Chat has limited models</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/chat/models?WT.mc_id=academic-105485-koreyst">Hugging Chat 的模型有限</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
@@ -236,75 +236,73 @@ We recommend using GitHub Codespaces for a quick start with minimal effort. It p
 </tr>
 </tbody>
 </table>
-<p>Follow the directions below to <em>configure</em> this repository for use with different providers. Assignments that require a specific provider will contain one of these tags in their filename:
- - <code>aoai</code> - requires Azure OpenAI endpoint, key
- - <code>oai</code> - requires OpenAI endpoint, key
- - <code>hf</code> - requires Hugging Face token</p>
-<p>You can configure one, none, or all providers. Related assignments will simply error out on missing credentials.</p>
-<h3 id="21-create-env-file">2.1. Create <code>.env</code> file</h3>
-<p>We assume that you have already read the guidance above and signed up with the relevant provider, and obtained the required authentication credentials (API_KEY or token). In the case of Azure OpenAI, we assume you also have a valid deployment of an Azure OpenAI Service (endpoint) with at least one GPT model deployed for chat completion.</p>
-<p>The next step is to configure your <strong>local environment variables</strong> as follows:</p>
+<p>按照下面的指示将此存储库配置为与不同的提供商一起使用。需要特定提供商的任务将包含以下标签之一：</p>
+<ul>
+<li><code>aoai</code> - 需要 Azure OpenAI 端点和密钥</li>
+<li><code>oai</code> - 需要 OpenAI 端点和密钥</li>
+<li><code>hf</code> - 需要 Hugging Face 令牌</li>
+</ul>
+<p>您可以配置一个、没有或全部提供商。相关的任务将在缺少凭据时简单地出错。</p>
+<h3 id="21-env">2.1 创建 <code>.env</code> 文件</h3>
+<p>我们假设您已经阅读了上述指导并注册了相关提供商，并获得了所需的认证凭据（API_KEY 或令牌）。在 Azure OpenAI 的情况下，我们假设您还具有有效的 Azure OpenAI 服务部署（端点），其中至少有一个 GPT 模型部署用于聊天完成。</p>
+<p>下一步是配置您的<strong>本地环境变量</strong>，如下所示：</p>
 <ol>
-<li>Look in the root folder for a <code>.env.copy</code> file that should have contents like this:</li>
+<li>在根文件夹中查找一个 <code>.env.copy</code> 文件，里面应该有如下内容：</li>
 </ol>
 <p>```bash
-   # OpenAI Provider
-   OPENAI_API_KEY='<add your OpenAI API key here>'</p>
+   # OpenAI 提供商
+   OPENAI_API_KEY='&lt;在此添加您的 OpenAI API 密钥&gt;'</p>
 <p>## Azure OpenAI
-   AZURE_OPENAI_API_VERSION='2024-02-01' # Default is set!
-   AZURE_OPENAI_API_KEY='<add your AOAI key here>'
-   AZURE_OPENAI_ENDPOINT='<add your AOIA service endpoint here>'
-   AZURE_OPENAI_DEPLOYMENT='<add your chat completion model name here>' 
-   AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT='<add your embeddings model name here>'</p>
+   AZURE_OPENAI_API_VERSION='2024-02-01' # 默认已设置！
+   AZURE_OPENAI_API_KEY='&lt;在此添加您的 AOAI 密钥&gt;'
+   AZURE_OPENAI_ENDPOINT='&lt;在此添加您的 AOIA 服务端点&gt;'
+   AZURE_OPENAI_DEPLOYMENT='&lt;在此添加您的聊天完成模型名称&gt;' 
+   AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT='&lt;在此添加您的嵌入模型名称&gt;'</p>
 <p>## Hugging Face
-   HUGGING_FACE_API_KEY='<add your HuggingFace API or token here>'
+   HUGGING_FACE_API_KEY='&lt;在此添加您的 HuggingFace API 或令牌&gt;'
    ```</p>
 <ol>
-<li>Copy that file to <code>.env</code> using the command below. This file is <em>gitignore-d</em>, keeping secrets safe.</li>
+<li>使用下面的命令将该文件复制到 <code>.env</code>。这个文件被 <em>gitignore</em> 了，确保秘密信息安全。</li>
 </ol>
 <p><code>bash
    cp .env.copy .env</code></p>
 <ol>
-<li>
-<p>Fill in the values (replace placeholders on right side of <code>=</code>) as described in the next section.</p>
-</li>
-<li>
-<p>(Option) If you use GitHub Codespaces, you have the option to save environment variables as <em>Codespaces secrets</em> associated with this repository. In that case, you won't need to setup a local .env file. <strong>However, note that this option works only if you use GitHub Codespaces.</strong> You will still need to setup the .env file if you use Docker Desktop instead.</p>
-</li>
+<li>按照下一节中的描述填写这些值（替换 <code>=</code> 右侧的占位符）。</li>
 </ol>
-<h3 id="22-populate-env-file">2.2. Populate <code>.env</code> file</h3>
-<p>Let's take a quick look at the variable names to understand what they represent:</p>
+<p>4.（可选）如果您使用 GitHub Codespaces，您可以将环境变量保存为与此存储库相关的 <em>Codespaces secret</em>。在这种情况下，您不需要设置本地 .env 文件。<strong>但是，请注意，此选项仅在您使用 GitHub Codespaces 时有效。</strong> 如果您使用 Docker Desktop，则仍需设置 .env 文件。</p>
+<h3 id="22-env">2.2 填写 <code>.env</code> 文件</h3>
+<p>让我们快速了解变量名称，以理解它们代表的含义：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">变量</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">HUGGING_FACE_API_KEY</td>
-<td style="text-align: left;">This is the user access token you setup in your profile</td>
+<td style="text-align: left;">这是您在个人资料中设置的用户访问令牌</td>
 </tr>
 <tr>
 <td style="text-align: left;">OPENAI_API_KEY</td>
-<td style="text-align: left;">This is the authorization key for using the service for non-Azure OpenAI endpoints</td>
+<td style="text-align: left;">这是非 Azure OpenAI 端点使用该服务的授权密钥</td>
 </tr>
 <tr>
 <td style="text-align: left;">AZURE_OPENAI_API_KEY</td>
-<td style="text-align: left;">This is the authorization key for using that service</td>
+<td style="text-align: left;">这是使用该服务的授权密钥</td>
 </tr>
 <tr>
 <td style="text-align: left;">AZURE_OPENAI_ENDPOINT</td>
-<td style="text-align: left;">This is the deployed endpoint for an Azure OpenAI resource</td>
+<td style="text-align: left;">这是 Azure OpenAI 资源的部署端点</td>
 </tr>
 <tr>
 <td style="text-align: left;">AZURE_OPENAI_DEPLOYMENT</td>
-<td style="text-align: left;">This is the <em>text generation</em> model deployment endpoint</td>
+<td style="text-align: left;">这是 <em>文本生成</em> 模型部署端点</td>
 </tr>
 <tr>
 <td style="text-align: left;">AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT</td>
-<td style="text-align: left;">This is the <em>text embeddings</em> model deployment endpoint</td>
+<td style="text-align: left;">这是 <em>文本嵌入</em> 模型部署端点</td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
@@ -312,39 +310,39 @@ We recommend using GitHub Codespaces for a quick start with minimal effort. It p
 </tr>
 </tbody>
 </table>
-<p>Note: The last two Azure OpenAI variables reflect a default model for chat completion (text generation) and vector search (embeddings) respectively. Instructions for setting them will be defined in relevant assignments.</p>
-<h3 id="23-configure-azure-from-portal">2.3 Configure Azure: From Portal</h3>
-<p>The Azure OpenAI endpoint and key values will be found in the <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure Portal</a> so let's start there.</p>
+<p>注意：最后两个 Azure OpenAI 变量分别表示聊天完成（文本生成）和向量搜索（嵌入）的默认模型。设置它们的说明将在相关任务中定义。</p>
+<h3 id="23-azure-azure">2.3 在 Azure 门户中配置 Azure</h3>
+<p>Azure OpenAI 端点和密钥值将会在 <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure 门户</a> 中找到，让我们从这里开始。</p>
 <ol>
-<li>Go to the <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure Portal</a></li>
-<li>Click the <strong>Keys and Endpoint</strong> option in the sidebar (menu at left).</li>
-<li>Click <strong>Show Keys</strong> - you should see the following: KEY 1, KEY 2 and Endpoint.</li>
-<li>Use the KEY 1 value for AZURE_OPENAI_API_KEY</li>
-<li>Use the Endpoint value for AZURE_OPENAI_ENDPOINT</li>
+<li>访问 <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure 门户</a></li>
+<li>点击侧边栏（左侧菜单）中的 <strong>密钥和端点</strong> 选项。</li>
+<li>点击 <strong>显示密钥</strong> - 您应该会看到以下内容：KEY 1、KEY 2 和端点。</li>
+<li>使用 KEY 1 的值填入 AZURE_OPENAI_API_KEY</li>
+<li>使用端点的值填入 AZURE_OPENAI_ENDPOINT</li>
 </ol>
-<p>Next, we need the endpoints for the specific models we've deployed.</p>
+<p>接下来，我们需要特定模型的端点。</p>
 <ol>
-<li>Click the <strong>Model deployments</strong> option in the sidebar (left menu) for Azure OpenAI resource.</li>
-<li>In the destination page, click <strong>Manage Deployments</strong></li>
+<li>点击 Azure OpenAI 资源的侧边栏（左侧菜单）中的 <strong>模型部署</strong> 选项。</li>
+<li>在目标页面，点击 <strong>管理部署</strong></li>
 </ol>
-<p>This will take you to the Azure OpenAI Studio website, where we'll find the other values as described below.</p>
-<h3 id="24-configure-azure-from-studio">2.4 Configure Azure: From Studio</h3>
+<p>这将把您带到 Azure OpenAI Studio 网站，我们将在下面描述的步骤中找到其他值。</p>
+<h3 id="24-studio-azure">2.4 在 Studio 中配置 Azure</h3>
 <ol>
-<li>Navigate to <a href="https://oai.azure.com?WT.mc_id=academic-105485-koreyst">Azure OpenAI Studio</a> <strong>from your resource</strong> as described above.</li>
-<li>Click the <strong>Deployments</strong> tab (sidebar, left) to view currently deployed models.</li>
-<li>If your desired model is not deployed, use <strong>Create new deployment</strong> to deploy it.</li>
-<li>You will need a <em>text-generation</em> model - we recommend: <strong>gpt-35-turbo</strong></li>
-<li>You will need a <em>text-embedding</em> model - we recommend <strong>text-embedding-ada-002</strong></li>
+<li>按上述描述从您的资源导航到 <a href="https://oai.azure.com?WT.mc_id=academic-105485-koreyst">Azure OpenAI Studio</a>。</li>
+<li>点击侧边栏（左侧）的 <strong>部署</strong> 标签以查看当前部署的模型。</li>
+<li>如果没有部署所需模型，请使用 <strong>创建新部署</strong> 进行部署。</li>
+<li>您将需要一个 <em>文本生成</em> 模型 - 我们推荐：<strong>gpt-35-turbo</strong></li>
+<li>您将需要一个 <em>文本嵌入</em> 模型 - 我们推荐：<strong>text-embedding-ada-002</strong></li>
 </ol>
-<p>Now update the environment variables to reflect the <em>Deployment name</em> used. This will typically be the same as the model name unless you changed it explcitly. So, as an example, you might have:</p>
+<p>现在更新环境变量以反映使用的 <em>部署名称</em>。这通常与模型名称相同，除非您明确更改它。因此，例如，您可能有：</p>
 <pre><code class="language-bash">AZURE_OPENAI_DEPLOYMENT='gpt-35-turbo'
 AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT='text-embedding-ada-002'
 </code></pre>
-<p><strong>Don't forget to save the .env file when done</strong>. You can now exit the file and return to the instructions for running the notebook.</p>
-<h3 id="25-configure-openai-from-profile">2.5 Configure OpenAI: From Profile</h3>
-<p>Your OpenAI API key can be found in your <a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">OpenAI account</a>. If you don't have one, you can sign up for an account and create an API key. Once you have the key, you can use it to populate the <code>OPENAI_API_KEY</code> variable in the <code>.env</code> file.</p>
-<h3 id="26-configure-hugging-face-from-profile">2.6 Configure Hugging Face: From Profile</h3>
-<p>Your Hugging Face token can be found in your profile under <a href="https://huggingface.co/settings/tokens?WT.mc_id=academic-105485-koreyst">Access Tokens</a>. Don't post or share these publicly. Instead, create a new token for this project usage and copy that into the <code>.env</code> file under the <code>HUGGING_FACE_API_KEY</code> variable. <em>Note:</em> This is technically not an API key but is used for authentication so we are keeping that naming convention for consistency.</p>
+<p><strong>完成后不要忘记保存 .env 文件</strong>。您现在可以退出文件并返回到 notebook 的运行指示。</p>
+<h3 id="25-openai">2.5 从个人资料中配置 OpenAI</h3>
+<p>您的 OpenAI API 密钥可以在您的 <a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">OpenAI 账户</a> 中找到。如果没有，您可以注册一个账户并创建 API 密钥。一旦有了密钥，您可以在 <code>.env</code> 文件中填写 <code>OPENAI_API_KEY</code> 变量。</p>
+<h3 id="26-hugging-face">2.6 从个人资料中配置 Hugging Face</h3>
+<p>您的 Hugging Face 令牌可以在个人资料中的 <a href="https://huggingface.co/settings/tokens?WT.mc_id=academic-105485-koreyst">访问令牌</a> 下找到。不要公开发布或分享这些令牌。相反，为此项目使用创建一个新令牌，并将其复制到 <code>.env</code> 文件中的 <code>HUGGING_FACE_API_KEY</code> 变量下。<em>注意：</em> 这实际上不是 API 密钥，但用于认证，因此为了统一，我们保留了这个命名约定。</p>
               
             </div>
           </div><footer>
