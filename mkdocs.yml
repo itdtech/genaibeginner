@@ -1,0 +1,26 @@
+site_name: GenAI新手入门
+nav:
+  - 课程介绍和学习环境设置: 00-course-setup\translations\cn\README.md
+  - 第一章：生成式人工智能和 LLMs 介绍: 01-introduction-to-genai\translations\cn\README.md
+  - 第二章：探索和比较不同的 LLMs: 02-exploring-and-comparing-different-llms\translations\cn\README.md
+  - 第三章：负责任地使用生成式人工智能: 03-using-generative-ai-responsibly\translations\cn\README.md
+  - 第四章：提示工程基础: 04-prompt-engineering-fundamentals\translations\cn\README.md
+  - 第五章：创建高级的提示工程技巧: 05-advanced-prompts\translations\cn\README.md
+  - 第六章：创建文本生成应用: 06-text-generation-apps\translations\cn\README.md
+  - 第七章：创建聊天应用: 07-building-chat-applications\translations\cn\README.md
+  - 第八章：创建搜索应用: 08-building-search-applications\translations\cn\README.md
+  - 第九章：创建图像应用: 09-building-image-applications\translations\cn\README.md
+  - 第十章：创建低代码AI应用: 10-building-low-code-ai-applications\translations\cn\README.md
+  - 第十一章：集成函数调用: 11-integrating-with-function-calling\translations\cn\README.md
+  - 第十二章：为人工智能应用程序设计用户体验: 12-designing-ux-for-ai-applications\translations\cn\README.md
+  - 第十三章：保护AI应用程序: 13-securing-ai-applications\translations\cn\README.md
+  - 第十四章：生成式AI应用生命周期: 14-the-generative-ai-application-lifecycle\translations\cn\README.md
+  - 第十五章：检索增强生成和向量数据库: 15-rag-and-vector-databases\translations\cn\README.md
+  - 第十六章：开源模型: 16-open-source-models\translations\tw\README.md
+  - 第十七章：AI Agent: 17-ai-agents\translations\tw\README.md
+  - 第十八章：微调: 18-fine-tuning\translations\tw\README.md
+  - 第十九章：SLM模型: 19-slm\README.md
+  - 第二十章：Mistral的模型: 20-mistral\README.md
+  - 第二十一章：Meta的模型: 21-meta\README.md
+theme: readthedocs
+
