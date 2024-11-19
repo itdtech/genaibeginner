@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>検索アプリケーションの構築 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u691c\u7d22\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u306e\u69cb\u7bc9";
+        var mkdocs_page_input_path = "08-building-search-applications\\translations\\ja-jp\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">検索アプリケーションの構築</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">検索アプリケーションの構築</h1>
+<p><a href="https://aka.ms/gen-ai-lesson8-gh?WT.mc_id=academic-105485-koreyst"><img alt="Introduction to Generative AI and Large Language Models" src="../../images/08-lesson-banner.png?WT.mc_id=academic-105485-yoterada" /></a></p>
+<p>LLM は、チャットボットやテキスト生成だけでなく、Embeddings を使った検索アプリケーションの実装も可能です。Embeddings とは、ベクトルと呼ばれるデータの数値表現で、データのセマンティック検索に活用できます。</p>
+<p>今回のレッスンでは、教育スタートアップ向けの検索アプリケーションを作ります。スタートアップは、発展途上国の学生に無料教育を提供する非営利団体で、AI について学べる多数の YouTube ビデオを提供しています。そして今、学生が質問を入力するだけで YouTube 動画を検索できるアプリケーションの開発を行う予定です。</p>
+<p>例えば、学生が「Jupyter Notebook とは何ですか？」や「Azure ML とは何ですか？」と質問すると、その質問に関連する YouTube 動画のリストを返します。さらに、その質問の回答が動画のどの部分にあるのかを示すリンクも示します。</p>
+<h2 id="_2">はじめに</h2>
+<p>このレッスンでは、下記の内容について説明します。</p>
+<ul>
+<li>セマンティック検索とキーワード検索の違い</li>
+<li>テキスト埋め込みとは何か</li>
+<li>テキスト埋め込みインデックスの作成方法</li>
+<li>テキスト埋め込みインデックスの検索方法</li>
+</ul>
+<h2 id="_3">学習目標</h2>
+<p>このレッスンを修了すると、下記を理解できます：</p>
+<ul>
+<li>セマンティック検索とキーワード検索の違いを理解し、説明できる</li>
+<li>テキスト埋め込みとは何かを理解し、説明できる</li>
+<li>データ検索に Embeddings を使用したアプリケーションを作成できる</li>
+</ul>
+<h2 id="_4">なぜ検索アプリケーションを作るのでしょうか？</h2>
+<p>実際に検索アプリケーションを作成すると、Embeddings を使用したデータの検索技術を習得できます。また、学生が情報を素早く見つけるための検索アプリケーションの作り方も学べます。</p>
+<p>このレッスンでは、Microsoft の <a href="https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1">AI Show</a> という YouTube チャンネルから、YouTube の字幕を抜き出し、それを Embedding 検索用のインデックスとして利用する方法について紹介します。AI Show は、AI と機械学習について学べる YouTube チャンネルです。Embedding 用のインデックスは、2023 年 10 月までの各 YouTube にアップロードされた動画の字幕を含めています。この Embedding インデックスを使用して、スタートアップ用の検索アプリケーションを作ります。この検索アプリケーションは、質問の答えが動画のどの部分にあるかを示すリンクも返します。これは、学生が必要な情報を素早く見つけるのに非常に役立ちます。</p>
+<p>下記は、「Azure ML で rstudio を使えますか？」という質問に対するセマンティック・クエリの例です。YouTube の URL を見てみると、URL には質問の答えがどの動画のどの部分にあるかを示すタイムスタンプが含まれています。</p>
+<p><img alt="Semantic query for the question &quot;can you use rstudio with Azure ML&quot;" src="../../images/query-results.png?WT.mc_id=academic-105485-yoterada" /></p>
+<h2 id="_5">セマンティック検索とは何でしょうか？</h2>
+<p>セマンティック検索とは、検索クエリ内の単語の意味、つまりセマンティクスを利用して、関連性のある結果を返す検索手法を指します。</p>
+<p>セマンティック検索の一例を挙げてみましょう。あなたが車を購入したいと考えている場合、「私が将来乗りたい夢の車」を検索したとします。この場合、セマンティック検索は、あなたが車について「夢」見ているわけではなく、「理想の車」を購入したいという意図を理解します。そして、その意図に関連する結果を返します。これに対して、「キーワード検索」は文字通りに車についての夢を検索し、結果として関連性のない情報を返す確立が高くなります。</p>
+<h2 id="embeddings">テキスト埋め込み (Embeddings) とは何でしょうか？</h2>
+<p><a href="https://en.wikipedia.org/wiki/Word_embedding?WT.mc_id=academic-105485-yoterada">テキストの埋め込み (Embeddings)</a> は、<a href="https://en.wikipedia.org/wiki/Natural_language_processing?WT.mc_id=academic-105485-yoterada">自然言語処理</a>において用いられるテキストの表現方法で、テキストの意味を数値表現したものです。この埋め込みは、機械が理解しやすいように数値データとして表現するために使用します。テキスト埋め込みを生成するための AI モデルは多数存在しますが、今回のレッスンでは OpenAI が提供する埋め込みモデルを使用し、埋め込みの作成方法も学びます。</p>
+<p>ここで一例を挙げます。たとえば、AI Show の YouTube チャンネルのエピソードの一部を文字起こししたテキストがあるとします。</p>
+<pre><code class="language-text">今日は、Azure Machine Learning について学習します。
+</code></pre>
+<p>このテキストを OpenAI の埋め込み API に渡すと、1536 個の数値ベクトルとして埋め込みデータが返ってきます。このベクトルの各数値は、テキストの異なる側面を表現しています。簡単に理解できるように、ベクトルの最初の 10 個の数値を以下に示します。</p>
+<pre><code class="language-text">[
+-0.006655829958617687, 0.0026128944009542465,
+0.008792596869170666, -0.02446001023054123,
+-0.008540431968867779, 0.022071078419685364,
+-0.010703742504119873, 0.003311325330287218,　
+-0.011632772162556648, -0.02187200076878071,
+...
+]
+</code></pre>
+<h2 id="_6">埋め込みインデックスはどのようにして作成するのでしょうか？</h2>
+<p>このレッスンの埋め込みインデックスは、Python スクリプトを用いて作成しました。スクリプトとその使用方法は、このレッスンの <code>scripts</code> フォルダ内の <a href="../../scripts/?WT.mc_id=academic-105485-yoterada">README</a> に記載しています。埋め込みインデックスはすでに提供されているので、このレッスンを完了するためにこれらのスクリプトを実行する必要はありません。</p>
+<p>スクリプト内部では下記の操作を行っています：</p>
+<ol>
+<li><a href="https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1">AI Show</a> プレイリスト中の各 YouTube 動画の字幕をダウンロードします。</li>
+<li><a href="https://learn.microsoft.com/azure/ai-services/openai/how-to/function-calling?WT.mc_id=academic-105485-yoterada">OpenAI の Function Calling</a> を使用して、YouTube 字幕の最初から 3 分で発表者の名前を抽出します。各動画の発表者の名前は、<code>embedding_index_3m.json</code> という名前の埋め込みインデックスに保存します。</li>
+<li>その後、字幕テキストは「<strong>3 分間のテキストブロック</strong>」に分割します。各ブロックには、次のブロックから約 20 語を重複して含め、各ブロックの埋め込みが途切れないように、より良い検索コンテキストを提供します。</li>
+<li>各テキストブロックを OpenAI の Chat API に渡し、テキストを 60 語に要約します。この要約結果も <code>embedding_index_3m.json</code> という埋め込みインデックスに保存します。</li>
+<li>最後に、テキストブロックの内容を OpenAI の埋め込み API に渡します。埋め込み API は、ブロックの意味を表現する 1536 個の数値からなるベクトルを返します。テキストブロックと OpenAI の埋め込みベクトルは、<code>embedding_index_3m.json</code> という埋め込みインデックスに保存します。</li>
+</ol>
+<h3 id="_7">ベクトル・データベース</h3>
+<p>今回レッスンをかんたんに進めるため、埋め込みインデックスは <code>embedding_index_3m.json</code> という名前の JSON ファイルに保存し、Pandas のデータフレームに読み込みます。しかし、実際の運用環境では、埋め込みインデックスは <a href="https://learn.microsoft.com/training/modules/improve-search-results-vector-search?WT.mc_id=academic-105485-yoterada">Azure AI Search</a>、<a href="https://cookbook.openai.com/examples/vector_databases/redis/readme?WT.mc_id=academic-105485-yoterada">Redis</a>、<a href="https://cookbook.openai.com/examples/vector_databases/pinecone/readme?WT.mc_id=academic-105485-yoterada">Pinecone</a>、<a href="https://cookbook.openai.com/examples/vector_databases/weaviate/readme?WT.mc_id=academic-105485-yoterada">Weaviate</a> などのベクトル・データベースに保存します。</p>
+<h2 id="_8">コサイン類似度について理解しましょう</h2>
+<p>テキストの埋め込みについて学んだので、次にテキストの埋め込みを使ってデータを検索します。特にコサイン類似度を使って特定の問い合わせに対して最も類似した埋め込みを見つける方法を学びます。</p>
+<h3 id="_9">コサイン類似度とは何でしょうか？</h3>
+<p>コサイン類似度は、2 つのベクトル間の類似性を測る指標で、これは「最近傍検索」とも呼ばれます。コサイン類似度検索を行うためには、まず OpenAI の埋め込み API を使って、ユーザから問い合わせされたテキストをベクトル化します。次に、問い合わせされたベクトルと、埋め込みインデックス内の各ベクトルとのコサイン類似度を計算します。埋め込みインデックスには、YouTube の字幕テキストブロックごとにベクトルが存在します。最後に、結果をコサイン類似度でソートします。コサイン類似度が最も高いテキストブロックが、問い合わせされた内容に最も近い内容を表しています。</p>
+<p>数学的な観点から見ると、コサイン類似度は多次元空間に投影された 2 つのベクトル間の角度のコサインを測定します。この測定は有益で、2 つのドキュメントが大きさのためにユークリッド距離で離れていても、それらの間の角度が小さいため、コサイン類似度が高くなる可能性があります。コサイン類似度の方程式についての詳細は、<a href="https://en.wikipedia.org/wiki/Cosine_similarity?WT.mc_id=academic-105485-yoterada">コサイン類似度</a>をご覧ください。</p>
+<blockquote>
+<p>[!TIP]
+訳者追記<br />
+訳者が日本語で説明している下記の記事もどうぞ参考にご覧ください。
+<a href="https://qiita.com/yoshioterada/items/3e575828368bf3767532">Azure OpenAI Embedding モデルを利用し最も関連性の高いドキュメントを見つける方法</a></p>
+</blockquote>
+<h2 id="_10">初めての検索アプリケーションの構築</h2>
+<p>次に、埋め込みを使って検索アプリケーションを実装する方法を学びます。この検索アプリケーションでは、学生が質問を入力してビデオを検索できます。検索アプリケーションは、質問に関連するビデオのリストを返します。さらに、質問に対する回答を含むビデオへのリンクも返します。</p>
+<p>このソリューションは、Python 3.10 以上を使用して Windows 11、macOS、Ubuntu 22.04 で作成・テストしました。Python は <a href="https://www.python.org/downloads/?WT.mc_id=academic-105485-yoterada">python.org</a> からダウンロードできます。</p>
+<h2 id="-">課題 - 学生向けの検索アプリケーションを作る</h2>
+<p>このレッスンの初めにスタートアップについて紹介しました。そしてこれから、学生が自分たちの評価を検索できるアプリケーションを作ります。</p>
+<p>この課題では、検索アプリケーションを作るために Azure OpenAI Services を利用します。下記のように Azure OpenAI Services を作成します。この課題を完了するためには、Azure サブスクリプションが事前に必要です。</p>
+<h3 id="azure-cloud-shell">Azure Cloud Shell 　の起動</h3>
+<ol>
+<li><a href="https://portal.azure.com/?WT.mc_id=academic-105485-yoterada">Azure portal</a> にサインインします</li>
+<li>Azure portal の右上隅にある Cloud Shell アイコンを選択します</li>
+<li>環境の種類として<strong>Bash</strong>を選択します</li>
+</ol>
+<h4 id="_11">リソースグループを作成する</h4>
+<blockquote>
+<p>この手順では、米国東部に "semantic-video-search" という名前のリソースグループを作成し使用します。
+リソースグループの名前は変更可能ですが、リソースの場所を変更する場合は、
+<a href="https://aka.ms/oai/models?WT.mc_id=academic-105485-yoterada">モデルの可用性</a>から対象リージョンで利用可能かご確認ください。</p>
+<p>[!TIP]
+訳者追記<br />
+日本では jaapneast のリージョンで OpenAI の text-embedding-ada-002, gpt-35-turbo-0613 のモデルが利用可能です。仮に japaneast で利用できない場合は、他のリージョンで作成してください。</p>
+</blockquote>
+<pre><code class="language-shell">az group create --name semantic-video-search --location eastus
+</code></pre>
+<h4 id="azure-openai-service">Azure OpenAI Service リソースを作成する</h4>
+<p>Azure Cloud Shell から、下記のコマンドを実行して Azure OpenAI Service リソースを作成します。</p>
+<pre><code class="language-shell">az cognitiveservices account create --name semantic-video-openai --resource-group semantic-video-search \
+    --location eastus --kind OpenAI --sku s0
+</code></pre>
+<h4 id="_12">アプリケーションで使用するためのエンドポイントとキーを取得する</h4>
+<p>Azure Cloud Shell から、下記のコマンドを実行して Azure OpenAI Service リソースのエンドポイントとキーを取得します。</p>
+<pre><code class="language-shell">az cognitiveservices account show --name semantic-video-openai \
+   --resource-group  semantic-video-search | jq -r .properties.endpoint
+az cognitiveservices account keys list --name semantic-video-openai \
+   --resource-group semantic-video-search | jq -r .key1
+</code></pre>
+<h4 id="openai-embedding">OpenAI Embedding モデルをデプロイする</h4>
+<p>Azure Cloud Shell から、下記のコマンドを実行して OpenAI Embedding モデルをデプロイします。</p>
+<pre><code class="language-shell">az cognitiveservices account deployment create \
+    --name semantic-video-openai \
+    --resource-group  semantic-video-search \
+    --deployment-name text-embedding-ada-002 \
+    --model-name text-embedding-ada-002 \
+    --model-version &quot;2&quot;  \
+    --model-format OpenAI \
+    --sku-capacity 100 --sku-name &quot;Standard&quot;
+</code></pre>
+<h2 id="_13">解決策</h2>
+<p>GitHub Codespaces で<a href="../../python/aoai-solution.ipynb?WT.mc_id=academic-105485-yoterada">ソリューションのノートブック</a>を開き、Jupyter Notebook の指示に従ってください。</p>
+<p>ノートブックを実行すると、質問内容を入力するように求められます。入力ボックスは次のように表示されます。</p>
+<p><img alt="Input box for the user to input a query" src="../../images/notebook-search.png?WT.mc_id=academic-105485-yoterada" /></p>
+<h2 id="_14">お疲れ様でした!　学習を続ける</h2>
+<p>このレッスン修了後、<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-yoterada">生成 AI 学習コレクション</a> をチェックして、Generative AI の知識をレベルアップさせましょう。</p>
+<p>次のレッスン 9 では、<a href="../../../09-building-image-applications/translations/ja-jp/?WT.mc_id=academic-105485-yoterada">画像生成アプリケーションの構築</a>方法について学びます！</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>第十四章：生成式AI应用生命周期 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c\u5341\u56db\u7ae0\uff1a\u751f\u6210\u5f0fAI\u5e94\u7528\u751f\u547d\u5468\u671f";
+        var mkdocs_page_input_path = "14-the-generative-ai-application-lifecycle\\translations\\cn\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">第十四章：生成式AI应用生命周期</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">引言</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mlops-llmops">从 MLOps 到 LLMOps 的范式转变</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#llm">LLM 生命周期</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">生命周期工具</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">继续学习！</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">第十四章：生成式AI应用生命周期</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://aka.ms/gen-ai-lesson14-gh?WT.mc_id=academic-105485-koreyst"><img alt="Integrating with function calling" src="../../images/14-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<h1 id="ai">生成式 AI 应用生命周期</h1>
+<p>在所有 AI 应用的开发中，一个核心问题是如何保持 AI 特性的持续相关性。鉴于 AI 技术的快速进步，为了确保你的应用能够持续提供相关、可靠且强大的性能，你需要不断地监控、评估并优化它。这正是生成式 AI 生命周期发挥作用的地方。</p>
+<p>生成式 AI 生命周期提供了一个框架，指引你穿越开发、部署和维护生成式 AI 应用的各个阶段。它帮助你明确目标、衡量性能、识别挑战，并实施解决方案。此外，它还支持你确保应用遵循特定领域及其利益相关者的伦理和法律标准。遵循生成式 AI 生命周期，可以保证你的应用持续创造价值，满足用户需求。</p>
+<h2 id="_1">引言</h2>
+<p>在本章中，你将学到：</p>
+<ul>
+<li>从 MLOps 到 LLMOps 的范式转变</li>
+<li>LLM 生命周期</li>
+<li>生命周期工具</li>
+<li>生命周期量化与评估</li>
+</ul>
+<h2 id="mlops-llmops">从 MLOps 到 LLMOps 的范式转变</h2>
+<p>大型语言模型(LLMs)作为人工智能工具箱中的新成员，它们在分析和生成任务中表现出强大的能力。然而，这种能力也给我们如何高效地管理 AI 和传统机器学习任务带来了挑战。</p>
+<p>这要求我们采用新的范式来适应这一变化，以正确的激励措施引导其发展。我们可以将传统的 AI 应用称为“ML 应用”，将基于最新技术和技术的新型 AI 应用称为“GenAI 应用”或简称“AI 应用”。这种分类方式从多个方面改变了我们的讨论框架，如下比较所示。</p>
+<p><img alt="LLMOps vs. MLOps comparison" src="../../images/01-llmops-shift.png?WT.mc_id=academic-105485-koreys" /></p>
+<p>注意，在 LLMOps 中，我们更加关注应用开发者，并将集成作为关键点，采用“模型即服务”，并围绕以下几个关键指标进行思考：</p>
+<ul>
+<li>质量：响应的质量</li>
+<li>危害：负责任的 AI</li>
+<li>诚信：响应的合理性（是否有意义？是否正确？）</li>
+<li>成本：解决方案的预算</li>
+<li>延迟：令牌响应的平均时间</li>
+</ul>
+<h2 id="llm">LLM 生命周期</h2>
+<p>首先，让我们通过下图了解生命周期及其变化。</p>
+<p><img alt="LLMOps infographic" src="../../images/02-llmops.png?WT.mc_id=academic-105485-koreys" /></p>
+<p>可以看出，这与 MLOps 的传统生命周期有所不同。LLMs 引入了许多新的需求，如提示工程、质量改进技术（微调、RAG、元提示）、负责任 AI 的不同评估和责任，以及新的评估指标（质量、危害、诚信、成本和延迟）。</p>
+<p>例如，看看我们如何进行构思。利用提示工程与不同 LLMs 进行实验，探索各种可能性，测试假设是否成立。</p>
+<p>注意，这不是一个线性过程，而是一个集成的循环过程，迭代且具有一个总体周期。</p>
+<p>我们应该如何探索这些步骤？让我们深入了解如何构建一个生命周期。</p>
+<p><img alt="LLMOps Workflow" src="../../images/03-llm-stage-flows.png?WT.mc_id=academic-105485-koreys" /></p>
+<p>这个过程可能看起来复杂，让我们先关注三个主要步骤：</p>
+<ol>
+<li>构思/探索：在这里，我们可以根据业务需求进行探索。原型设计，创建<a href="https://microsoft.github.io/promptflow/index.html?WT.mc_id=academic-105485-koreyst">PromptFlow</a>，并测试其是否足够有效来验证我们的假设。</li>
+<li>构建/增强：现在开始评估更大的数据集并实施技术，如微调和 RAG，以检验我们的解决方案的稳健性。如果不符合要求，重新实施、添加新的流程步骤或重组数据可能会有所帮助。经过流程和规模测试后，如果一切顺利并满足我们的指标，就准备进入下一个阶段。</li>
+<li>运营化：集成监控和警报系统到我们的系统，部署和应用程序集成。</li>
+</ol>
+<p>然后，我们有管理的整体周期，重点关注安全、合规和治理。</p>
+<p>恭喜，现在你的 AI 应用已经准备就绪，可以投入使用了。想要动手体验，可以尝试<a href="https://nitya.github.io/contoso-chat/?WT.mc_id=academic-105485-koreys">Contoso Chat Demo.</a></p>
+<p>那么，我们可以使用哪些工具呢？</p>
+<h2 id="_2">生命周期工具</h2>
+<p>Microsoft 提供的<a href="https://azure.microsoft.com/solutions/ai/?WT.mc_id=academic-105485-koreys">Azure AI Platform</a>和<a href="https://microsoft.github.io/promptflow/index.html?WT.mc_id=academic-105485-koreyst">PromptFlow</a>，简化了生命周期的实施，让你的应用快速上线。</p>
+<p>通过<a href="https://azure.microsoft.com/solutions/ai/?WT.mc_id=academic-105485-koreys">Azure AI Platform</a>，你可以利用<a href="https://ai.azure.com/?WT.mc_id=academic-105485-koreys">AI Studio</a>。AI Studio 是一个网页门户，让你可以探索模型、示例和工具，管理资源，进行 UI 开发流程，以及提供 SDK/CLI 选项进行代码优先开发。</p>
+<p><img alt="Azure AI possibilities" src="../../images/04-azure-ai-platform.png?WT.mc_id=academic-105485-koreys" />
+Azure AI 让你可以使用多种资源，管理你的操作、服务、项目、向量搜索和数据库需求。</p>
+<p><img alt="LLMOps with Azure AI" src="../../images/05-llm-azure-ai-prompt.png?WT.mc_id=academic-105485-koreys" /></p>
+<p>从概念证明(POC)到大规模应用，利用 PromptFlow 进行构建：</p>
+<ul>
+<li>从 VS Code 设计和构建应用，使用视觉和功能工具。</li>
+<li>轻松测试和微调你的应用，以实现高质量 AI。</li>
+<li>使用 Azure AI Studio 进行集成和迭代，通过云推送和部署实现快速集成。</li>
+</ul>
+<p><img alt="LLMOps with PromptFlow" src="../../images/06-llm-promptflow.png?WT.mc_id=academic-105485-koreys" /></p>
+<h2 id="_3">继续学习！</h2>
+<p>通过<a href="https://nitya.github.io/contoso-chat/?WT.mc_id=academic-105485-koreyst">Contoso Chat App</a>深入学习我们如何将这些概念应用于实际应用开发，并查看 Cloud Advocacy 如何在演示中加入这些概念。想要获取更多内容，不妨观看我们的<a href="https://www.youtube.com/watch?v=DdOylyrTOWg">Ignite breakout session!</a></p>
+<p>接下来，通过第 15 课，了解<a href="../../../15-rag-and-vector-databases/?WT.mc_id=academic-105485-koreyst">检索增强生成和向量数据库</a>如何影响生成式 AI，使应用更加吸引用户！</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../13-securing-ai-applications/translations/cn/" class="btn btn-neutral float-left" title="第十三章：保护AI应用程序"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../15-rag-and-vector-databases/translations/cn/" class="btn btn-neutral float-right" title="第十五章：检索增强生成和向量数据库">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../13-securing-ai-applications/translations/cn/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../15-rag-and-vector-databases/translations/cn/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

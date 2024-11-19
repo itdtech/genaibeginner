@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Fundamentos de Engenharia de Prompt - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fundamentos de Engenharia de Prompt";
+        var mkdocs_page_input_path = "04-prompt-engineering-fundamentals\\translations\\pt-br\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Fundamentos de Engenharia de Prompt</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fundamentos-de-engenharia-de-prompt">Fundamentos de Engenharia de Prompt</h1>
+<p><a href="https://aka.ms/gen-ai-lesson4-gh?WT.mc_id=academic-105485-koreyst"><img alt="Prompt Engineering Fundamentals" src="../../images/04-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<p>A forma como você escreve seu prompt para o LLM importa. Um prompt cuidadosamente elaborado pode alcançar um resultado melhor do que um que não é. Mas o que são esses conceitos, prompt, Engenharia de Prompt e como posso melhorar o que envio para o LLM? Perguntas como essas são o que este capítulo e o próximo estão procurando responder.</p>
+<p><em>A IA Generativa</em> é capaz de criar novo conteúdo (por exemplo, texto, imagens, áudio, código etc.) em resposta a solicitações do usuário. Isso é alcançado usando <em>Modelos de Linguagem Grandes</em> (LLMs) como a série GPT ("Generative Pre-trained Transformer") da OpenAI, que são treinados para usar linguagem natural e código.</p>
+<p>Os usuários agora podem interagir com esses modelos usando paradigmas familiares como chat, sem precisar de nenhuma experiência técnica ou treinamento. Os modelos são <em>baseados em prompt</em> - os usuários enviam uma entrada de texto (prompt) e recebem a resposta da IA (completação). Eles podem então "conversar com a IA" de forma iterativa, em conversas de várias rodadas, refinando seu prompt até que a resposta atenda às suas expectativas.</p>
+<p>"Prompts" agora se tornam a principal <em>interface de programação</em> para aplicativos de IA generativa, indicando aos modelos o que fazer e influenciando a qualidade das respostas retornadas. "Engenharia de Prompt" é um campo de estudo em rápido crescimento que se concentra no <em>design e otimização</em> de prompts para fornecer respostas consistentes e de qualidade em escala.</p>
+<h2 id="metas-de-aprendizado">Metas de Aprendizado</h2>
+<p>Nesta lição, aprenderemos o que é Engenharia de Prompt, por que isso é importante e como podemos criar prompts mais eficazes para um modelo e objetivo de aplicativo específicos. Compreenderemos os conceitos centrais e as melhores práticas para a Engenharia de Prompt - e conheceremos um ambiente interativo de Jupyter Notebooks "sandbox" onde podemos ver esses conceitos aplicados a exemplos reais.</p>
+<p>Ao final desta lição, seremos capazes de:</p>
+<ol>
+<li>Explicar o que é Engenharia de Prompt e por que isso importa.</li>
+<li>Descrever os componentes de um prompt e como eles são usados.</li>
+<li>Aprender melhores práticas e técnicas para a Engenharia de Prompt.</li>
+<li>Aplicar técnicas aprendidas a exemplos reais, usando um endpoint da OpenAI.</li>
+</ol>
+<h2 id="sandbox-de-aprendizado">Sandbox de Aprendizado</h2>
+<p>A Engenharia de Prompt é atualmente mais uma arte do que uma ciência. A melhor maneira de aprimorar nossa intuição é <em>praticar mais</em> e adotar uma abordagem de tentativa e erro que combine experiência no domínio de aplicação com técnicas recomendadas e otimizações específicas do modelo.</p>
+<p>O Jupyter Notebook que acompanha esta lição, fornece um ambiente <em>sandbox</em> onde você pode experimentar o que aprende - à medida que avança ou como parte do desafio de código no final. Para executar os exercícios, você precisará de:</p>
+<ol>
+<li>
+<p>Uma chave de API da OpenAI - o endpoint de serviço para um LLM implantado.</p>
+</li>
+<li>
+<p>Um tempo de execução Python - no qual o Notebook pode ser executado.</p>
+</li>
+</ol>
+<p>Nós instrumentamos este repositório com um <em>contêiner de desenvolvimento</em> (<em>dev container</em>) que vem com um tempo de execução Python 3. Abra simplesmente o repositório no GitHub Codespaces ou no seu Docker Desktop localmente para ativar o tempo de execução automaticamente. Em seguida, abra o notebook e selecione o kernel Python 3.x para preparar o Notebook para execução.</p>
+<p>O notebook padrão está configurado para uso com uma chave de API da OpenAI. Basta copiar o arquivo <code>.env.copy</code> na raiz da pasta para <code>.env</code> e atualizar a linha <code>OPENAI_API_KEY=</code> com sua chave de API - e você estará pronto.</p>
+<p>O notebook vem com exercícios <em>iniciais</em>, mas você é incentivado a adicionar suas próprias seções de <em>Markdown</em> (descrição) e <em>Código</em> (solicitações de prompt) para experimentar mais exemplos ou ideias - e construir sua intuição para o design de prompt.</p>
+<h2 id="nossa-startup">Nossa Startup</h2>
+<p>Agora, vamos falar sobre como <em>esse tópico</em> se relaciona com a missão de nossa startup de <a href="https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst">trazer inovação de IA para a educação</a>. Queremos criar aplicações de aprendizado personalizado impulsionados por IA. Então, vamos pensar em como diferentes usuários da nossa aplicação podem "projetar" prompts:</p>
+<ul>
+<li><strong>Administradores</strong> podem pedir à IA para <em>analisar dados do currículo para identificar lacunas na cobertura</em>. A IA pode resumir os resultados ou visualizá-los com código.</li>
+<li><strong>Educadores</strong> podem pedir à IA para <em>gerar um plano de aula para um público-alvo e tópico</em>. A IA pode criar o plano personalizado em um formato especificado.</li>
+<li><strong>Alunos</strong> podem pedir à IA para <em>ajudá-los em uma disciplina difícil</em>. A IA pode orientar os alunos com lições, dicas e exemplos adaptados ao seu nível.</li>
+</ul>
+<p>Isso é apenas a ponta do iceberg. Confira <a href="https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst">Prompts For Education</a> - uma biblioteca de prompts de código aberto curada por especialistas em educação - para ter uma visão mais ampla das possibilidades! <em>Experimente executar alguns desses prompts na sandbox ou usando o OpenAI Playground para ver o que acontece!</em></p>
+<!--
+MODELO DE LIÇÃO:
+Esta unidade deve abordar o conceito principal #1.
+Reforce o conceito com exemplos e referências.
+
+CONCEITO #1:
+Engenharia de Prompt.
+Defina-o e explique por que é necessário.
+-->
+
+<h2 id="o-que-e-engenharia-de-prompt">O que é Engenharia de Prompt?</h2>
+<p>Começamos esta lição definindo <strong>Engenharia de Prompt</strong> como o processo de <em>projetar e otimizar</em> entradas de texto (prompts) para fornecer respostas consistentes e de qualidade (completions) para um objetivo de aplicativo e modelo específicos. Podemos pensar nisso como um processo de 2 etapas:</p>
+<ul>
+<li><em>projetar</em> o prompt inicial para um modelo e objetivo específicos</li>
+<li><em>refinar</em> iterativamente o prompt para melhorar a qualidade da resposta</li>
+</ul>
+<p>Isso é necessariamente um processo de tentativa e erro que requer intuição do usuário e esforço para obter resultados ótimos. Então, por que é importante? Para responder a essa pergunta, primeiro precisamos entender três conceitos:</p>
+<ul>
+<li><em>Tokenização</em> = como o modelo "enxerga" o prompt</li>
+<li><em>Base LLMs</em> = como o modelo fundamental "processa" um prompt</li>
+<li><em>Instruction-Tuned LLMs</em> = como o modelo agora pode ver "tarefas"</li>
+</ul>
+<h3 id="tokenizacao">Tokenização</h3>
+<p>Um LLM vê prompts como uma <em>sequência de tokens</em> onde diferentes modelos (ou versões de um modelo) podem tokenizar o mesmo prompt de maneiras diferentes. Como os LLMs são treinados em tokens (não em texto bruto), a forma como os prompts são tokenizados tem um impacto direto na qualidade da resposta gerada.</p>
+<p>Para ter uma intuição de como a tokenização funciona, experimente ferramentas como o <a href="https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst">OpenAI Tokenizer</a> mostrado abaixo. Copie seu prompt e veja como ele é convertido em tokens, prestando atenção em como caracteres de espaço em branco e pontuações são tratados. Note que este exemplo mostra um LLM mais antigo (GPT-3) - então, tentar isso com um modelo mais recente pode produzir um resultado diferente.</p>
+<p><img alt="Tokenization" src="../../images/04-tokenizer-example.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h3 id="conceito-modelos-fundamentais">Conceito: Modelos Fundamentais</h3>
+<p>Uma vez que um prompt é tokenizado, a função principal do <a href="https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst">"Base LLM"</a> (ou modelo fundamental) é prever o token nessa sequência. Como os LLMs são treinados em conjuntos massivos de dados de texto, eles têm uma boa compreensão das relações estatísticas entre tokens e podem fazer essa previsão com alguma confiança.</p>
+<blockquote>
+<p>Observação: eles não compreendem o <em>significado</em> das palavras no prompt ou token; eles apenas veem um padrão que podem "completar" com sua próxima previsão. Eles podem continuar prevendo a sequência até serem interrompidos pela intervenção do usuário ou alguma condição preestabelecida.</p>
+</blockquote>
+<p>Desejam ver como a conclusão baseada em prompts funciona? Insira o prompt acima no <a href="https://oai.azure.com/playground?WT.mc_id=academic-105485-koreyst"><em>Chat Playground</em></a> do Azure OpenAI Studio com as configurações padrão. O sistema está configurado para tratar prompts como solicitações de informação - então, você deve ver uma conclusão que atende a esse contexto.</p>
+<p>Mas e se o usuário quiser ver algo específico que atenda a alguns critérios ou objetivos de tarefa? É aqui que os LLMs <em>instruídos</em> entram em cena.</p>
+<p><img alt="Base LLM Chat Completion" src="../../images/04-playground-chat-base.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h3 id="conceito-llms-instruidos">Conceito: LLMs Instruídos</h3>
+<p>Um <a href="https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst">LLM Instruído</a> começa com o modelo fundamental e o ajusta com exemplos ou pares de entrada/saída (por exemplo, "mensagens" de várias rodadas) que podem conter instruções claras - e a resposta da IA tenta seguir essa instrução.</p>
+<p>Isso usa técnicas como Aprendizado por Reforço com Feedback Humano (ARFH) que podem treinar o modelo a <em>seguir instruções</em> e <em>aprender com feedback</em> para que produza respostas mais adequadas a aplicações práticas e mais relevantes para objetivos do usuário.</p>
+<p>Vamos experimentar - revisite o prompt acima, mas agora altere a <em>mensagem do sistema</em> para fornecer a seguinte instrução como contexto:</p>
+<blockquote>
+<p><em>Summarize content you are provided with for a second-grade student. Keep the result to one paragraph with 3-5 bullet points.</em></p>
+</blockquote>
+<p>Veja como o resultado agora está ajustado para refletir o objetivo desejado e o formato? Um educador pode agora usar diretamente essa resposta em seus slides para aquela aula.</p>
+<p><img alt="Instruction Tuned LLM Chat Completion" src="../../images/04-playground-chat-instructions.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h2 id="por-que-precisamos-de-engenharia-de-prompt">Por que precisamos de Engenharia de Prompt?</h2>
+<p>Agora que sabemos como os prompts são processados pelos LLMs, vamos falar sobre <em>por que</em> precisamos de Engenharia de Prompt. A resposta está no fato de que os LLMs atuais apresentam uma série de desafios que tornam as <em>completions confiáveis e consistentes</em> mais difíceis de alcançar sem esforço na criação e otimização do prompt. Por exemplo:</p>
+<ol>
+<li>
+<p><strong>As respostas do modelo são estocásticas.</strong> O <em>mesmo prompt</em> provavelmente produzirá respostas diferentes com modelos ou versões diferentes do modelo. E pode até mesmo produzir resultados diferentes com o <em>mesmo modelo</em> em momentos diferentes. <em>Técnicas de Wngenharia de Prompt podem nos ajudar a minimizar essas variações fornecendo melhores diretrizes</em>.</p>
+</li>
+<li>
+<p><strong>Os modelos podem criar respostas imaginárias.</strong> Os modelos são pré-treinados com conjuntos de dados <em>grandes, mas finitos</em>, o que significa que eles não têm conhecimento sobre conceitos fora desse escopo de treinamento. Como resultado, podem produzir completions imprecisas, imaginárias ou diretamente contraditórias aos fatos conhecidos. <em>Técnicas de Engenharia de Prompt ajudam os usuários a identificar e mitigar alucinações, por exemplo, pedindo à IA por citações ou raciocínio</em>.</p>
+</li>
+<li>
+<p><strong>As capacidades dos modelos variarão.</strong> Modelos ou gerações de modelos mais recentes terão capacidades mais ricas, mas também trarão peculiaridades e compensações únicas em termos de custo e complexidade. <em>A Engenharia de Prompt pode nos ajudar a desenvolver melhores práticas e fluxos de trabalho que abstraem diferenças e se adaptam aos requisitos específicos do modelo de maneira escalável e contínua</em>.</p>
+</li>
+</ol>
+<p>Vamos ver isso em ação no OpenAI ou Azure OpenAI Playground:</p>
+<ul>
+<li>Use o mesmo prompt com diferentes implantações de LLM (por exemplo, OpenAI, Azure OpenAI, Hugging Face) - você viu as variações?</li>
+<li>Use o mesmo prompt repetidamente com a <em>mesma</em> implantação de LLM (por exemplo, Azure OpenAI Playground) - como essas variações diferiram?</li>
+</ul>
+<h3 id="exemplo-de-alucinacoes">Exemplo de Alucinações</h3>
+<p>Quer ter uma ideia de como as alucinações funcionam? Pense em um prompt que instrua a IA a gerar conteúdo para um tópico inexistente (para garantir que não seja encontrado no conjunto de dados de treinamento). Por exemplo - eu tentei este prompt:</p>
+<blockquote>
+<p><strong>Prompt:</strong> generate a lesson plan on the Martian War of 2076.</p>
+</blockquote>
+<p>Uma busca na web mostrou que havia relatos fictícios (por exemplo, séries de televisão ou livros) sobre guerras marcianas - mas nenhuma em 2076. O bom senso também nos diz que 2076 está <em>no futuro</em> e, portanto, não pode ser associado a um evento real.</p>
+<p>Então, o que acontece quando executamos este prompt com diferentes provedores de LLM?</p>
+<blockquote>
+<p><strong>Resposta 1</strong>: OpenAI Playground (GPT-35)</p>
+</blockquote>
+<p><img alt="Resposta 1" src="../../images/04-fabrication-aoai.png?WT.mc_id=academic-105485-koreyst" /></p>
+<blockquote>
+<p><strong>Resposta 2</strong>: Azure OpenAI Playground (GPT-35)</p>
+</blockquote>
+<p><img alt="Response 2" src="../../images/04-fabrication-aoai.png?WT.mc_id=academic-105485-koreyst" /></p>
+<blockquote>
+<p><strong>Resposta 3</strong>: : Hugging Face Chat Playground (LLama-2)</p>
+</blockquote>
+<p><img alt="Response 3" src="../../images/04-fabrication-huggingchat.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>Como esperado, cada modelo (ou versão do modelo) produz respostas ligeiramente diferentes devido ao comportamento estocástico e variações nas capacidades do modelo. Por exemplo, um modelo tem como alvo uma audiência do 8º ano, enquanto o outro assume um estudante do ensino médio. Mas os três modelos geraram respostas que poderiam convencer um usuário desinformado de que o evento era real.</p>
+<p>Técnicas de engenharia de prompt como <em>metaprompting</em> e <em>configuração de temperatura</em> podem reduzir as alucinações do modelo em certa medida. Novas <em>arquiteturas</em> de engenharia de prompt também incorporam novas ferramentas e técnicas de maneira contínua no fluxo do prompt, para mitigar ou reduzir alguns desses efeitos.</p>
+<h2 id="estudo-de-caso-github-copilot">Estudo de Caso: GitHub Copilot</h2>
+<p>Vamos concluir esta seção entendendo como a engenharia de prompt é utilizada em soluções do mundo real ao analisar um Estudo de Caso: <a href="https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst">GitHub Copilot</a>.</p>
+<p>O GitHub Copilot é seu "Programador de Par IA" - ele converte prompts de texto em conclusões de código e está integrado ao seu ambiente de desenvolvimento (por exemplo, Visual Studio Code) para uma experiência do usuário sem interrupções. Como documentado na série de blogs abaixo, a versão mais antiga era baseada no modelo OpenAI Codex - com os engenheiros percebendo rapidamente a necessidade de ajustar o modelo e desenvolver técnicas melhores de engenharia de prompt para melhorar a qualidade do código. Em julho, eles <a href="https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst">apresentaram um modelo de IA aprimorado que vai além do Codex</a> para sugestões ainda mais rápidas.</p>
+<p>Leia as postagens na ordem para seguir a jornada de aprendizado deles.</p>
+<ul>
+<li><strong>Maio de 2023</strong> | <a href="https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst">GitHub Copilot está Melhorando na Compreensão do Seu Código</a></li>
+<li><strong>Maio de 2023</strong> | <a href="https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst">Dentro do GitHub: Trabalhando com os LLMs por trás do GitHub Copilot</a>.</li>
+<li><strong>Junho de 2023</strong> | <a href="https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst">Como Escrever Melhores Prompts para o GitHub Copilot</a>.</li>
+<li><strong>Julho de 2023</strong> | <a href="https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst">.. GitHub Copilot vai além do Codex com modelo de IA aprimorado</a></li>
+<li><strong>Julho de 2023</strong> | <a href="https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst">Guia do Desenvolvedor para Engenharia de Prompt e LLMs</a></li>
+<li><strong>Setembro de 2023</strong> | <a href="https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst">Como construir um aplicativo empresarial LLM: Lições do GitHub Copilot</a></li>
+</ul>
+<p>Você também pode navegar pelo <a href="https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst">blog de Engenharia deles</a> para mais postagens como <a href="https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst">esta</a> que mostra como esses modelos e técnicas são <em>aplicados</em> para impulsionar aplicações do mundo real.</p>
+<hr />
+<!--
+LESSON TEMPLATE:
+This unit should cover core concept #2.
+Reinforce the concept with examples and references.
+
+CONCEPT #2:
+Prompt Design.
+Illustrated with examples.
+-->
+
+<h2 id="construcao-de-prompt">Construção de Prompt</h2>
+<p>Vimos por que a Engenharia de Prompt é importante - agora vamos entender como os prompts são <em>construídos</em> para que possamos avaliar diferentes técnicas para um design de prompt mais eficaz.</p>
+<h3 id="prompt-basico">Prompt Básico</h3>
+<p>Vamos começar com o prompt básico: uma entrada de texto enviada ao modelo sem nenhum outro contexto. Aqui está um exemplo - quando enviamos as primeiras palavras do hino nacional dos EUA para a <a href="https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst">API de Completions da OpenAI</a>, ela instantaneamente <em>completa</em> a resposta com as próximas linhas, ilustrando o comportamento básico de previsão.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Prompt (Input)</th>
+<th style="text-align: left;">Completion (Output)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Oh say can you see</td>
+<td style="text-align: left;">It sounds like you're starting the lyrics to "The Star-Spangled Banner," the national anthem of the United States. The full lyrics are ...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prompt-complexo">Prompt Complexo</h3>
+<p>Agora, vamos adicionar contexto e instruções a esse prompt básico. A <a href="https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst">API de Completions de Chat</a> nos permite construir um prompt complexo como uma coleção de <em>mensagens</em> com:</p>
+<ul>
+<li>Pares de entrada/saída refletindo a entrada do <em>usuário</em> e a resposta do <em>assistente</em>.</li>
+<li>Mensagem do sistema definindo o contexto para o comportamento ou personalidade do assistente.</li>
+</ul>
+<p>A solicitação agora está na forma abaixo, onde a <em>tokenização</em> captura efetivamente informações relevantes do contexto e da conversa. Agora, alterar o contexto do sistema pode ter um impacto significativo na qualidade dos completamentos, assim como as entradas do usuário fornecidas.</p>
+<pre><code class="language-python">response = openai.chat.completions.create(
+    model=&quot;gpt-3.5-turbo&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Você é um assistente prestativo.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Quem ganhou a série mundial em 2020?&quot;},
+        {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;O Los Angeles Dodgers venceu a Série Mundial em 2020.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Onde foi jogado?&quot;}
+    ]
+)
+</code></pre>
+<h3 id="prompt-de-instrucao">Prompt de Instrução</h3>
+<p>Nos exemplos acima, o prompt do usuário era uma simples consulta de texto que pode ser interpretada como uma solicitação de informações. Com prompts de <em>instrução</em>, podemos usar esse texto para especificar uma tarefa de maneira mais detalhada, fornecendo orientações melhores para a IA. Aqui está um exemplo:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Prompt (Input)</th>
+<th style="text-align: left;">Completion (Output)</th>
+<th style="text-align: left;">Instruction Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Write a description of the Civil War</td>
+<td style="text-align: left;"><em>returned a simple paragraph</em></td>
+<td style="text-align: left;">Simple</td>
+</tr>
+<tr>
+<td style="text-align: left;">Write a description of the Civil War. Provide key dates and events and describe their significance</td>
+<td style="text-align: left;"><em>returned a paragraph followed by a list of key event dates with descriptions</em></td>
+<td style="text-align: left;">Complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">Write a description of the Civil War in 1 paragraph. Provide 3 bullet points with key dates and their significance. Provide 3 more bullet points with key historical figures and their contributions. Return the output as a JSON file</td>
+<td style="text-align: left;"><em>returns more extensive details in a text box, formatted as JSON that you can copy-paste to a file and validate as needed</em></td>
+<td style="text-align: left;">Complex. Formatted.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conteudo-primario">Conteúdo Primário</h2>
+<p>Nos exemplos acima, o prompt ainda era bastante aberto, permitindo que o LLM decidisse qual parte de seu conjunto de dados pré-treinado era relevante. Com o padrão de design de <em>conteúdo primário</em>, o texto de entrada é dividido em duas partes:</p>
+<ul>
+<li>uma instrução (ação)</li>
+<li>conteúdo relevante (que influencia a ação)</li>
+</ul>
+<p>Aqui está um exemplo em que a instrução é: "resuma isso em 2 frases".</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Prompt (Input)</th>
+<th style="text-align: left;">Completion (Output)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. It is named after the Roman god Jupiter.[19] When viewed from Earth, Jupiter can be bright enough for its reflected light to cast visible shadows,[20] and is on average the third-brightest natural object in the night sky after the Moon and Venus. <br/> <strong>Summarize this in 2 short sentences</strong></td>
+<td style="text-align: left;">Jupiter, the fifth planet from the Sun, is the largest in the Solar System and is known for being one of the brightest objects in the night sky. Named after the Roman god Jupiter, it's a gas giant whose mass is two-and-a-half times that of all other planets in the Solar System combined.</td>
+</tr>
+</tbody>
+</table>
+<p>O segmento de conteúdo primário pode ser usado de várias maneiras para impulsionar instruções mais eficazes:</p>
+<ul>
+<li><strong>Exemplos</strong> - em vez de dizer explicitamente ao modelo o que fazer com uma instrução explícita, dê a ele exemplos do que fazer e deixe-o inferir o padrão.</li>
+<li><strong>Dicas</strong> - siga a instrução com uma "dica" que prepara o completamento, orientando o modelo para respostas mais relevantes.</li>
+<li><strong>Modelos</strong> - são 'receitas' repetíveis de prompts com espaços reservados (variáveis) que podem ser personalizados com dados para casos de uso específicos.</li>
+</ul>
+<p>Vamos explorar esses conceitos na prática.</p>
+<h3 id="usando-exemplos">Usando Exemplos</h3>
+<p>Esta é uma abordagem em que você usa o conteúdo primário para "alimentar o modelo" com alguns exemplos da saída desejada para uma determinada instrução e permite que ele infera o padrão para a saída desejada. Com base no número de exemplos fornecidos, podemos ter prompting de <code>zero-shot</code>, <code>one-shot</code>, <code>few-shot</code>, etc.</p>
+<p>O prompt agora consiste em três componentes:</p>
+<ul>
+<li>Uma descrição da tarefa</li>
+<li>Alguns exemplos da saída desejada</li>
+<li>O início de um novo exemplo (que se torna uma descrição implícita da tarefa)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Learning Type</th>
+<th style="text-align: left;">Prompt (Input)</th>
+<th style="text-align: left;">Completion (Output)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Zero-shot</td>
+<td style="text-align: left;">"The Sun is Shining". Translate to Spanish</td>
+<td style="text-align: left;">"El Sol está brillando".</td>
+</tr>
+<tr>
+<td style="text-align: left;">One-shot</td>
+<td style="text-align: left;">"The Sun is Shining" =&gt; ""El Sol está brillando". <br> "It's a Cold and Windy Day" =&gt;</td>
+<td style="text-align: left;">"Es un día frío y ventoso".</td>
+</tr>
+<tr>
+<td style="text-align: left;">Few-shot</td>
+<td style="text-align: left;">The player ran the bases =&gt; Baseball <br/> The player hit an ace =&gt; Tennis <br/> The player hit a six =&gt; Cricket <br/> The player made a slam-dunk =&gt;</td>
+<td style="text-align: left;">Basketball</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Observe como tivemos que fornecer instruções explícitas ("Traduza para o espanhol") no prompting de <code>zero-shot</code>, mas isso é inferido no exemplo de <code>one-shot</code>. O exemplo <code>few-shot</code> mostra como adicionar mais exemplos permite que os modelos façam inferências mais precisas sem instruções adicionais.</p>
+<h3 id="dicas-de-prompt">Dicas de Prompt</h3>
+<p>Outra técnica para usar conteúdo primário é fornecer <em>dicas</em> em vez de exemplos. Neste caso, estamos dando ao modelo um empurrão na direção certa ao <em>iniciá-lo</em> com um trecho que reflete o formato da resposta desejada. O modelo então "pega a dica" para continuar nessa linha.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Number of Cues</th>
+<th style="text-align: left;">Prompt (Input)</th>
+<th style="text-align: left;">Completion (Output)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. <br/><strong>Summarize This</strong></td>
+<td style="text-align: left;">Jupiter is the largest planet in our Solar System and the fifth one from the Sun. It is a gas giant with a mass 1/1000th of the Sun's, but it is heavier than all the other planets combined. Ancient civilizations have known about Jupiter for a long time, and it is easily visible in the night sky..</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. <br/><strong>Summarize This</strong> <br/> What we learned is that Jupiter</td>
+<td style="text-align: left;">is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets combined. It is easily visible to the naked eye and has been known since ancient times.</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. <br/><strong>Summarize This</strong> <br/> Top 3 Facts We Learned:</td>
+<td style="text-align: left;">1. Jupiter is the fifth planet from the Sun and the largest in the Solar System. <br/> 2. It is a gas giant with a mass one-thousandth that of the Sun...<br/> 3. Jupiter has been visible to the naked eye since ancient times ...</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Observe como tivemos que fornecer uma instrução explícita ("Resuma Isso") no exemplo de zero dicas, mas isso é inferido no exemplo de uma dica. O exemplo de duas dicas mostra como adicionar mais dicas permite que os modelos façam inferências mais precisas sem instruções adicionais.</p>
+<h3 id="modelos-de-prompt">Modelos de Prompt</h3>
+<p>Um modelo de prompt é uma <em>receita pré-definida para um prompt</em> que pode ser armazenada e reutilizada conforme necessário, para proporcionar experiências do usuário mais consistentes em escala. Em sua forma mais simples, é apenas uma coleção de exemplos de prompt como <a href="https://platform.openai.com/examples?WT.mc_id=academic-105485-koreyst">este da OpenAI</a> que fornece tanto os componentes interativos do prompt (mensagens do usuário e do sistema) quanto o formato de solicitação impulsionado por API - para suportar a reutilização.</p>
+<p>Em sua forma mais complexa, como <a href="https://python.langchain.com/docs/modules/model_io/prompts/prompt_templates/?WT.mc_id=academic-105485-koreyst">este exemplo em LangChain</a>, contém <em>placeholders</em> que podem ser substituídos por dados de diversas fontes (entrada do usuário, contexto do sistema, fontes de dados externas etc.) para gerar um prompt dinamicamente. Isso nos permite criar uma biblioteca de prompts reutilizáveis que podem ser usados para impulsionar experiências do usuário consistentes <strong>programaticamente</strong> em escala.</p>
+<p>Finalmente, o real valor dos modelos está na capacidade de criar e publicar <em>bibliotecas de prompts</em> para domínios de aplicação verticais - onde o modelo de prompt é agora <em>otimizado</em> para refletir o contexto ou exemplos específicos do domínio da aplicação que tornam as respostas mais relevantes e precisas para o público-alvo.</p>
+<p>A <a href="https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst">Prompts For Edu</a> é um ótimo exemplo dessa abordagem, criando uma biblioteca de prompts para o domínio da educação com ênfase em objetivos-chave como planejamento de aulas, design de currículo, tutoria de estudantes etc.</p>
+<h2 id="conteudo-de-suporte">Conteúdo de Suporte</h2>
+<p>Se pensarmos na criação do prompt como tendo uma instrução (tarefa) e um alvo (conteúdo principal), então o <em>conteúdo secundário</em> é como um contexto adicional que fornecemos para <strong>influenciar a saída de alguma forma</strong>. Pode ser parâmetros de ajuste, instruções de formatação, taxonomias de tópicos etc. que podem ajudar o modelo a <em>adequar</em> sua resposta para atender aos objetivos ou expectativas desejados do usuário.</p>
+<p>Por exemplo: Dado um catálogo de cursos com metadados extensivos (nome, descrição, nível, tags de metadados, instrutor etc.) de todos os cursos disponíveis no currículo:</p>
+<ul>
+<li>podemos definir uma instrução para "resumir o catálogo de cursos para o outono de 2023"</li>
+<li>podemos usar o conteúdo principal para fornecer alguns exemplos da saída desejada</li>
+<li>podemos usar o conteúdo secundário para identificar as 5 principais "tags" de interesse.</li>
+</ul>
+<p>Agora, o modelo pode fornecer um resumo no formato mostrado pelos poucos exemplos - mas se um resultado tiver várias tags, pode priorizar as 5 tags identificadas no conteúdo secundário.</p>
+<hr />
+<!--
+LESSON TEMPLATE:
+This unit should cover core concept #1.
+Reinforce the concept with examples and references.
+
+CONCEPT #3:
+Prompt Engineering Techniques.
+What are some basic techniques for prompt engineering?
+Illustrate it with some exercises.
+-->
+
+<h2 id="melhores-praticas-para-prompts">Melhores Práticas para Prompts</h2>
+<p>Agora que sabemos como os prompts podem ser <em>construídos</em>, podemos começar a pensar em como <em>projetá-los</em> para refletir as melhores práticas. Podemos pensar nisso em duas partes - ter a <em>mentalidade</em> certa e aplicar as <em>técnicas</em> certas.</p>
+<h3 id="mentalidade-de-engenharia-de-prompt">Mentalidade de Engenharia de Prompt</h3>
+<p>A Engenharia de Prompt é um processo de tentativa e erro, então tenha em mente três fatores amplos:</p>
+<ol>
+<li>
+<p><strong>Entender o Domínio é Importante.</strong> A precisão e relevância da resposta é uma função do <em>domínio</em> no qual a aplicação ou usuário opera. Aplique sua intuição e experiência de domínio para <strong>personalizar técnicas</strong> ainda mais. Por exemplo, defina <em>personalidades específicas do domínio</em> em seus prompts de sistema, ou use <em>modelos específicos do domínio</em> em seus prompts de usuário. Forneça conteúdo secundário que reflita contextos específicos do domínio, ou use <em>cues e exemplos específicos do domínio</em> para orientar o modelo em direção a padrões de uso familiares.</p>
+</li>
+<li>
+<p><strong>Entender o Modelo é Importante.</strong> Sabemos que os modelos são estocásticos por natureza. Mas as implementações do modelo também podem variar em termos do conjunto de dados de treinamento que eles usam (conhecimento pré-treinado), as capacidades que eles fornecem (por exemplo, via API ou SDK) e o tipo de conteúdo para o qual são otimizados (por exemplo, código vs. imagens vs. texto). Compreenda as forças e limitações do modelo que você está usando e use esse conhecimento para <em>priorizar tarefas</em> ou construir <em>modelos personalizados</em> otimizados para as capacidades do modelo.</p>
+</li>
+<li>
+<p><strong>Iteração e Validação São Importantes.</strong> Os modelos estão evoluindo rapidamente, e as técnicas de engenharia de prompt também. Como especialista no domínio, você pode ter outros contextos ou critérios <em>específicos de sua</em> aplicação, que podem não se aplicar à comunidade em geral. Use ferramentas e técnicas de engenharia de prompt para "iniciar" a construção do prompt, depois itere e valide os resultados usando sua própria intuição e experiência de domínio. Registre suas percepções e crie uma <strong>base de conhecimento</strong> (por exemplo, bibliotecas de prompts) que pode ser usada como uma nova linha de base por outras pessoas, para iterações mais rápidas no futuro.</p>
+</li>
+</ol>
+<h2 id="melhores-praticas">Melhores Práticas</h2>
+<p>Agora, vamos dar uma olhada nas práticas recomendadas comuns pela <a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst">Open AI</a> e pelos praticantes da <a href="https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst">Azure OpenAI</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">What</th>
+<th style="text-align: left;">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Evaluate the latest models.</td>
+<td style="text-align: left;">New model generations are likely to have improved features and quality - but may also incur higher costs. Evaluate them for impact, then make migration decisions.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Separate instructions &amp; context</td>
+<td style="text-align: left;">Check if your model/provider defines <em>delimiters</em> to distinguish instructions, primary and secondary content more clearly. This can help models assign weights more accurately to tokens.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Be specific and clear</td>
+<td style="text-align: left;">Give more details about the desired context, outcome, length, format, style etc. This will improve both the quality and consistency of responses. Capture recipes in reusable templates.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Be descriptive, use examples</td>
+<td style="text-align: left;">Models may respond better to a "show and tell" approach. Start with a <code>zero-shot</code> approach where you give it an instruction (but no examples) then try <code>few-shot</code> as a refinement, providing a few examples of the desired output. Use analogies.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Use cues to jumpstart completions</td>
+<td style="text-align: left;">Nudge it towards a desired outcome by giving it some leading words or phrases that it can use as a starting point for the response.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Double Down</td>
+<td style="text-align: left;">Sometimes you may need to repeat yourself to the model. Give instructions before and after your primary content, use an instruction and a cue, etc. Iterate &amp; validate to see what works.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Order Matters</td>
+<td style="text-align: left;">The order in which you present information to the model may impact the output, even in the learning examples, thanks to recency bias. Try different options to see what works best.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Give the model an “out”</td>
+<td style="text-align: left;">Give the model a <em>fallback</em> completion response it can provide if it cannot complete the task for any reason. This can reduce chances of models generating false or hallucinatory responses.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Como em qualquer prática recomendada, lembre-se de que <em>seus resultados podem variar</em> com base no modelo, na tarefa e no domínio. Use essas práticas como ponto de partida e itere para encontrar o que funciona melhor para você. Reavalie constantemente seu processo de engenharia de prompt à medida que novos modelos e ferramentas se tornam disponíveis, com foco na escalabilidade do processo e na qualidade das respostas.</p>
+<!--
+LESSON TEMPLATE:
+This unit should provide a code challenge if applicable
+
+CHALLENGE:
+Link to a Jupyter Notebook with only the code comments in the instructions (code sections are empty).
+
+SOLUTION:
+Link to a copy of that Notebook with the prompts filled in and run, showing what one example could be.
+-->
+
+<h2 id="tarefa">Tarefa</h2>
+<p>Parabéns! Você chegou ao final da lição! É hora de colocar alguns desses conceitos e técnicas à prova com exemplos reais!</p>
+<p>Para a nossa tarefa, usaremos um Jupyter Notebook com exercícios que você pode completar interativamente. Você também pode estender o Notebook com suas próprias células de Markdown e código para explorar ideias e técnicas por conta própria.</p>
+<h3 id="para-comecar-faca-um-fork-do-repositorio-depois">Para começar, faça um fork do repositório, depois</h3>
+<ul>
+<li>(Recomendado) Inicie o GitHub Codespaces</li>
+<li>(Opcional) Clone o repositório em seu dispositivo local e use-o com o Docker Desktop</li>
+<li>(Opcional) Abra o Notebook com seu ambiente de execução de notebook preferido.</li>
+</ul>
+<h3 id="em-seguida-configure-suas-variaveis-de-ambiente">Em seguida, configure suas variáveis de ambiente</h3>
+<ul>
+<li>Copie o arquivo <code>.env.copy</code> na raiz do repositório para <code>.env</code> e preencha o valor <code>OPENAI_API_KEY</code>. Você pode encontrar sua chave de API em seu <a href="https://beta.openai.com/account/api-keys?WT.mc_id=academic-105485-koreyst">OpenAI Dashboard</a>.</li>
+</ul>
+<h3 id="em-seguida-abra-o-jupyter-notebook">Em seguida, abra o Jupyter Notebook</h3>
+<ul>
+<li>Selecione o kernel de execução. Se estiver usando as opções 1 ou 2, basta selecionar o kernel Python 3.10.x padrão fornecido pelo contêiner de desenvolvimento.</li>
+</ul>
+<p>Você está pronto para executar os exercícios. Lembre-se de que não há respostas <em>certas ou erradas</em> aqui - apenas explorando opções por tentativa e erro e construindo intuição sobre o que funciona para um determinado modelo e domínio de aplicação.</p>
+<p><em>Por esse motivo, não há segmentos de Solução de Código nesta lição. Em vez disso, o Notebook terá células de Markdown intituladas "Minha Solução:" que mostram um exemplo de saída para referência.</em></p>
+<!--
+LESSON TEMPLATE:
+Wrap the section with a summary and resources for self-guided learning.
+-->
+
+<h2 id="verificacao-de-conhecimento">Verificação de Conhecimento</h2>
+<p>Qual das seguintes opções seria uma boa instrução seguindo as melhores práticas razoáveis?</p>
+<ol>
+<li>Mostre-me uma imagem de um carro vermelho.</li>
+<li>Mostre-me uma imagem de um carro vermelho da marca Volvo e modelo XC90 estacionado à beira de um penhasco com o sol se pondo.</li>
+<li>Mostre-me uma imagem de um carro vermelho da marca Volvo e modelo XC90.</li>
+</ol>
+<p><strong>Resposta:</strong> 2, é a melhor instrução, pois fornece detalhes sobre "o que" e vai para especificidades (não apenas qualquer carro, mas uma marca e modelo específicos) e também descreve o ambiente geral. A opção 3 é a próxima melhor, pois também contém muita descrição.</p>
+<h2 id="desafio">🚀 Desafio</h2>
+<p>Veja se você consegue aproveitar a técnica de "dica" com a instrução: Complete a frase "Mostre-me uma imagem de um carro vermelho da marca Volvo e ". O que ela responde e como você melhoraria?</p>
+<h2 id="otimo-trabalho-continue-sua-aprendizagem">Ótimo Trabalho! Continue Sua Aprendizagem</h2>
+<p>Quer aprender mais sobre diferentes conceitos de Engenharia de Instruções? Vá para a <a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">página de aprendizado contínuo</a> para encontrar outros ótimos recursos sobre este tema.</p>
+<p>Agora, vamos para a Lição 5, onde exploraremos <a href="../../../05-advanced-prompts/translations/pt-br/?WT.mc_id=academic-105485-koreyst">técnicas avançadas de instrução</a>!</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

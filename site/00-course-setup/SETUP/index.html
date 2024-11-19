@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Setup Your Dev Environment - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup Your Dev Environment";
+        var mkdocs_page_input_path = "00-course-setup\\SETUP.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Setup Your Dev Environment</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="setup-your-dev-environment">Setup Your Dev Environment</h1>
+<p>We setup this repository and course with a <a href="https://containers.dev?WT.mc_id=academic-105485-koreyst">development container</a> that has a Universal runtime that can support Python3, .NET, Node.js and Java development. The related configuration is defined in the <code>devcontainer.json</code> file located in the <code>.devcontainer/</code> folder at the root of this repository.</p>
+<p>To activate the dev container, launch it in <a href="https://docs.github.com/en/codespaces/overview?WT.mc_id=academic-105485-koreyst">GitHub Codespaces</a> (for a cloud-hosted runtime) or in <a href="https://docs.docker.com/desktop/?WT.mc_id=academic-105485-koreyst">Docker Desktop</a> (for a local device-hosted runtime). Read <a href="https://code.visualstudio.com/docs/devcontainers/containers?WT.mc_id=academic-105485-koreyst">this documentation</a> for more details on how dev containers work within VS Code.  </p>
+<blockquote>
+<p>[!TIP]<br />
+We recommend using GitHub Codespaces for a quick start with minimal effort. It provides a generous <a href="https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts?WT.mc_id=academic-105485-koreyst">free usage quota</a> for personal accounts. Configure <a href="https://docs.github.com/codespaces/setting-your-user-preferences/setting-your-timeout-period-for-github-codespaces?WT.mc_id=academic-105485-koreyst">timeouts</a> to stop or delete inactive codespaces to maximize your quota usage.</p>
+</blockquote>
+<h2 id="1-executing-assignments">1. Executing Assignments</h2>
+<p>Each lesson will have <em>optional</em> assignments that may be provided in one or more programming languages including: Python, .NET/C#, Java and JavaScript/TypeScript. This section provides general guidance related to executing those assignments.</p>
+<h3 id="11-python-assignments">1.1 Python Assignments</h3>
+<p>Python assignments are provided either as applications (<code>.py</code> files) or Jupyter notebooks (<code>.ipynb</code> files). 
+- To run the notebook, open it in Visual Studio Code then click <em>Select Kernel</em> (at top right) and select the default Python 3 option shown. You can now <em>Run All</em> to execute the notebook.
+- To run Python applications from command-line, follow assignment-specific instructions to ensure you select the right files and provide required arguments</p>
+<h2 id="2-configuring-providers">2. Configuring Providers</h2>
+<p>Assignments <strong>may</strong> also be setup to work against one or more Large Language Model (LLM) deployments through a supported service provider like OpenAI, Azure or Hugging Face. These provide a <em>hosted endpoint</em> (API) that we can access programmatically with the right credentials (API key or token). In this course, we discuss these providers:</p>
+<ul>
+<li><a href="https://platform.openai.com/docs/models?WT.mc_id=academic-105485-koreyst">OpenAI</a> with diverse models including the core GPT series.</li>
+<li><a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">Azure OpenAI</a> for OpenAI models with enterprise readiness in focus</li>
+<li><a href="https://huggingface.co/docs/hub/index?WT.mc_id=academic-105485-koreyst">Hugging Face</a> for open-source models and inference server</li>
+</ul>
+<p><strong>You will need to use your own accounts for these exercises</strong>. Assignments are optional so you can choose to setup one, all - or none - of the providers based on your interests. Some guidance for signup:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Signup</th>
+<th style="text-align: left;">Cost</th>
+<th style="text-align: left;">API Key</th>
+<th style="text-align: left;">Playground</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://platform.openai.com/signup?WT.mc_id=academic-105485-koreyst">OpenAI</a></td>
+<td style="text-align: left;"><a href="https://openai.com/pricing#language-models?WT.mc_id=academic-105485-koreyst">Pricing</a></td>
+<td style="text-align: left;"><a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">Project-based</a></td>
+<td style="text-align: left;"><a href="https://platform.openai.com/playground?WT.mc_id=academic-105485-koreyst">No-Code, Web</a></td>
+<td style="text-align: left;">Multiple Models Available</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://aka.ms/azure/free?WT.mc_id=academic-105485-koreyst">Azure</a></td>
+<td style="text-align: left;"><a href="https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/?WT.mc_id=academic-105485-koreyst">Pricing</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">SDK Quickstart</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/quickstart?WT.mc_id=academic-105485-koreyst">Studio Quickstart</a></td>
+<td style="text-align: left;"><a href="https://learn.microsoft.com/azure/ai-services/openai/?WT.mc_id=academic-105485-koreyst">Must Apply Ahead For Access</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://huggingface.co/join?WT.mc_id=academic-105485-koreyst">Hugging Face</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/pricing">Pricing</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/docs/hub/security-tokens?WT.mc_id=academic-105485-koreyst">Access Tokens</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/chat/?WT.mc_id=academic-105485-koreyst">Hugging Chat</a></td>
+<td style="text-align: left;"><a href="https://huggingface.co/chat/models?WT.mc_id=academic-105485-koreyst">Hugging Chat has limited models</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Follow the directions below to <em>configure</em> this repository for use with different providers. Assignments that require a specific provider will contain one of these tags in their filename:
+ - <code>aoai</code> - requires Azure OpenAI endpoint, key
+ - <code>oai</code> - requires OpenAI endpoint, key
+ - <code>hf</code> - requires Hugging Face token</p>
+<p>You can configure one, none, or all providers. Related assignments will simply error out on missing credentials.</p>
+<h3 id="21-create-env-file">2.1. Create <code>.env</code> file</h3>
+<p>We assume that you have already read the guidance above and signed up with the relevant provider, and obtained the required authentication credentials (API_KEY or token). In the case of Azure OpenAI, we assume you also have a valid deployment of an Azure OpenAI Service (endpoint) with at least one GPT model deployed for chat completion.</p>
+<p>The next step is to configure your <strong>local environment variables</strong> as follows:</p>
+<ol>
+<li>Look in the root folder for a <code>.env.copy</code> file that should have contents like this:</li>
+</ol>
+<p>```bash
+   # OpenAI Provider
+   OPENAI_API_KEY='<add your OpenAI API key here>'</p>
+<p>## Azure OpenAI
+   AZURE_OPENAI_API_VERSION='2024-02-01' # Default is set!
+   AZURE_OPENAI_API_KEY='<add your AOAI key here>'
+   AZURE_OPENAI_ENDPOINT='<add your AOIA service endpoint here>'
+   AZURE_OPENAI_DEPLOYMENT='<add your chat completion model name here>' 
+   AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT='<add your embeddings model name here>'</p>
+<p>## Hugging Face
+   HUGGING_FACE_API_KEY='<add your HuggingFace API or token here>'
+   ```</p>
+<ol>
+<li>Copy that file to <code>.env</code> using the command below. This file is <em>gitignore-d</em>, keeping secrets safe.</li>
+</ol>
+<p><code>bash
+   cp .env.copy .env</code></p>
+<ol>
+<li>
+<p>Fill in the values (replace placeholders on right side of <code>=</code>) as described in the next section.</p>
+</li>
+<li>
+<p>(Option) If you use GitHub Codespaces, you have the option to save environment variables as <em>Codespaces secrets</em> associated with this repository. In that case, you won't need to setup a local .env file. <strong>However, note that this option works only if you use GitHub Codespaces.</strong> You will still need to setup the .env file if you use Docker Desktop instead.</p>
+</li>
+</ol>
+<h3 id="22-populate-env-file">2.2. Populate <code>.env</code> file</h3>
+<p>Let's take a quick look at the variable names to understand what they represent:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">HUGGING_FACE_API_KEY</td>
+<td style="text-align: left;">This is the user access token you setup in your profile</td>
+</tr>
+<tr>
+<td style="text-align: left;">OPENAI_API_KEY</td>
+<td style="text-align: left;">This is the authorization key for using the service for non-Azure OpenAI endpoints</td>
+</tr>
+<tr>
+<td style="text-align: left;">AZURE_OPENAI_API_KEY</td>
+<td style="text-align: left;">This is the authorization key for using that service</td>
+</tr>
+<tr>
+<td style="text-align: left;">AZURE_OPENAI_ENDPOINT</td>
+<td style="text-align: left;">This is the deployed endpoint for an Azure OpenAI resource</td>
+</tr>
+<tr>
+<td style="text-align: left;">AZURE_OPENAI_DEPLOYMENT</td>
+<td style="text-align: left;">This is the <em>text generation</em> model deployment endpoint</td>
+</tr>
+<tr>
+<td style="text-align: left;">AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT</td>
+<td style="text-align: left;">This is the <em>text embeddings</em> model deployment endpoint</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Note: The last two Azure OpenAI variables reflect a default model for chat completion (text generation) and vector search (embeddings) respectively. Instructions for setting them will be defined in relevant assignments.</p>
+<h3 id="23-configure-azure-from-portal">2.3 Configure Azure: From Portal</h3>
+<p>The Azure OpenAI endpoint and key values will be found in the <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure Portal</a> so let's start there.</p>
+<ol>
+<li>Go to the <a href="https://portal.azure.com?WT.mc_id=academic-105485-koreyst">Azure Portal</a></li>
+<li>Click the <strong>Keys and Endpoint</strong> option in the sidebar (menu at left).</li>
+<li>Click <strong>Show Keys</strong> - you should see the following: KEY 1, KEY 2 and Endpoint.</li>
+<li>Use the KEY 1 value for AZURE_OPENAI_API_KEY</li>
+<li>Use the Endpoint value for AZURE_OPENAI_ENDPOINT</li>
+</ol>
+<p>Next, we need the endpoints for the specific models we've deployed.</p>
+<ol>
+<li>Click the <strong>Model deployments</strong> option in the sidebar (left menu) for Azure OpenAI resource.</li>
+<li>In the destination page, click <strong>Manage Deployments</strong></li>
+</ol>
+<p>This will take you to the Azure OpenAI Studio website, where we'll find the other values as described below.</p>
+<h3 id="24-configure-azure-from-studio">2.4 Configure Azure: From Studio</h3>
+<ol>
+<li>Navigate to <a href="https://oai.azure.com?WT.mc_id=academic-105485-koreyst">Azure OpenAI Studio</a> <strong>from your resource</strong> as described above.</li>
+<li>Click the <strong>Deployments</strong> tab (sidebar, left) to view currently deployed models.</li>
+<li>If your desired model is not deployed, use <strong>Create new deployment</strong> to deploy it.</li>
+<li>You will need a <em>text-generation</em> model - we recommend: <strong>gpt-35-turbo</strong></li>
+<li>You will need a <em>text-embedding</em> model - we recommend <strong>text-embedding-ada-002</strong></li>
+</ol>
+<p>Now update the environment variables to reflect the <em>Deployment name</em> used. This will typically be the same as the model name unless you changed it explcitly. So, as an example, you might have:</p>
+<pre><code class="language-bash">AZURE_OPENAI_DEPLOYMENT='gpt-35-turbo'
+AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT='text-embedding-ada-002'
+</code></pre>
+<p><strong>Don't forget to save the .env file when done</strong>. You can now exit the file and return to the instructions for running the notebook.</p>
+<h3 id="25-configure-openai-from-profile">2.5 Configure OpenAI: From Profile</h3>
+<p>Your OpenAI API key can be found in your <a href="https://platform.openai.com/api-keys?WT.mc_id=academic-105485-koreyst">OpenAI account</a>. If you don't have one, you can sign up for an account and create an API key. Once you have the key, you can use it to populate the <code>OPENAI_API_KEY</code> variable in the <code>.env</code> file.</p>
+<h3 id="26-configure-hugging-face-from-profile">2.6 Configure Hugging Face: From Profile</h3>
+<p>Your Hugging Face token can be found in your profile under <a href="https://huggingface.co/settings/tokens?WT.mc_id=academic-105485-koreyst">Access Tokens</a>. Don't post or share these publicly. Instead, create a new token for this project usage and copy that into the <code>.env</code> file under the <code>HUGGING_FACE_API_KEY</code> variable. <em>Note:</em> This is technically not an API key but is used for authentication so we are keeping that naming convention for consistency.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

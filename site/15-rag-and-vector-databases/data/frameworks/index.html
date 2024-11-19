@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Neural Network Frameworks - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Neural Network Frameworks";
+        var mkdocs_page_input_path = "15-rag-and-vector-databases\\data\\frameworks.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Neural Network Frameworks</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="neural-network-frameworks">Neural Network Frameworks</h1>
+<p>As we have learned already, to be able to train neural networks efficiently we need to do two things:</p>
+<ul>
+<li>To operate on tensors, eg. to multiply, add, and compute some functions such as sigmoid or softmax</li>
+<li>To compute gradients of all expressions, in order to perform gradient descent optimization</li>
+</ul>
+<p>While the <code>numpy</code> library can do the first part, we need some mechanism to compute gradients. In our framework that we have developed in the previous section we had to manually program all derivative functions inside the <code>backward</code> method, which does backpropagation. Ideally, a framework should give us the opportunity to compute gradients of <em>any expression</em> that we can define.</p>
+<p>Another important thing is to be able to perform computations on GPU, or any other specialized compute units, such as TPU. Deep neural network training requires <em>a lot</em> of computations, and to be able to parallelize those computations on GPUs is very important.</p>
+<blockquote>
+<p>✅ The term 'parallelize' means to distribute the computations over multiple devices.</p>
+</blockquote>
+<p>Currently, the two most popular neural frameworks are: TensorFlow and PyTorch. Both provide a low-level API to operate with tensors on both CPU and GPU. On top of the low-level API, there is also higher-level API, called Keras and PyTorch Lightning correspondingly.</p>
+<table>
+<thead>
+<tr>
+<th>Low-Level API</th>
+<th>TensorFlow</th>
+<th>PyTorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High-level API</td>
+<td>Keras</td>
+<td>Pytorch</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Low-level APIs</strong> in both frameworks allow you to build so-called <strong>computational graphs</strong>. This graph defines how to compute the output (usually the loss function) with given input parameters, and can be pushed for computation on GPU, if it is available. There are functions to differentiate this computational graph and compute gradients, which can then be used for optimizing model parameters.</p>
+<p><strong>High-level APIs</strong> pretty much consider neural networks as a <strong>sequence of layers</strong>, and make constructing most of the neural networks much easier. Training the model usually requires preparing the data and then calling a <code>fit</code> function to do the job.</p>
+<p>The high-level API allows you to construct typical neural networks very quickly without worrying about lots of details. At the same time, low-level API offer much more control over the training process, and thus they are used a lot in research, when you are dealing with new neural network architectures.</p>
+<p>It is also important to understand that you can use both APIs together, eg. you can develop your own network layer architecture using low-level API, and then use it inside the larger network constructed and trained with the high-level API. Or you can define a network using the high-level API as a sequence of layers, and then use your own low-level training loop to perform optimization. Both APIs use the same basic underlying concepts, and they are designed to work well together.</p>
+<h2 id="learning">Learning</h2>
+<p>In this course, we offer most of the content both for PyTorch and TensorFlow. You can choose your preferred framework and only go through the corresponding notebooks. If you are not sure which framework to choose, read some discussions on the internet regarding <strong>PyTorch vs. TensorFlow</strong>. You can also have a look at both frameworks to get better understanding.</p>
+<p>Where possible, we will use High-Level APIs for simplicity. However, we believe it is important to understand how neural networks work from the ground up, thus in the beginning we start by working with low-level API and tensors. However, if you want to get going fast and do not want to spend a lot of time on learning these details, you can skip those and go straight into high-level API notebooks.</p>
+<h2 id="exercises-frameworks">✍️ Exercises: Frameworks</h2>
+<p>Continue your learning in the following notebooks:</p>
+<table>
+<thead>
+<tr>
+<th>Low-Level API</th>
+<th>TensorFlow+Keras Notebook</th>
+<th>PyTorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High-level API</td>
+<td>Keras</td>
+<td><em>PyTorch Lightning</em></td>
+</tr>
+</tbody>
+</table>
+<p>After mastering the frameworks, let's recap the notion of overfitting.</p>
+<h1 id="overfitting">Overfitting</h1>
+<p>Overfitting is an extremely important concept in machine learning, and it is very important to get it right!</p>
+<p>Consider the following problem of approximating 5 dots (represented by <code>x</code> on the graphs below):</p>
+<table>
+<thead>
+<tr>
+<th>!linear</th>
+<th>overfit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear model, 2 parameters</strong></td>
+<td><strong>Non-linear model, 7 parameters</strong></td>
+</tr>
+<tr>
+<td>Training error = 5.3</td>
+<td>Training error = 0</td>
+</tr>
+<tr>
+<td>Validation error = 5.1</td>
+<td>Validation error = 20</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>On the left, we see a good straight line approximation. Because the number of parameters is adequate, the model gets the idea behind point distribution right.</li>
+<li>On the right, the model is too powerful. Because we only have 5 points and the model has 7 parameters, it can adjust in such a way as to pass through all points, making training the error to be 0. However, this prevents the model from understanding the correct pattern behind data, thus the validation error is very high.</li>
+</ul>
+<p>It is very important to strike a correct balance between the richness of the model (number of parameters) and the number of training samples.</p>
+<h2 id="why-overfitting-occurs">Why overfitting occurs</h2>
+<ul>
+<li>Not enough training data</li>
+<li>Too powerful model</li>
+<li>Too much noise in input data</li>
+</ul>
+<h2 id="how-to-detect-overfitting">How to detect overfitting</h2>
+<p>As you can see from the graph above, overfitting can be detected by a very low training error, and a high validation error. Normally during training we will see both training and validation errors starting to decrease, and then at some point validation error might stop decreasing and start rising. This will be a sign of overfitting, and the indicator that we should probably stop training at this point (or at least make a snapshot of the model).</p>
+<p>overfitting</p>
+<h2 id="how-to-prevent-overfitting">How to prevent overfitting</h2>
+<p>If you can see that overfitting occurs, you can do one of the following:</p>
+<ul>
+<li>Increase the amount of training data</li>
+<li>Decrease the complexity of the model</li>
+<li>Use some regularization technique, such as Dropout, which we will consider later.</li>
+</ul>
+<h2 id="overfitting-and-bias-variance-tradeoff">Overfitting and Bias-Variance Tradeoff</h2>
+<p>Overfitting is actually a case of a more generic problem in statistics called Bias-Variance Tradeoff. If we consider the possible sources of error in our model, we can see two types of errors:</p>
+<ul>
+<li><strong>Bias errors</strong> are caused by our algorithm not being able to capture the relationship between training data correctly. It can result from the fact that our model is not powerful enough (<strong>underfitting</strong>).</li>
+<li><strong>Variance errors</strong>, which are caused by the model approximating noise in the input data instead of meaningful relationship (<strong>overfitting</strong>).</li>
+</ul>
+<p>During training, bias error decreases (as our model learns to approximate the data), and variance error increases. It is important to stop training - either manually (when we detect overfitting) or automatically (by introducing regularization) - to prevent overfitting.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this lesson, you learned about the differences between the various APIs for the two most popular AI frameworks, TensorFlow and PyTorch. In addition, you learned about a very important topic, overfitting.</p>
+<h2 id="challenge">🚀 Challenge</h2>
+<p>In the accompanying notebooks, you will find 'tasks' at the bottom; work through the notebooks and complete the tasks.</p>
+<h2 id="review-self-study">Review &amp; Self Study</h2>
+<p>Do some research on the following topics:</p>
+<ul>
+<li>TensorFlow</li>
+<li>PyTorch</li>
+<li>Overfitting</li>
+</ul>
+<p>Ask yourself the following questions:</p>
+<ul>
+<li>What is the difference between TensorFlow and PyTorch?</li>
+<li>What is the difference between overfitting and underfitting?</li>
+</ul>
+<h2 id="assignment">Assignment</h2>
+<p>In this lab, you are asked to solve two classification problems using single- and multi-layered fully-connected networks using PyTorch or TensorFlow.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
