@@ -1,59 +1,58 @@
-# Building With the Meta Family Models 
+# 基于Meta家族模型构建
 
-## Introduction 
+## 介绍
 
-This lesson will cover: 
+本课将涵盖：
 
-- Exploring the two main Meta family models - Llama 3.1 and Llama 3.2 
-- Understanding the use-cases and scenarios for each model 
-- Code sample to show the unique features of each model 
+- 探索Meta家族的两大主要模型——Llama 3.1和Llama 3.2
+- 了解每个模型的使用场景和适用情况
+- 展示每个模型独特特性的代码示例
 
+## Meta家族模型
 
-## The Meta Family of Models 
+在本课中，我们将探索Meta家族或称为“Llama群”中的两个模型——Llama 3.1和Llama 3.2
 
-In this lesson, we will explore 2 models from the Meta family or "Llama Herd" - Llama 3.1 and Llama 3.2 
+这些模型有不同的变体，且可在Github Model marketplace获得。以下是使用Github Models进行[原型设计与AI模型](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst)的更多详细信息。
 
-These models come in different variants and are available on the Github Model marketplace. Here are more details on using Github Models to [prototype with AI models](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst).
+模型变体:
+- Llama 3.1 - 70B 指令
+- Llama 3.1 - 405B 指令
+- Llama 3.2 - 11B 视觉指令
+- Llama 3.2 - 90B 视觉指令
 
-Model Variants: 
-- Llama 3.1 - 70B Instruct 
-- Llama 3.1 - 405B Instruct 
-- Llama 3.2 - 11B Vision Instruct 
-- Llama 3.2 - 90B Vision Instruct 
+*注意: Llama 3也可以在Github Models上找到，但本课不做覆盖*
 
-*Note: Llama 3 is also available on Github Models but won't be covered in this lesson*
+## Llama 3.1
 
-## Llama 3.1 
+Llama 3.1具有4050亿参数，属于开源LLM类别。
 
-At 405 Billion Parameters, Llama 3.1 fits into the open source LLM category. 
+该模型是对早期版本Llama 3的升级，提供：
 
-The mode is an upgrade to the earlier release Llama 3 by offering: 
+- 更大的上下文窗口——128k tokens vs 8k tokens
+- 更大的最大输出Token数——4096 vs 2048
+- 更好的多语言支持——由于训练token数量增加
 
-- Larger context window - 128k tokens vs 8k tokens 
-- Larger Max Output Tokens - 4096 vs 2048 
-- Better Multilingual Support - due to increase in training tokens 
+这些使得Llama 3.1能够在构建GenAI应用时处理更复杂的用例，包括：
+- 本地函数调用——能够调用LLM工作流之外的外部工具和函数
+- 更好的RAG性能——由于更高的上下文窗口
+- 合成数据生成——能够创建有效的数据用于诸如微调的任务
 
-These enables Llama 3.1 to handle more complex use cases  when building GenAI applications including: 
-- Native Function Calling - the ability to call external tools and functions outside of the LLM workflow
-- Better RAG Performance - due to the higher context window 
-- Synthetic Data Generation - the ability to create effective data for tasks such as fine-tuning 
+### 本地函数调用
 
-### Native Function Calling 
+Llama 3.1已被微调以更有效地进行函数或工具调用。它还具有两个内置工具，模型可以根据用户的提示自行决定是否需要使用这些工具。这些工具包括：
 
-Llama 3.1 has been fine-tuned to be more effective at making function or tool calls. It also has two built-in tools that the model can identify as needing to be used based on the prompt from the user. These tools are: 
+- **Brave Search**——可以通过进行网页搜索获取最新信息，如天气情况
+- **Wolfram Alpha**——可以用于更复杂的数学计算，因此无需编写自己的函数
 
-- **Brave Search** - Can be used to get up-to-date information like the weather by performing a web search 
-- **Wolfram Alpha** - Can be used for more complex mathematical calculations so writing your own functions is not required. 
+你也可以创建自己的自定义工具供LLM调用。
 
-You can also create your own custom tools that LLM can call. 
+在下面的代码示例中：
 
-In the code example below: 
+- 我们在系统提示中定义了可用的工具（brave_search，wolfram_alpha）。
+- 发送一个用户提示，询问某个城市的天气。
+- LLM将通过调用Brave Search工具回复，这看起来像这样`<|python_tag|>brave_search.call(query="Stockholm weather")`
 
-- We define the available tools (brave_search, wolfram_alpha) in the system prompt. 
-- Send a user prompt that asks about the weather in a certain city. 
-- The LLM will respond with a tool call to the Brave Search tool which will look like this `<|python_tag|>brave_search.call(query="Stockholm weather")` 
-
-*Note: This example only make the tool call, if you would like to get the results, you will need to create a free account on the Brave API page and define the function itself` 
+*注意：此示例仅进行工具调用。如果您希望获取结果，则需要在Brave API页面上创建一个免费账户并定义函数本身`*
 
 ```python 
 import os
@@ -93,18 +92,17 @@ response = client.complete(messages=messages, model=model_name)
 print(response.choices[0].message.content)
 ```
 
-## Llama 3.2 
+## Llama 3.2
 
-Despite being a LLM, one limitation that Llama 3.1 has is multimodality. That is, being able to use different types of input such as images as prompts and providing responses. This ability is one of the main features of Llama 3.2. These features also include: 
+尽管Llama 3.1是一种LLM，但其一个局限性是多模态支持。也就是说，无法使用诸如图像等不同类型的输入作为提示并提供响应。这种能力是Llama 3.2的主要特性之一。这些特性还包括：
 
-- Multimodality -  has the ability to evaluate both text and image prompts 
-- Small to Medium size variations (11B and 90B) - this provides flexible deployment options, 
-- Text-only variations (1B and 3B) - this allows the model to be deployed on edge / mobile devices and provides low latency 
+- 多模态——能够评估文本和图像提示
+- 小到中等大小的变体（11B和90B）——提供灵活的部署选项
+- 仅文本变体（1B和3B）——允许模型部署在边缘/移动设备上并提供低延迟
 
-The multimodal support represents a big step in the world of open source models. The code example below takes both an image and text prompt to get an analysis of the image from Llama 3.2 90B. 
+多模态支持代表了开源模型领域的一大进步。下面的代码示例使用Llama 3.2 90B接受图像和文本提示以获得图像分析。
 
-
-### Multimodal Support with Llama 3.2
+### Llama 3.2的多模态支持
 
 ```python 
 import os
@@ -151,7 +149,6 @@ response = client.complete(
 print(response.choices[0].message.content)
 ```
 
-## Learning does not stop here, continue the Journey
+## 学习不会止步于此，继续学习之旅
 
-After completing this lesson, check out our [Generative AI Learning collection](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) to continue leveling up your Generative AI knowledge!
-
+完成本课后，请浏览我们的[生成式AI学习合集](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst)，继续提升您的生成式AI知识！

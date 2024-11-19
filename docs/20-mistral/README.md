@@ -1,40 +1,38 @@
-# Building with Mistral Models 
+# 使用Mistral模型构建
 
-## Introduction 
+## 介绍
 
-This lesson will cover: 
-- Exploring the different Mistral Models 
-- Understanding the use-cases and scenarios for each model 
-- Code samples show the unique features of each model. 
+本课程将涵盖:
+- 探索不同的Mistral模型
+- 理解每个模型的用例和场景
+- 代码示例展示每个模型的独特功能
 
-## The Mistral Models 
+## Mistral模型
 
-In this lesson, we will explore 3 different Mistral models: 
-**Mistral Large**, **Mistral Small** and **Mistral Nemo**. 
+在本课程中，我们将探索三种不同的Mistral模型：**Mistral Large**、**Mistral Small** 和 **Mistral Nemo**。
 
-Each of these models are available free on the Github Model marketplace. The code in this notebook will be using this models to run the code. Here are more details on using Github Models to [prototype with AI models](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst). 
-
+这些模型都可以在Github Model市场上免费获取。本笔记本中的代码将使用这些模型运行代码。更多关于使用Github模型进行[原型设计与AI模型](https://docs.github.com/en/github-models/prototyping-with-ai-models?WT.mc_id=academic-105485-koreyst)的详细信息，请查看链接。
 
 ## Mistral Large 2 (2407)
-Mistral Large 2 is currently the flagship model from Mistral and is designed for enterprise use. 
+Mistral Large 2目前是Mistral的旗舰模型，设计用于企业级使用。
 
-The model is an  upgrade to the original Mistral Large by offering 
--  Larger Context Window - 128k vs 32k 
--  Better performance on Math and Coding Tasks - 76.9% average accuracy vs 60.4% 
--  Increased multilingual performance - languages include: English, French, German, Spanish, Italian, Portuguese, Dutch, Russian, Chinese, Japanese, Korean, Arabic, and Hindi.
+该模型是对原始Mistral Large的升级，提供以下提升：
+- 更大的上下文窗口 - 128k vs 32k
+- 数学和编程任务上更好的性能 - 平均准确率 76.9% vs 60.4%
+- 增强的多语言性能 - 支持语言包括英语、法语、德语、西班牙语、意大利语、葡萄牙语、荷兰语、俄语、中文、日语、韩语、阿拉伯语和印地语。
 
-With these features, Mistral Large excels at 
-- *Retrieval Augmented Generation (RAG)* - due to the larger context window
-- *Function Calling* - this model has native function calling which allows integration with external tools and APIs. These calls can be made both in parallel or one after another in a sequential order. 
-- *Code Generation* - this model excels on Python, Java, TypeScript and C++ generation. 
+凭借这些特性，Mistral Large擅长
+- *检索增强生成 (RAG)* - 由于更大的上下文窗口
+- *功能调用* - 该模型具有原生功能调用功能，允许与外部工具和API集成。调用可以并行进行或顺序进行。
+- *代码生成* - 该模型在Python、Java、TypeScript和C++的生成方面表现出色。
 
-### RAG Example using Mistral Large 2 
+### 使用Mistral Large 2的RAG示例
 
-In this example, we are using Mistral Large 2 to run a RAG pattern over a text document. The question is written in Korean and asks about the author's activities before college. 
+在本示例中，我们使用Mistral Large 2在文本文档上运行RAG模式。问题用韩语编写，询问作者在上大学前的活动。
 
-It uses Cohere Embeddings Model to create embeddings of the text document as well as the question. For this sample, it uses the faiss Python package as a vector store. 
+它使用Cohere Embeddings Model来创建文本文档和问题的嵌入。对于此示例，它使用faiss Python包作为向量存储。
 
-The prompt sent to the Mistral model includes both the questions and the retrieved chunks that are similar to the question. The Model then provides a natural language response. 
+发送给Mistral模型的提示包括问题和检索到的与问题相似的文本块。然后模型提供自然语言的回答。
 
 ```python 
 pip install faiss-cpu
@@ -79,20 +77,17 @@ embed_response = embed_client.embed(
     model=embed_model_name
 )
 
-
-
 text_embeddings = []
 for item in embed_response.data:
     length = len(item.embedding)
     text_embeddings.append(item.embedding)
 text_embeddings = np.array(text_embeddings)
 
-
 d = text_embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
 index.add(text_embeddings)
 
-question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?？"
+question = "저자가 대학에 오기 전에 주로 했던 두 가지 일은 무엇이었나요?"
 
 question_embedding = embed_client.embed(
     input=[question],
@@ -101,24 +96,22 @@ question_embedding = embed_client.embed(
 
 question_embeddings = np.array(question_embedding.data[0].embedding)
 
-
-D, I = index.search(question_embeddings.reshape(1, -1), k=2) # distance, index
+D, I = index.search(question_embeddings.reshape(1, -1), k=2) # 距离，索引
 retrieved_chunks = [chunks[i] for i in I.tolist()[0]]
 
 prompt = f"""
-Context information is below.
+上下文信息如下。
 ---------------------
 {retrieved_chunks}
 ---------------------
-Given the context information and not prior knowledge, answer the query.
-Query: {question}
-Answer:
+根据上下文信息而非已有知识来回答查询。
+查询：{question}
+回答：
 """
-
 
 chat_response = client.complete(
     messages=[
-        SystemMessage(content="You are a helpful assistant."),
+        SystemMessage(content="您是一位乐于助人的助手。"),
         UserMessage(content=prompt),
     ],
     temperature=1.0,
@@ -130,23 +123,22 @@ chat_response = client.complete(
 print(chat_response.choices[0].message.content)
 ```
 
-## Mistral Small 
-Mistral Small is another model in the Mistral family of models under the premier/enterprise category. As the name implies, this model is a Small Language Model (SLM). The advantages of using Mistral Small are that it is: 
-- Cost Saving compared to Mistral LLMs like Mistral Large and NeMo - 80% price drop
-- Low latency - faster response compared to Mistral's LLMs
-- Flexible - can be deployed across different environments with less restrictions on required resources. 
+## Mistral Small
+Mistral Small是Mistral高级/企业类别中的另一个模型。顾名思义，该模型是一个小型语言模型（SLM）。使用Mistral Small的优点是：
+- 相比Mistral LLMs如Mistral Large和NeMo可节省成本- 价格下降80%
+- 低延迟 - 相比Mistral的LLMs响应速度更快
+- 灵活 - 可以跨不同环境部署，对所需资源的限制更少
 
+Mistral Small适用于：
+- 文本任务，例如摘要、情感分析和翻译
+- 由于成本效益高，适用于频繁请求的应用
+- 低延迟代码任务，如代码审查和建议
 
-Mistral Small is great for: 
-- Text based tasks such as summarization, sentiment analysis and translation. 
-- Applications where frequent requests are made due to its cost effectiveness 
-- Low latency code tasks like review and code suggestions 
+## 比较Mistral Small和Mistral Large
 
-## Comparing Mistral Small and Mistral Large 
+为了展示Mistral Small和Large的延迟差异，请运行以下单元。
 
-To show differences in latency between Mistral Small and Large, run the below cells. 
-
-You should see a difference in response times between 3-5 seconds. Also not the response lengths and style over the smae prompt.  
+你应该可以看到响应时间在3-5秒之间的差异。同时注意相同提示下的响应长度和风格。
 
 ```python 
 
@@ -162,8 +154,8 @@ client = ChatCompletionsClient(
 
 response = client.complete(
     messages=[
-        SystemMessage(content="You are a helpful coding assistant."),
-        UserMessage(content="Can you write a Python function to the fizz buzz test?"),
+        SystemMessage(content="您是一位乐于助人的编程助手。"),
+        UserMessage(content="你能写一个Python函数来做Fizz Buzz测试吗？"),
     ],
     temperature=1.0,
     top_p=1.0,
@@ -175,7 +167,7 @@ print(response.choices[0].message.content)
 
 ```
 
-```python 
+```python
 
 import os
 from azure.ai.inference import ChatCompletionsClient
@@ -193,8 +185,8 @@ client = ChatCompletionsClient(
 
 response = client.complete(
     messages=[
-        SystemMessage(content="You are a helpful coding assistant."),
-        UserMessage(content="Can you write a Python function to the fizz buzz test?"),
+        SystemMessage(content="您是一位乐于助人的编程助手。"),
+        UserMessage(content="你能写一个Python函数来做Fizz Buzz测试吗？"),
     ],
     temperature=1.0,
     top_p=1.0,
@@ -208,31 +200,30 @@ print(response.choices[0].message.content)
 
 ## Mistral NeMo
 
-Compared to the other two models discussed in this lesson, Mistral NeMo is the only free model with an Apache2 License. 
+与本课讨论的其他两个模型相比，Mistral NeMo是唯一拥有Apache2许可证的免费模型。
 
-It is viewed as an upgrade to the earlier open source LLM from Mistral, Mistral 7B. 
+它被视为早期Mistral开源LLM（Mistral 7B）的升级版。
 
-Some other feature of the NeMo model are: 
+NeMo模型的其他一些特点包括：
 
-- *More efficient tokenization:* This model using the Tekken tokenizer over the more commonly used tiktoken. This allows for better performance over more languages and code. 
+- *更高效的分词:* 该模型使用Tekken分词器而不是更常用的tiktoken。这样可以在更多语言和代码上获得更好的性能。
 
-- *Finetuning:* The base model is available for finetuning. This allows for more flexibility for use-cases where finetuning may be needed. 
+- *微调:* 基础模型可以进行微调。这使得在需要微调的用例中具有更大的灵活性。
 
-- *Native Function Calling* - Like Mistral Large, this model has been trained on function calling. This makes it unique as being one of the first open source models to do so. 
+- *原生功能调用* - 像Mistral Large一样，该模型在训练中包含了功能调用。使其成为首批具有此功能的开源模型之一。
 
+### 比较分词器
 
-### Comparing Tokenizers 
+在这个示例中，我们将比较Mistral NeMo与Mistral Large在分词方面的处理。
 
-In this sample, we will look at how Mistral NeMo handles tokenization compared to Mistral Large. 
-
-Both samples take the same prompt but you shoud see that NeMo returns back less tokens vs Mistral Large. 
+两个示例都采用相同的提示，你应看到NeMo返回的标记数比Mistral Large少。
 
 ```bash
 pip install mistral-common
 ```
 
 ```python 
-# Import needed packages:
+# 导入所需的包：
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -243,31 +234,31 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# 加载Mistral分词器
 
-model_name = "open-mistral-nemo	"
+model_name = "open-mistral-nemo"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# 对消息列表进行分词
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
             Tool(
                 function=Function(
                     name="get_current_weather",
-                    description="Get the current weather",
+                    description="获取当前天气",
                     parameters={
                         "type": "object",
                         "properties": {
                             "location": {
                                 "type": "string",
-                                "description": "The city and state, e.g. San Francisco, CA",
+                                "description": "城市和州，例如：San Francisco, CA",
                             },
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "温度单位。根据用户位置推断。",
                             },
                         },
                         "required": ["location", "format"],
@@ -276,19 +267,19 @@ tokenized = tokenizer.encode_chat_completion(
             )
         ],
         messages=[
-            UserMessage(content="What's the weather like today in Paris"),
+            UserMessage(content="今天巴黎的天气怎么样"),
         ],
         model=model_name,
     )
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# 计算标记数量
 print(len(tokens))
 ```
 
 ```python
-# Import needed packages:
+# 导入所需的包：
 from mistral_common.protocol.instruct.messages import (
     UserMessage,
 )
@@ -299,31 +290,31 @@ from mistral_common.protocol.instruct.tool_calls import (
 )
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-# Load Mistral tokenizer
+# 加载Mistral分词器
 
 model_name = "mistral-large-latest"
 
 tokenizer = MistralTokenizer.from_model(model_name)
 
-# Tokenize a list of messages
+# 对消息列表进行分词
 tokenized = tokenizer.encode_chat_completion(
     ChatCompletionRequest(
         tools=[
             Tool(
                 function=Function(
                     name="get_current_weather",
-                    description="Get the current weather",
+                    description="获取当前天气",
                     parameters={
                         "type": "object",
                         "properties": {
                             "location": {
                                 "type": "string",
-                                "description": "The city and state, e.g. San Francisco, CA",
+                                "description": "城市和州，例如：San Francisco, CA",
                             },
                             "format": {
                                 "type": "string",
                                 "enum": ["celsius", "fahrenheit"],
-                                "description": "The temperature unit to use. Infer this from the users location.",
+                                "description": "温度单位。根据用户位置推断。",
                             },
                         },
                         "required": ["location", "format"],
@@ -332,17 +323,17 @@ tokenized = tokenizer.encode_chat_completion(
             )
         ],
         messages=[
-            UserMessage(content="What's the weather like today in Paris"),
+            UserMessage(content="今天巴黎的天气怎么样"),
         ],
         model=model_name,
     )
 )
 tokens, text = tokenized.tokens, tokenized.text
 
-# Count the number of tokens
+# 计算标记数量
 print(len(tokens))
 ```
 
-## Learning does not stop here, continue the Journey
+## 学习并不停下，继续前行
 
-After completing this lesson, check out our [Generative AI Learning collection](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) to continue leveling up your Generative AI knowledge!
+完成本节课程后，请查看我们的[生成性AI学习课程](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst)继续提升您的生成性AI知识！
