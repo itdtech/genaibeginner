@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>텍스트 생성 애플리케이션 개발 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud14d\uc2a4\ud2b8 \uc0dd\uc131 \uc560\ud50c\ub9ac\ucf00\uc774\uc158 \uac1c\ubc1c";
+        var mkdocs_page_input_path = "06-text-generation-apps\\translations\\ko\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">텍스트 생성 애플리케이션 개발</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">텍스트 생성 애플리케이션 개발</h1>
+<p><a href="https://aka.ms/gen-ai-lesson6-gh?WT.mc_id=academic-105485-koreyst"><img alt="Building Text Generation Applications" src="../../images/06-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<blockquote>
+<p><em>(위의 이미지를 클릭하여 이 수업의 동영상을 시청하세요.)</em></p>
+</blockquote>
+<p>지금까지 이 커리큘럼을 통해 프롬프트와 "프롬프트 엔지니어링"이라는 전체적인 개념과 같은 핵심 개념들을 보셨습니다. ChatGPT, Office 365, Microsoft Power Platform 등 다양한 도구들은 프롬프트를 사용하여 어떤 작업을 수행하는 데 도움을 주는 것을 확인하실 수 있습니다.</p>
+<p>앱에 이러한 경험을 추가하려면 프롬프트, completion(완성어) 및 작업할 라이브러리와 관련된 개념을 이해해야 합니다. 이것이 바로 이번 장에서 배우게 될 내용입니다.</p>
+<h2 id="_2">소개</h2>
+<p>이번 장에서는 다음을 하게 될 것입니다:</p>
+<ul>
+<li>OpenAI 라이브러리와 그 핵심 개념에 대해 학습합니다.</li>
+<li>OpenAI를 사용하여 텍스트 생성 앱을 개발합니다.</li>
+<li>프롬프트, temperature(언어 생성 모델에서 생성된 텍스트의 다양성을 조절하는 하이퍼파라미터), 토큰과 같은 개념을 사용하여 텍스트 생성 앱을 구축하는 방법을 이해합니다.</li>
+</ul>
+<h2 id="_3">학습 목표</h2>
+<p>이 장을 학습하고 나면 다음을 할 수 있게 될 것입니다:</p>
+<ul>
+<li>텍스트 생성 앱이 무엇인지를 설명합니다.</li>
+<li>OpenAI를 사용하여 텍스트 생성 앱을 개발합니다.</li>
+<li>앱을 더 많거나 더 적은 토큰을 사용하도록 구성하고, 또한 다양한 출력을 얻기 위해 temperature를 조절합니다.</li>
+</ul>
+<h2 id="_4">텍스트 생성 애플리케이션이 무엇인가요?</h2>
+<p>일반적으로 앱을 개발할 때 다음과 같은 종류의 인터페이스가 있습니다:</p>
+<ul>
+<li>명령 기반(Command-based): 콘솔 앱은 명령을 입력하고 해당 작업을 수행하는 전형적인 앱입니다. 예를 들어 git은 명령 기반 앱의 한 예입니다.</li>
+<li>사용자 인터페이스 (UI): 일부 앱은 그래픽 사용자 인터페이스 (GUI)를 갖고 있습니다. 여기서는 버튼을 클릭하거나 텍스트를 입력하고 옵션을 선택하는 등의 작업을 수행합니다.</li>
+</ul>
+<h3 id="ui">콘솔 및 UI 앱은 제한적입니다</h3>
+<p>명령 기반 앱에서 명령을 입력하는 것과 비교해보세요:</p>
+<ul>
+<li><strong>제한적입니다</strong>. 모든 명령을 입력할 수 있는 것이 아니라, 앱이 지원하는 명령만 입력할 수 있습니다.</li>
+<li><strong>특정 언어에 한정됩니다</strong>. 일부 앱은 여러 언어를 지원하지만, 기본적으로 앱은 특정 언어를 위해 구축되며, 추가적인 언어 지원이 가능한 경우에도 해당 언어에 한정됩니다.</li>
+</ul>
+<h3 id="_5">텍스트 생성 앱의 장점</h3>
+<p>그렇다면 텍스트 생성 앱은 어떻게 다를까요?</p>
+<p>텍스트 생성 앱에서는 더 많은 유연성을 가지며, 일련의 명령이나 특정 입력 언어에 제한되지 않습니다. 대신에 자연어를 사용하여 앱과 상호작용할 수 있습니다. 또 다른 장점은 이미 방대한 정보 코퍼스(말뭉치)로 훈련된 데이터 소스와 상호작용하고 있기 때문에, 전통적인 앱이 데이터베이스에 제한되는 것과는 달리 더 많은 가능성을 가집니다.</p>
+<h3 id="_6">텍스트 생성 앱으로 무엇을 만들 수 있을까요?</h3>
+<p>많은 것들을 만들 수 있습니다. 예를 들어:</p>
+<ul>
+<li><strong>챗봇</strong>. 회사와 제품에 대한 질문에 답변하는 챗봇을 만들 수 있습니다.</li>
+<li><strong>도움이 되는 도구</strong>. LLM은 텍스트 요약, 텍스트에서 통찰력 얻기, 이력서와 같은 텍스트 생성 등에 뛰어납니다.</li>
+<li><strong>코드 어시스턴트</strong>. 사용하는 언어 모델에 따라 코드 작성을 도와주는 코드 어시스턴트를 만들 수 있습니다. 예를 들어, GitHub Copilot과 ChatGPT와 같은 제품을 사용하여 코드 작성을 도와줄 수 있습니다.</li>
+</ul>
+<h2 id="_7">어떻게 시작할 수 있을까요?</h2>
+<p>LLM과 통합하는 방법을 찾아야 합니다. 일반적으로 다음 두 가지 접근 방식을 사용합니다:</p>
+<ul>
+<li>API 사용. 여기서는 프롬프트와 함께 웹 요청을 생성하고 생성된 텍스트를 받아옵니다.</li>
+<li>라이브러리 사용. 라이브러리는 API 호출을 캡슐화하고 사용하기 쉽게 만들어줍니다.</li>
+</ul>
+<h2 id="sdk">라이브러리/SDK</h2>
+<p>LLM과 작업하기 위해 몇 가지 잘 알려진 라이브러리가 있습니다:</p>
+<ul>
+<li><strong>openai</strong>, 이 라이브러리는 모델에 연결하고 프롬프트를 보내는 것을 쉽게 만들어줍니다.</li>
+</ul>
+<p>또한 다음과 같이 더 높은 수준에서 작동하는 라이브러리도 있습니다:</p>
+<ul>
+<li><strong>Langchain</strong>. Langchain은 잘 알려진 라이브러리로, Python을 지원합니다.</li>
+<li><strong>Semantic Kernel</strong>. Semantic Kernel은 Microsoft에서 지원하는 C#, Python, Java 등의 언어를 지원하는 라이브러리입니다.</li>
+</ul>
+<h2 id="openai">openai를 사용한 앱 개발</h2>
+<p>우리는 앱을 만드는 방법, 앱을 만들기 위해 어떤 라이브러리가 얼마나 필요한지 등을 살펴보겠습니다.</p>
+<h3 id="openai_1">openai 설치</h3>
+<p>OpenAI 또는 Azure OpenAI와 상호작용하기 위한 다양한 라이브러리가 있습니다. 그리고 이러한 다양한 라이브러리에서는 C#, Python, JavaScript, Java 등 다양한 프로그래밍 언어를 사용할 수도 있습니다. 저희는 <code>openai</code> Python 라이브러리를 사용하기로 선택했으므로, <code>pip</code>를 사용하여 설치하겠습니다.</p>
+<pre><code class="language-bash">pip install openai
+</code></pre>
+<h3 id="_8">리소스 생성</h3>
+<p>다음 단계를 수행해야 합니다:</p>
+<ul>
+<li>Azure에 계정을 만듭니다. <a href="https://azure.microsoft.com/free/?WT.mc_id=academic-105485-koreyst">https://azure.microsoft.com/free/</a>에서 계정을 만드세요.</li>
+<li>Azure Open AI에 액세스 권한을 얻으세요. <a href="https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai?WT.mc_id=academic-105485-koreyst">https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai</a>로 이동하여 액세스를 요청하세요.</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+작성 시점에서 Azure Open AI에 대한 액세스 신청이 필요합니다.</p>
+</blockquote>
+<ul>
+<li>Python을 설치합니다. <a href="https://www.python.org/">https://www.python.org/</a></li>
+<li>Azure OpenAI 서비스 리소스를 생성했습니다. <a href="https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal?WT.mc_id=academic-105485-koreyst">리소스 생성 가이드</a>를 참조하세요.</li>
+</ul>
+<h3 id="api">API 키와 엔드포인트 찾기</h3>
+<p>이 시점에서 <code>openai</code> 라이브러리에 사용할 API 키를 알려야 합니다. API 키를 찾으려면 Azure Open AI 리소스의 "Keys and Endpoint" 섹션으로 이동하고 "Key 1" 값을 복사하세요.</p>
+<p><img alt="Azure Portal의 Keys and Endpoint 리소스 블레이드" src="https://learn.microsoft.com/azure/ai-services/openai/media/quickstarts/endpoint.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>이제 이 정보를 복사했으니, 라이브러리에 사용하도록 지시합시다.</p>
+<blockquote>
+<p>[!NOTE]
+API 키를 코드와 분리하는 것이 좋습니다. 이를 위해 환경 변수를 사용할 수 있습니다.</p>
+<ul>
+<li>환경 변수 <code>OPENAI_API_KEY</code>를 API 키로 설정하세요.
+  <code>export OPENAI_API_KEY='sk-...'</code></li>
+</ul>
+</blockquote>
+<h3 id="azure">Azure 설정 구성</h3>
+<p>Azure Open AI를 사용하는 경우, 다음과 같이 설정을 구성할 수 있습니다:</p>
+<pre><code class="language-python">openai.api_type = 'azure'
+openai.api_key = os.environ[&quot;OPENAI_API_KEY&quot;]
+openai.api_version = '2023-05-15'
+openai.api_base = os.getenv(&quot;API_BASE&quot;)
+</code></pre>
+<p>위에서는 다음과 같이 설정하고 있습니다:</p>
+<ul>
+<li><code>api_type</code>을 <code>azure</code>로 설정합니다. 이는 라이브러리가 OpenAI가 아닌 Azure Open AI를 사용하도록 지시합니다.</li>
+<li><code>api_key</code>는 Azure Portal에서 찾을 수 있는 API 키입니다.</li>
+<li><code>api_version</code>은 사용하려는 API의 버전입니다. 작성 시점에서 최신 버전은 <code>2023-05-15</code>입니다.</li>
+<li><code>api_base</code>는 API의 엔드포인트입니다. API 키 옆에 Azure Portal에서 찾을 수 있습니다.</li>
+</ul>
+<blockquote>
+<p>[!NOTE] &gt; <code>os.getenv</code>는 환경 변수를 읽는 함수입니다. <code>OPENAI_API_KEY</code>와 <code>API_BASE</code>와 같은 환경 변수를 읽을 때 사용할 수 있습니다. 이러한 환경 변수는 터미널에서 설정하거나 <code>dotenv</code>와 같은 라이브러리를 사용하여 설정할 수 있습니다.</p>
+</blockquote>
+<h2 id="_9">텍스트 생성</h2>
+<p>텍스트를 생성하는 방법은 <code>Completion</code> 클래스를 사용하는 것입니다. 다음은 예시입니다:</p>
+<pre><code class="language-python">prompt = &quot;Complete the following: Once upon a time there was a&quot;
+
+completion = openai.Completion.create(model=&quot;davinci-002&quot;, prompt=prompt)
+print(completion.choices[0].text)
+</code></pre>
+<p>위의 코드에서는 완성 객체를 생성하고 사용할 모델과 프롬프트를 전달합니다. 그런 다음 생성된 텍스트를 출력합니다.</p>
+<h3 id="completions">채팅 completions</h3>
+<p>지금까지 <code>Completion</code>을 사용하여 텍스트를 생성하는 방법을 살펴보았습니다. 그러나 챗봇에 더 적합한 <code>ChatCompletion</code>이라는 다른 클래스도 있습니다. 다음은 사용 예시입니다:</p>
+<pre><code class="language-python">import openai
+
+openai.api_key = &quot;sk-...&quot;
+
+completion = openai.ChatCompletion.create(model=&quot;gpt-3.5-turbo&quot;, messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello world&quot;}])
+print(completion.choices[0].message.content)
+</code></pre>
+<p>이 기능에 대한 자세한 내용은 다음 장에서 다룰 예정입니다.</p>
+<h2 id="-">연습 - 첫 번째 텍스트 생성 앱</h2>
+<p>이제 openai를 설정하고 구성하는 방법을 배웠으니, 첫 번째 텍스트 생성 앱을 만들어 보는 시간입니다. 앱을 만들기 위해 다음 단계를 따르세요:</p>
+<ol>
+<li>가상 환경을 생성하고 openai를 설치하세요:</li>
+</ol>
+<p><code>bash
+   python -m venv venv
+   source venv/bin/activate
+   pip install openai</code></p>
+<blockquote>
+<p>[!NOTE]
+Windows를 사용하는 경우 <code>source venv/bin/activate</code> 대신 <code>venv\Scripts\activate</code>를 입력하세요.</p>
+<p>[!NOTE]
+Azure Open AI 키를 찾으려면 <a href="https://portal.azure.com/?WT.mc_id=academic-105485-koreyst">https://portal.azure.com/</a>로 이동하여 <code>Open AI</code>를 검색한 다음 <code>Open AI 리소스</code>를 선택하고 <code>Keys and Endpoint</code>를 선택하고 <code>Key 1</code> 값을 복사하세요.</p>
+</blockquote>
+<ol>
+<li><em>app.py</em> 파일을 생성하고 다음 코드를 추가하세요:</li>
+</ol>
+<p>```python
+   import openai</p>
+<p>openai.api_key = "<replace this value with your open ai key or Azure Open AI key>"</p>
+<p>openai.api_type = 'azure'
+   openai.api_version = '2023-05-15'
+   openai.api_base = "<endpoint found in Azure Portal where your API key is>"
+   deployment_name = "<deployment name>"</p>
+<p># add your completion code
+   prompt = "Complete the following: Once upon a time there was a"</p>
+<p># make completion
+   completion = openai.Completion.create(engine= deployment_name, model="davinci-002", prompt=prompt)</p>
+<p># print response
+   print(completion.choices[0].text)
+   ```</p>
+<blockquote>
+<p>[!NOTE]
+Azure Open AI를 사용하는 경우, <code>api_type</code>을 <code>azure</code>로 설정하고 <code>api_key</code>를 Azure Open AI 키로 설정해야 합니다.</p>
+</blockquote>
+<pre><code>다음과 같은 출력을 볼 수 있어야 합니다:
+
+```output
+ very unhappy _____.
+
+Once upon a time there was a very unhappy mermaid.
+```
+</code></pre>
+<h2 id="_10">서로 다른 유형의 프롬프트를, 서로 다른 용도에 맞게</h2>
+<p>이제 프롬프트를 사용하여 텍스트를 생성하는 방법을 보았습니다. 심지어 다양한 유형의 텍스트를 생성하기 위해 수정하고 변경할 수 있는 프로그램이 작동 중입니다.</p>
+<p>프롬프트는 다양한 작업에 사용할 수 있습니다. 예를 들어:</p>
+<ul>
+<li><strong>텍스트 유형 생성</strong>. 시, 퀴즈 질문 등을 생성할 수 있습니다.</li>
+<li><strong>정보 조회</strong>. '웹 개발에서 CORS는 무엇을 의미하는가?'와 같은 정보를 조회하는 데 프롬프트를 사용할 수 있습니다.</li>
+<li><strong>코드 생성</strong>. 이메일 유효성 검사에 사용되는 정규식 또는 웹 앱과 같은 전체 프로그램을 생성하는 데 프롬프트를 사용할 수 있습니다.</li>
+</ul>
+<h2 id="_11">더 실용적인 사용 사례: 레시피 생성기</h2>
+<p>가정에 있는 재료로 무언가 요리하고 싶을 때 레시피가 필요합니다. 레시피를 찾는 방법은 검색 엔진을 사용하거나 LLM을 사용할 수도 있습니다.</p>
+<p>다음과 같은 프롬프트를 작성할 수 있습니다:</p>
+<blockquote>
+<p>"닭, 감자, 당근을 사용한 요리 5개를 보여주세요. 각 레시피에 사용된 모든 재료를 나열해주세요."</p>
+</blockquote>
+<p>위의 프롬프트를 주면 다음과 유사한 응답을 받을 수 있습니다:</p>
+<pre><code class="language-output">1. Roasted Chicken and Vegetables:
+Ingredients:
+- 4 chicken thighs
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 2 tablespoons olive oil
+- 2 cloves garlic, minced
+- 1 teaspoon dried thyme
+- 1 teaspoon dried oregano
+- Salt and pepper, to taste
+
+2. Chicken and Potato Stew:
+Ingredients:
+- 2 tablespoons olive oil
+- 1 onion, diced
+- 2 cloves garlic, minced
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 1 cup chicken broth
+- Salt and pepper, to taste
+
+3. Chicken and Potato Bake:
+Ingredients:
+- 2 tablespoons olive oil
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 onion, diced
+- 2 cloves garlic, minced
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 1 cup chicken broth
+- Salt and pepper, to taste
+
+4. Chicken and Potato Soup:
+Ingredients:
+- 2 tablespoons olive oil
+- 1 onion, diced
+- 2 cloves garlic, minced
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 4 cups chicken broth
+- Salt and pepper, to taste
+
+5. Chicken and Potato Hash:
+Ingredients:
+- 2 tablespoons olive oil
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 onion, diced
+- 2 cloves garlic, minced
+- 1 teaspoon dried oregano
+</code></pre>
+<p>이 결과는 훌륭합니다. 무엇을 요리할지 알게 되었습니다. 이제 유용한 개선 사항은 다음과 같습니다:</p>
+<ul>
+<li>싫어하는 재료나 알레르기가 있는 재료를 걸러내기.</li>
+<li>재료가 부족한 경우를 대비해 쇼핑 목록을 작성하기.</li>
+</ul>
+<p>위의 경우에 대해 추가적인 프롬프트를 추가해 보겠습니다:</p>
+<blockquote>
+<p>"대파를 대체할 다른 재료로 대체하고, 알레르기가 있는 사람을 위해 마늘이 포함된 레시피를 제거해주세요. 또한, 닭고기, 감자, 당근은 이미 집에 있으므로 쇼핑 목록을 작성해주세요."</p>
+</blockquote>
+<p>이제 새로운 결과가 있습니다:</p>
+<pre><code class="language-output">1. Roasted Chicken and Vegetables:
+Ingredients:
+- 4 chicken thighs
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 2 tablespoons olive oil
+- 1 teaspoon dried thyme
+- 1 teaspoon dried oregano
+- Salt and pepper, to taste
+
+2. Chicken and Potato Stew:
+Ingredients:
+- 2 tablespoons olive oil
+- 1 onion, diced
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 1 cup chicken broth
+- Salt and pepper, to taste
+
+3. Chicken and Potato Bake:
+Ingredients:
+- 2 tablespoons olive oil
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 onion, diced
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 1 cup chicken broth
+- Salt and pepper, to taste
+
+4. Chicken and Potato Soup:
+Ingredients:
+- 2 tablespoons olive oil
+- 1 onion, diced
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 teaspoon dried oregano
+- 1 teaspoon dried thyme
+- 4 cups chicken broth
+- Salt and pepper, to taste
+
+5. Chicken and Potato Hash:
+Ingredients:
+- 2 tablespoons olive oil
+- 2 chicken breasts, cut into cubes
+- 2 potatoes, cut into cubes
+- 2 carrots, cut into cubes
+- 1 onion, diced
+- 1 teaspoon dried oregano
+
+Shopping List:
+- Olive oil
+- Onion
+- Thyme
+- Oregano
+- Salt
+- Pepper
+</code></pre>
+<p>이것이 당신의 다섯 가지 레시피입니다. 마늘은 포함되지 않았으며, 집에 이미 있는 재료를 고려한 쇼핑 목록도 있습니다.</p>
+<h2 id="-_1">연습 - 레시피 생성기 만들기</h2>
+<p>이제 우리가 시나리오를 플레이했으니, 해당 시나리오와 일치하는 코드를 작성해 봅시다. 다음 단계를 따라주세요:</p>
+<ol>
+<li>기존의 <em>app.py</em> 파일을 시작점으로 사용합니다.</li>
+<li><code>prompt</code> 변수를 찾아서 다음과 같이 코드를 변경합니다:</li>
+</ol>
+<p><code>python
+   prompt = "Show me 5 recipes for a dish with the following ingredients: chicken, potatoes, and carrots. Per recipe, list all the ingredients used"</code></p>
+<p>코드를 실행하면 다음과 유사한 출력이 표시됩니다:</p>
+<p>```output
+   -Chicken Stew with Potatoes and Carrots: 3 tablespoons oil, 1 onion, chopped, 2 cloves garlic, minced, 1 carrot, peeled and chopped, 1 potato, peeled and chopped, 1 bay leaf, 1 thyme sprig, 1/2 teaspoon salt, 1/4 teaspoon black pepper, 1 1/2 cups chicken broth, 1/2 cup dry white wine, 2 tablespoons chopped fresh parsley, 2 tablespoons unsalted butter, 1 1/2 pounds boneless, skinless chicken thighs, cut into 1-inch pieces
+   -Oven-Roasted Chicken with Potatoes and Carrots: 3 tablespoons extra-virgin olive oil, 1 tablespoon Dijon mustard, 1 tablespoon chopped fresh rosemary, 1 tablespoon chopped fresh thyme, 4 cloves garlic, minced, 1 1/2 pounds small red potatoes, quartered, 1 1/2 pounds carrots, quartered lengthwise, 1/2 teaspoon salt, 1/4 teaspoon black pepper, 1 (4-pound) whole chicken
+   -Chicken, Potato, and Carrot Casserole: cooking spray, 1 large onion, chopped, 2 cloves garlic, minced, 1 carrot, peeled and shredded, 1 potato, peeled and shredded, 1/2 teaspoon dried thyme leaves, 1/4 teaspoon salt, 1/4 teaspoon black pepper, 2 cups fat-free, low-sodium chicken broth, 1 cup frozen peas, 1/4 cup all-purpose flour, 1 cup 2% reduced-fat milk, 1/4 cup grated Parmesan cheese</p>
+<p>-One Pot Chicken and Potato Dinner: 2 tablespoons olive oil, 1 pound boneless, skinless chicken thighs, cut into 1-inch pieces, 1 large onion, chopped, 3 cloves garlic, minced, 1 carrot, peeled and chopped, 1 potato, peeled and chopped, 1 bay leaf, 1 thyme sprig, 1/2 teaspoon salt, 1/4 teaspoon black pepper, 2 cups chicken broth, 1/2 cup dry white wine</p>
+<p>-Chicken, Potato, and Carrot Curry: 1 tablespoon vegetable oil, 1 large onion, chopped, 2 cloves garlic, minced, 1 carrot, peeled and chopped, 1 potato, peeled and chopped, 1 teaspoon ground coriander, 1 teaspoon ground cumin, 1/2 teaspoon ground turmeric, 1/2 teaspoon ground ginger, 1/4 teaspoon cayenne pepper, 2 cups chicken broth, 1/2 cup dry white wine, 1 (15-ounce) can chickpeas, drained and rinsed, 1/2 cup raisins, 1/2 cup chopped fresh cilantro
+   ```</p>
+<blockquote>
+<p>참고: LLM은 결정론적이지 않으므로 프로그램을 실행할 때마다 다른 결과를 얻을 수 있습니다.</p>
+</blockquote>
+<p>좋아요, 어떻게 개선할 수 있는지 알아봅시다. 개선하기 위해 코드가 유연하도록 만들어야 합니다. 따라서 재료와 레시피 수를 개선하고 변경할 수 있어야 합니다.</p>
+<ol>
+<li>다음과 같이 코드를 변경해 봅시다:</li>
+</ol>
+<p>```python
+   no_recipes = input("No of recipes (for example, 5: ")</p>
+<p>ingredients = input("List of ingredients (for example, chicken, potatoes, and carrots: ")</p>
+<p># interpolate the number of recipes into the prompt an ingredients
+   prompt = f"Show me {no_recipes} recipes for a dish with the following ingredients: {ingredients}. Per recipe, list all the ingredients used"
+   ```</p>
+<p>코드를 테스트 실행하면 결과가 다음과 같을 수 있습니다:</p>
+<p>```output
+   No of recipes (for example, 5: 3
+   List of ingredients (for example, chicken, potatoes, and carrots: milk,strawberries</p>
+<p>-Strawberry milk shake: milk, strawberries, sugar, vanilla extract, ice cubes
+   -Strawberry shortcake: milk, flour, baking powder, sugar, salt, unsalted butter, strawberries, whipped cream
+   -Strawberry milk: milk, strawberries, sugar, vanilla extract
+   ```</p>
+<h3 id="_12">필터와 쇼핑 목록 추가로 개선하기</h3>
+<p>이제 우리는 레시피를 생성할 수 있는 작동하는 앱을 가지고 있으며, 이 앱은 사용자의 입력에 의존하여 레시피 수와 사용되는 재료를 유연하게 조정할 수 있습니다.</p>
+<p>그리고 더 개선하기 위해 다음을 추가하고 싶습니다:</p>
+<ul>
+<li><strong>재료 필터링</strong>. 싫어하는 재료나 알레르기 반응이 있는 재료를 필터링할 수 있도록 하고 싶습니다. 이 변경을 위해 기존의 프롬프트를 수정하여 끝에 필터 조건을 추가할 수 있습니다:</li>
+</ul>
+<p>```python
+  filter = input("Filter (for example, vegetarian, vegan, or gluten-free: ")</p>
+<p>prompt = f"Show me {no_recipes} recipes for a dish with the following ingredients: {ingredients}. Per recipe, list all the ingredients used, no {filter}"
+  ```</p>
+<p>위에서는 프롬프트 끝에 <code>{filter}</code>를 추가하고 사용자로부터 필터 값을 입력받도록 합니다.</p>
+<p>프로그램을 실행하는 예시 입력은 다음과 같을 수 있습니다:</p>
+<p>```output
+  No of recipes (for example, 5: 3
+  List of ingredients (for example, chicken, potatoes, and carrots: onion,milk
+  Filter (for example, vegetarian, vegan, or gluten-free: no milk</p>
+<ol>
+<li>French Onion Soup</li>
+</ol>
+<p>Ingredients:</p>
+<p>-1 large onion, sliced
+  -3 cups beef broth
+  -1 cup milk
+  -6 slices french bread
+  -1/4 cup shredded Parmesan cheese
+  -1 tablespoon butter
+  -1 teaspoon dried thyme
+  -1/4 teaspoon salt
+  -1/4 teaspoon black pepper</p>
+<p>Instructions:</p>
+<ol>
+<li>In a large pot, sauté onions in butter until golden brown.</li>
+<li>Add beef broth, milk, thyme, salt, and pepper. Bring to a boil.</li>
+<li>Reduce heat and simmer for 10 minutes.</li>
+<li>Place french bread slices on soup bowls.</li>
+<li>Ladle soup over bread.</li>
+<li>
+<p>Sprinkle with Parmesan cheese.</p>
+</li>
+<li>
+<p>Onion and Potato Soup</p>
+</li>
+</ol>
+<p>Ingredients:</p>
+<p>-1 large onion, chopped
+  -2 cups potatoes, diced
+  -3 cups vegetable broth
+  -1 cup milk
+  -1/4 teaspoon black pepper</p>
+<p>Instructions:</p>
+<ol>
+<li>In a large pot, sauté onions in butter until golden brown.</li>
+<li>Add potatoes, vegetable broth, milk, and pepper. Bring to a boil.</li>
+<li>Reduce heat and simmer for 10 minutes.</li>
+<li>
+<p>Serve hot.</p>
+</li>
+<li>
+<p>Creamy Onion Soup</p>
+</li>
+</ol>
+<p>Ingredients:</p>
+<p>-1 large onion, chopped
+  -3 cups vegetable broth
+  -1 cup milk
+  -1/4 teaspoon black pepper
+  -1/4 cup all-purpose flour
+  -1/2 cup shredded Parmesan cheese</p>
+<p>Instructions:</p>
+<ol>
+<li>In a large pot, sauté onions in butter until golden brown.</li>
+<li>Add vegetable broth, milk, and pepper. Bring to a boil.</li>
+<li>Reduce heat and simmer for 10 minutes.</li>
+<li>In a small bowl, whisk together flour and Parmesan cheese until smooth.</li>
+<li>Add to soup and simmer for an additional 5 minutes, or until soup has thickened.
+  ```</li>
+</ol>
+<p>보시다시피, 우유가 들어간 레시피는 필터링되었습니다. 그러나 유당 불내증이 있다면 치즈가 들어간 레시피도 필터링하고 싶을 수 있으므로 명확하게 해야합니다.</p>
+<ul>
+<li><strong>쇼핑 목록 생성</strong>. 우리는 이미 집에 있는 재료를 고려하여 쇼핑 목록을 생성하고 싶습니다.</li>
+</ul>
+<p>이 기능을 위해 우리는 하나의 프롬프트에서 모든 것을 해결하려고 시도할 수도 있고, 두 개의 프롬프트로 나눠서 해결할 수도 있습니다. 후자의 접근 방식을 시도해 보겠습니다. 여기서는 추가적인 프롬프트를 추가하는 것을 제안하고 있습니다. 그러나 이를 위해 이전 프롬프트의 결과를 후자의 프롬프트에 컨텍스트로 추가해야 합니다.</p>
+<p>코드에서 첫 번째 프롬프트의 결과를 출력하는 부분을 찾아서 다음 코드를 아래에 추가하세요:</p>
+<p>```python
+  old_prompt_result = completion.choices[0].text
+  prompt = "Produce a shopping list for the generated recipes and please don't include ingredients that I already have."</p>
+<p>new_prompt = f"{old_prompt_result} {prompt}"
+  completion = openai.Completion.create(engine=deployment_name, prompt=new_prompt, max_tokens=1200)</p>
+<p># print response
+  print("Shopping list:")
+  print(completion.choices[0].text)
+  ```</p>
+<p>다음 사항을 주목하세요:</p>
+<ol>
+<li>
+<p>첫 번째 프롬프트의 결과를 새로운 프롬프트에 추가하여 새로운 프롬프트를 구성합니다:</p>
+<p><code>python
+ new_prompt = f"{old_prompt_result} {prompt}"</code></p>
+</li>
+<li>
+<p>첫 번째 프롬프트에서 요청한 토큰 수를 고려하여 새로운 요청을 만듭니다. 이번에는 <code>max_tokens</code>을 1200으로 설정합니다.</p>
+<p><code>python
+ completion = openai.Completion.create(engine=deployment_name, prompt=new_prompt, max_tokens=1200)</code></p>
+<p>Taking this code for a spin, we now arrive at the following output:</p>
+<p>```output
+ No of recipes (for example, 5: 2
+ List of ingredients (for example, chicken, potatoes, and carrots: apple,flour
+ Filter (for example, vegetarian, vegan, or gluten-free: sugar</p>
+<p>-Apple and flour pancakes: 1 cup flour, 1/2 tsp baking powder, 1/2 tsp baking soda, 1/4 tsp salt, 1 tbsp sugar, 1 egg, 1 cup buttermilk or sour milk, 1/4 cup melted butter, 1 Granny Smith apple, peeled and grated
+ -Apple fritters: 1-1/2 cups flour, 1 tsp baking powder, 1/4 tsp salt, 1/4 tsp baking soda, 1/4 tsp nutmeg, 1/4 tsp cinnamon, 1/4 tsp allspice, 1/4 cup sugar, 1/4 cup vegetable shortening, 1/4 cup milk, 1 egg, 2 cups shredded, peeled apples
+ Shopping list:
+ -Flour, baking powder, baking soda, salt, sugar, egg, buttermilk, butter, apple, nutmeg, cinnamon, allspice
+ ```</p>
+</li>
+</ol>
+<h2 id="_13">설정 개선하기</h2>
+<p>지금까지 작성한 코드는 작동하지만, 더 개선할 수 있는 몇 가지 조정 사항이 있습니다. 우리가 해야 할 몇 가지 작업은 다음과 같습니다:</p>
+<ul>
+<li>
+<p><strong>비밀 정보와 코드 분리하기</strong>, 예를 들어 API 키와 같은 비밀 정보는 코드에 포함되어서는 안 됩니다. 비밀 정보를 코드와 분리하기 위해 환경 변수와 <code>python-dotenv</code>와 같은 라이브러리를 사용하여 파일에서 로드할 수 있습니다. 코드에서 이렇게 구현할 수 있습니다:</p>
+</li>
+<li>
+<p><code>.env</code> 파일을 다음 내용으로 생성하세요:</p>
+<p><code>bash
+ OPENAI_API_KEY=sk-...</code></p>
+<blockquote>
+<p>참고로, Azure의 경우 다음 환경 변수를 설정해야 합니다:</p>
+</blockquote>
+<p><code>bash
+ OPENAI_API_TYPE=azure
+ OPENAI_API_VERSION=2023-05-15
+ OPENAI_API_BASE=&lt;replace&gt;</code></p>
+<p>코드에서는 다음과 같이 환경 변수를 로드합니다:</p>
+<p>```python
+ from dotenv import load_dotenv</p>
+<p>load_dotenv()</p>
+<p>openai.api_key = os.environ["OPENAI_API_KEY"]
+ ```</p>
+</li>
+<li>
+<p><strong>토큰 길이에 대한 고려사항</strong>. 우리는 원하는 텍스트를 생성하기 위해 얼마나 많은 토큰이 필요한지 고려해야 합니다. 토큰은 비용이 들기 때문에 가능한 경우, 토큰의 수를 절약할 수 있는 방법을 고려해야 합니다. 예를 들어, 프롬프트를 어떻게 구성하면 더 적은 토큰을 사용할 수 있을까요?</p>
+</li>
+</ul>
+<p>사용할 토큰을 변경하려면 <code>max_tokens</code> 매개변수를 사용할 수 있습니다. 예를 들어, 100개의 토큰을 사용하려면 다음과 같이 할 수 있습니다:</p>
+<p><code>python
+  completion = openai.Completion.create(model="davinci-002", prompt=prompt, max_tokens=100)</code></p>
+<ul>
+<li><strong>temperature 조절 실험</strong>. temperature는 우리가 지금까지 언급하지 않았지만, 프로그램의 동작에 중요한 맥락입니다. temperature 값이 높을수록 출력이 더 무작위적이 됩니다. 반대로, temperature 값이 낮을수록 출력이 더 예측 가능해집니다. 출력에 변화를 원하는지 여부를 고려해보세요.</li>
+</ul>
+<p>temperature를 변경하려면 <code>temperature</code> 매개변수를 사용할 수 있습니다. 예를 들어, temperature를 0.5로 설정하려면 다음과 같이 할 수 있습니다:</p>
+<p><code>python
+  completion = openai.Completion.create(model="davinci-002", prompt=prompt, temperature=0.5)</code></p>
+<blockquote>
+<p>참고로, 값이 1.0에 가까울수록 출력이 더 다양해집니다.</p>
+</blockquote>
+<h2 id="_14">과제</h2>
+<p>이 과제에서는 무엇을 구축할지 선택할 수 있습니다.</p>
+<p>다음은 몇 가지 제안 사항입니다:</p>
+<ul>
+<li>레시피 생성기 앱을 더 개선해 보세요. temperature 값과 프롬프트를 조정하여 어떤 결과를 얻을 수 있는지 확인해보세요.</li>
+<li>"스터디 버디"를 만들어 보세요. 이 앱은 Python과 같은 주제에 대한 질문에 답변할 수 있어야 합니다. "Python에서 특정 주제는 무엇인가요?"와 같은 프롬프트를 사용하거나, 특정 주제에 대한 코드를 보여달라는 프롬프트를 사용할 수도 있습니다.</li>
+<li>역사 봇을 만들어 역사를 생생하게 만들어 보세요. 봇에게 특정 역사적 인물로 역할을 맡게 하고, 그 인물에 대한 생애와 시대에 대해 질문해 보세요.</li>
+</ul>
+<h2 id="_15">정답 예시</h2>
+<h3 id="_16">스터디 버디</h3>
+<p>아래는 시작 프롬프트입니다. 이를 활용하고 원하는 대로 조정해보세요.</p>
+<pre><code class="language-text">- &quot;You're an expert on the Python language
+
+    Suggest a beginner lesson for Python in the following format:
+
+    Format:
+    - concepts:
+    - brief explanation of the lesson:
+    - exercise in code with solutions&quot;
+</code></pre>
+<h3 id="_17">역사 봇</h3>
+<p>다음은 사용할 수 있는 몇 가지 프롬프트입니다:</p>
+<pre><code class="language-text">- &quot;You are Abe Lincoln, tell me about yourself in 3 sentences, and respond using grammar and words like Abe would have used&quot;
+- &quot;You are Abe Lincoln, respond using grammar and words like Abe would have used:
+
+   Tell me about your greatest accomplishments, in 300 words&quot;
+</code></pre>
+<h2 id="_18">지식 확인</h2>
+<p>temperature 개념은 무엇을 하는 역할인가요?</p>
+<ol>
+<li>출력의 무작위성을 조절합니다.</li>
+<li>응답의 크기를 조절합니다.</li>
+<li>사용되는 토큰의 수를 조절합니다.</li>
+</ol>
+<h2 id="_19">🚀 도전과제</h2>
+<p>과제를 수행할 때, temperature 값을 다양하게 변경해보세요. 0, 0.5, 1로 설정해보세요. 기억해주세요, 0은 가장 일정하고 1은 가장 다양한 값을 의미합니다. 어떤 값이 앱에 가장 적합한지 확인해보세요.</p>
+<h2 id="_20">수고하셨습니다! 학습을 계속하세요</h2>
+<p>이 수업을 완료한 후에는 <a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">Generative AI 학습 컬렉션</a>을 확인하여 Generative AI 지식을 더욱 향상시킬 수 있습니다!</p>
+<p>7번 수업으로 이동하여 <a href="../../../07-building-chat-applications/translations/ko/?WT.mc_id=academic-105485-koreyst">채팅 애플리케이션을 구축하는 방법</a>을 살펴보세요!</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

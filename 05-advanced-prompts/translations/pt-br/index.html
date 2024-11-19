@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Criando prompts avançados - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Criando prompts avan\u00e7ados";
+        var mkdocs_page_input_path = "05-advanced-prompts\\translations\\pt-br\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Criando prompts avançados</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="criando-prompts-avancados">Criando prompts avançados</h1>
+<p><a href="https://aka.ms/gen-ai-lesson5-gh?WT.mc_id=academic-105485-koreyst"><img alt="Creating Advanced Prompts" src="../../images/05-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<p>Vamos recapitular algumas aprendizagens do capítulo anterior:</p>
+<blockquote>
+<p>A <em>engenharia</em> de prompts é o processo pelo qual <strong>guiamos o modelo em direção a respostas mais relevantes</strong> fornecendo instruções ou contexto mais úteis.</p>
+</blockquote>
+<p>Também existem duas etapas para escrever prompts: a construção do prompt, fornecendo contexto relevante, e a segunda parte é a <em>otimização</em>, como melhorar gradualmente o prompt.</p>
+<p>Neste ponto, temos uma compreensão básica de como escrever prompts, mas precisamos aprofundar. Neste capítulo, você passará de experimentar vários prompts para entender por que um prompt é melhor que outro.</p>
+<h2 id="introducao">Introdução</h2>
+<p>Neste capítulo, abordaremos os seguintes tópicos:</p>
+<ul>
+<li>Amplie seu conhecimento de engenharia de prompts aplicando diferentes técnicas aos seus prompts.</li>
+<li>Configure seus prompts para variar a saída.</li>
+</ul>
+<h2 id="metas-de-aprendizado">Metas de aprendizado</h2>
+<p>Após concluir esta lição, você será capaz de:</p>
+<ul>
+<li>Aplicar técnicas de engenharia de prompts que melhorem o resultado dos seus prompts.</li>
+<li>Realizar prompts que sejam variados ou determinísticos.</li>
+</ul>
+<h2 id="engenharia-de-prompts">Engenharia de prompts</h2>
+<p>A engenharia de prompts é o processo de criar prompts que produzirão o resultado desejado. Há mais na engenharia de prompts do que simplesmente escrever um prompt de texto. A engenharia de prompts não é uma disciplina de engenharia; é mais um conjunto de técnicas que você pode aplicar para obter o resultado desejado.</p>
+<h3 id="um-exemplo-de-prompt">Um exemplo de prompt</h3>
+<p>Vamos pegar um prompt básico como este:</p>
+<blockquote>
+<p>Generate 10 questions on geography.</p>
+</blockquote>
+<p>Neste prompt, você está aplicando na verdade um conjunto de diferentes técnicas de prompt.</p>
+<p>Vamos analisar isso.</p>
+<ul>
+<li><strong>Contexto</strong>, você especifica que deve ser sobre "geografia".</li>
+<li><strong>Limitação da saída</strong>, você não quer mais do que 10 perguntas.</li>
+</ul>
+<h3 id="limitacoes-de-prompts-simples">Limitações de prompts simples</h3>
+<p>Você pode ou não obter o resultado desejado. Você terá suas perguntas geradas, mas a geografia é um tópico amplo e você pode não obter o que deseja devido às seguintes razões:</p>
+<ul>
+<li><strong>Tópico amplo</strong>, você não sabe se será sobre países, capitais, rios e assim por diante.</li>
+<li><strong>Formato</strong>, e se você quisesse que as perguntas fossem formatadas de uma maneira específica?</li>
+</ul>
+<p>Como você pode ver, há muito a considerar ao criar prompts.</p>
+<p>Até agora, vimos um exemplo simples de prompt, mas a IA generativa é capaz de muito mais para ajudar pessoas em várias funções e indústrias. Vamos explorar algumas técnicas básicas a seguir.</p>
+<h3 id="tecnicas-de-prompting">Técnicas de prompting</h3>
+<p>Primeiro, precisamos entender que o prompting é uma propriedade <em>emergente</em> de um LLM, o que significa que não é uma característica incorporada ao modelo, mas sim algo que descobrimos conforme usamos o modelo.</p>
+<p>Existem algumas técnicas básicas que podemos usar para fazer um prompt em um LLM. Vamos explorá-las.</p>
+<ul>
+<li><strong>Prompt de poucas tentativas</strong>, esta é a forma mais básica de prompt. É um prompt único com alguns exemplos.</li>
+<li><strong>Corrente de pensamento</strong>, este tipo de prompt diz ao LLM como dividir um problema em etapas.</li>
+<li><strong>Conhecimento gerado</strong>, para melhorar a resposta de um prompt, você pode fornecer fatos ou conhecimentos gerados adicionalmente ao seu prompt.</li>
+<li><strong>Do menos para o mais</strong>, assim como a corrente de pensamento, esta técnica consiste em dividir um problema em uma série de etapas e depois pedir que essas etapas sejam realizadas em ordem.</li>
+<li><strong>Auto-aperfeiçoamento</strong>, esta técnica consiste em criticar a saída do LLM e depois pedir que ele melhore.</li>
+<li><strong>Prompt maieutico</strong>. O que você deseja aqui é garantir que a resposta do LLM esteja correta e pedir que ele explique várias partes da resposta. Isso é uma forma de auto-aperfeiçoamento.</li>
+</ul>
+<h3 id="prompt-de-poucas-tentativas">Prompt de Poucas Tentativas</h3>
+<p>Este estilo de prompt é muito simples, pode consistir em um único prompt e possivelmente alguns exemplos. Essa técnica é provavelmente o que você está usando ao começar a aprender sobre LLMs. Aqui está um exemplo:</p>
+<ul>
+<li>Prompt: "O que é Álgebra?"</li>
+<li>Resposta: "Álgebra é uma ramificação da matemática que estuda símbolos matemáticos e as regras para manipular esses símbolos."</li>
+</ul>
+<h3 id="prompt-corrente-de-pensamento-chain-of-thought-prompting">Prompt - Corrente de Pensamento (chain-of-thought prompting)</h3>
+<p>O prompt corrente de pensamento é uma técnica muito interessante, pois envolve levar o LLM por uma série de etapas. A ideia é instruir o LLM de tal forma que ele entenda como fazer algo. Considere o seguinte exemplo, com e sem corrente de pensamento:</p>
+<pre><code>- Prompt: "Alice tem 5 maçãs, joga 3 maçãs, dá 2 para Bob e Bob devolve uma, quantas maçãs Alice tem?"
+- Resposta: 5
+</code></pre>
+<p>O LLM responde com 5, o que está incorreto. A resposta correta é 1 maçã, dada a seguinte operação (5 -3 -2 + 1 = 1).</p>
+<p>Então, como podemos ensinar o LLM a fazer isso corretamente?</p>
+<p>Vamos tentar a corrente de pensamento. Aplicar a corrente de pensamento significa:</p>
+<ol>
+<li>Dar ao LLM um exemplo semelhante.</li>
+<li>Mostrar o cálculo e como calculá-lo corretamente.</li>
+<li>Fornecer o prompt original.</li>
+</ol>
+<p>Veja como:</p>
+<ul>
+<li>Prompt: "Lisa tem 7 maçãs, joga 1 maçã, dá 4 maçãs para Bart e Bart devolve uma:
+  7 -1 = 6
+  6 -4 = 2
+  2 +1 = 3<br />
+  Alice tem 5 maçãs, joga 3 maçãs, dá 2 para Bob e Bob devolve uma, quantas maçãs Alice tem?"
+  Resposta: 1</li>
+</ul>
+<p>Note como escrevemos prompts substancialmente mais longos com outro exemplo, um cálculo e, em seguida, o prompt original, e chegamos à resposta correta, que é 1.</p>
+<p>Como você pode ver, a corrente de pensamento é uma técnica muito poderosa.</p>
+<h3 id="conhecimento-gerado">Conhecimento Gerado</h3>
+<p>Muitas vezes, ao criar uma solicitação, você deseja fazê-lo usando os dados de sua própria empresa. Você quer que parte da solicitação seja da empresa e a outra parte seja a solicitação real que você está interessado.</p>
+<p>Como exemplo, é assim que sua solicitação pode parecer se você estiver no ramo de seguros:</p>
+<pre><code>```text
+{{company}}: {{company_name}}
+{{products}}:
+{{products_list}}
+Please suggest an insurance given the following budget and requirements:
+Budget: {{budget}}
+Requirements: {{requirements}}
+```
+</code></pre>
+<p>Acima, você vê como a solicitação é construída usando um modelo. No modelo, há várias variáveis, indicadas por <code>{{variável}}</code>, que serão substituídas por valores reais de uma API da empresa.</p>
+<p>Aqui está um exemplo de como a solicitação pode parecer depois que as variáveis foram substituídas pelo conteúdo de sua empresa:</p>
+<pre><code>```text
+Insurance company: ACME Insurance
+Insurance products (cost per month):
+- Car, cheap, 500 USD
+- Car, expensive, 1100 USD
+- Home, cheap, 600 USD
+- Home, expensive, 1200 USD
+- Life, cheap, 100 USD
+
+Please suggest an insurance given the following budget and requirements:
+Budget: $1000
+Requirements: Car, Home
+```
+</code></pre>
+<p>Executando esta solicitação em um Modelo de Linguagem com Aprendizado Profundo (LLM), o resultado será algo como:</p>
+<pre><code>```output
+, and Life insurance
+
+Given the budget and requirements, we suggest the following insurance package from ACME Insurance:
+- Car, cheap, 500 USD
+- Home, cheap, 600 USD
+- Life, cheap, 100 USD
+Total cost: $1,200 USD
+```
+</code></pre>
+<p>Como você pode ver, também sugere o seguro de vida, o que não deveria acontecer. Este resultado é uma indicação de que precisamos otimizar a solicitação tornando-a mais clara sobre o que é permitido. Após alguma <em>tentativa e erro</em>, chegamos à seguinte solicitação:</p>
+<pre><code>```text
+Insurance company: ACME Insurance
+Insurance products (cost per month):
+- type: Car, cheap, cost: 500 USD
+- type: Car, expensive, cost: 1100 USD
+- type: Home, cheap, cost: 600 USD
+- type: Home, expensive, cost: 1200 USD
+- type: Life, cheap, cost: 100 USD
+
+Please suggest an insurance given the following budget and requirements:
+Budget: $1000 restrict choice to types: Car, Home
+```
+</code></pre>
+<p>Observe como adicionar <em>tipo</em> e <em>custo</em> e também usar a palavra-chave <em>restringir</em> ajuda o LLM a entender o que queremos.</p>
+<p>Agora obtemos a seguinte resposta:</p>
+<pre><code>```output
+Given the budget and requirements, we suggest the Car, Cheap insurance product which costs 500 USD per month.
+```
+</code></pre>
+<p>O objetivo deste exemplo foi mostrar que, mesmo que estejamos usando uma técnica básica como <em>conhecimento gerado</em>, ainda precisamos otimizar o prompt na maioria dos casos para obter o resultado desejado.</p>
+<h3 id="least-to-most">Least-to-most</h3>
+<p>The idea with Least-to-most prompting is to break down a bigger problem into subproblems. That way, you help guide the LLM on how to "conquer" the bigger problem. A good example could be for data science where you can ask the LLM to divide up a problem like so:</p>
+<blockquote>
+<p>Prompt: How to perform data science in 5 steps?</p>
+</blockquote>
+<p>With your AI assistant answering with:</p>
+<ol>
+<li>Collect data</li>
+<li>Clean data</li>
+<li>Analyze data</li>
+<li>Plot data</li>
+<li>Present data</li>
+</ol>
+<h3 id="self-refine-critique-the-results">Self-refine, critique the results</h3>
+<p>With generative AIs and LLMs, you can't trust the output. You need to verify it. After all, the LLM is just presenting you what's the next most likely thing to say, not what's correct. Therefore, a good idea is to ask the LLM to critique itself, which leads us to the self-refine technique.</p>
+<p>How it works is that you follow the following steps:</p>
+<ol>
+<li>Initial prompt asking the LLM to solve a problem</li>
+<li>LLM answers</li>
+<li>You critique the answer and ask the AI to improve</li>
+<li>LLM answers again, this time considering the critique and suggest solutions it came up with</li>
+</ol>
+<p>You can repeat this process as many times as you want.</p>
+<p>Here's an example using this technique:</p>
+<h3 id="menos-para-mais">Menos para mais</h3>
+<p>A ideia com a técnica do prompt "Menos para mais" é decompor um problema maior em subproblemas. Dessa forma, você ajuda a orientar o LLM sobre como "conquistar" o problema maior. Um bom exemplo pode ser em ciência de dados, onde você pode pedir ao LLM para dividir um problema da seguinte maneira:</p>
+<blockquote>
+<p>Prompt: How to perform data science in 5 steps?</p>
+</blockquote>
+<p>Com seu assistente de IA respondendo:</p>
+<ol>
+<li>Coletar dados</li>
+<li>Limpar dados</li>
+<li>Analisar dados</li>
+<li>Plotar dados</li>
+<li>Apresentar dados</li>
+</ol>
+<h3 id="autoaperfeicoamento-critica-dos-resultados">Autoaperfeiçoamento, crítica dos resultados</h3>
+<p>Com AIs generativas e LLMs, você não pode confiar na saída. É preciso verificá-la. Afinal, o LLM está apenas apresentando o que é mais provável dizer a seguir, não o que está correto. Portanto, uma boa ideia é pedir ao LLM que faça uma autocrítica, o que nos leva à técnica de autoaperfeiçoamento.</p>
+<p>Como funciona é como você segue os seguintes passos:</p>
+<ol>
+<li>Prompt inicial pedindo ao LLM para resolver um problema</li>
+<li>LLM responde</li>
+<li>Você critica a resposta e pede à IA para melhorar</li>
+<li>LLM responde novamente, desta vez considerando a crítica e sugerindo soluções que elaborou</li>
+</ol>
+<p>Você pode repetir esse processo quantas vezes quiser.</p>
+<p>Aqui está um exemplo usando essa técnica:</p>
+<blockquote>
+<p>Prompt: "Create a Python Web API with routes products and customers"</p>
+</blockquote>
+<p>Resposta da IA:</p>
+<pre><code>```python
+import flask
+app = Flask(__name__)
+
+@app.route('/products')
+def products():
+    return 'Products'
+
+@app.route('/customers')
+def customers():
+    return 'Customers'
+```
+</code></pre>
+<blockquote>
+<p>Prompt: suggest 3 improvements of the above code</p>
+</blockquote>
+<p>Resposta da IA:</p>
+<pre><code>```text
+Sure, here are three suggestions to improve the code:
+
+Import the correct module: The first line should import Flask instead of flask. The correct import statement should be from flask import Flask.
+
+Add a main function: Add a if __name__ == '__main__': block to the end of the file to run the application when the file is executed.
+
+Use f-strings: Use f-strings to format the return statements in the route functions. For example, return 'Products' can be changed to return f'This is the {request.path} page'.
+```
+
+```python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/products')
+def products():
+    return f'This is the {request.path} page'
+
+@app.route('/customers')
+def customers():
+    return f'This is the {request.path} page'
+
+if __name__ == '__main__':
+    app.run()
+```
+</code></pre>
+<p>Como você pode ver, a resposta da IA acima está aprimorando o primeiro código sugerido, graças à crítica da primeira resposta.</p>
+<h3 id="maieutic-prompting">Maieutic prompting</h3>
+<p>Maieutic prompting is a technique that is similar to self-refine but it's more about asking the LLM to explain itself. The goal is to reduce inconsistencies in the LLM's output so to ensure it arrives at the correct answer. The workflow to follow is:</p>
+<ol>
+<li>Ask the LLM to answer a question</li>
+<li>For each part of the answer, ask the LLM to explain it more in depth.</li>
+<li>If there are inconsistencies, discard the parts that are inconsistent.</li>
+</ol>
+<p>Repeat 2 and 3 until you've gone through all the parts and you're satisfied with the answer.</p>
+<p>Here's an example prompt:</p>
+<h3 id="prompt-de-maieutico">Prompt de Maiêutico</h3>
+<p>O prompt de maiêutico é uma técnica semelhante ao autoaperfeiçoamento, mas trata-se mais de pedir ao LLM para se explicar. O objetivo é reduzir inconsistências na saída do LLM para garantir que ele chegue à resposta correta. O fluxo de trabalho a ser seguido é:</p>
+<ol>
+<li>Peça ao LLM para responder a uma pergunta.</li>
+<li>Para cada parte da resposta, peça ao LLM para explicá-la mais detalhadamente.</li>
+<li>Se houver inconsistências, descarte as partes inconsistentes.</li>
+</ol>
+<p>Repita os passos 2 e 3 até passar por todas as partes e ficar satisfeito com a resposta.</p>
+<p>Aqui está um exemplo de um prompt:</p>
+<blockquote>
+<p>prompt: How can I create a crisis plan to mitigate a pandemic in 5 steps?
+LLM answer:</p>
+</blockquote>
+<pre><code>```text
+1. Identify the risks
+1. Identify the stakeholders
+1. Identify the resources
+1. Identify the actions
+1. Identify the communication channels
+```
+</code></pre>
+<p>São identificadas 5 etapas, mas podemos determinar se isso está correto? Vamos pedir ao LLM para explicar cada etapa:</p>
+<blockquote>
+<p>prompt: Explain the first step in more detail, what are the risks in detail with a pandemic?</p>
+</blockquote>
+<pre><code>```text
+The risks are the following:
+
+- Loss of life
+- Loss of business
+- Loss of reputation
+- Loss of customers
+- Loss of employees
+```
+</code></pre>
+<p>Neste ponto, queremos ter certeza de que o LLM está correto, por isso pedimos que explique o primeiro risco com mais detalhes e esperamos que seja consistente com a resposta acima:</p>
+<blockquote>
+<p>prompt: In a Pandemic, which is the biggest risk and why?</p>
+</blockquote>
+<pre><code>```text
+The biggest risk is loss of life because it's the most important thing to protect.
+```
+</code></pre>
+<blockquote>
+<p>What are the two biggest risks in a pandemic?</p>
+</blockquote>
+<pre><code>```text
+The two biggest risks are loss of life and loss of business.
+```
+</code></pre>
+<p>Neste ponto, o LLM é consistente e menciona "vida" e "negócios" como os dois principais riscos. Podemos agora prosseguir para o próximo passo e sentir confiança razoável. No entanto, não devemos confiar cegamente no LLM; sempre devemos verificar a saída.</p>
+<h2 id="varie-sua-saida">Varie sua saída</h2>
+<p>Os LLMs são, por natureza, não-determinísticos, o que significa que você obterá resultados diferentes cada vez que executar o mesmo prompt. Tente o seguinte prompt, por exemplo:</p>
+<blockquote>
+<p>"Generate code for a Python Web API"</p>
+</blockquote>
+<pre><code>```text
+# Import necessary modules
+import flask
+from flask import request, jsonify
+
+# Create a Flask app
+app = flask.Flask(__name__)
+
+# Create a route for the API
+@app.route('/api', methods=['GET'])
+def api():
+    # Get the data from the request
+    data = request.args
+
+    # Process the data
+    result = process_data(data)
+
+    # Return the result as JSON
+    return jsonify(result)
+
+# Function to process the data
+def process_data(data):
+    # Do something with the data
+    result = data + 1
+
+    # Return the result
+    return result
+
+# Run the app
+if __name__ == '__main__':
+    app.run()
+```
+</code></pre>
+<p>Execute o mesmo prompt novamente e você observará que vai gerar uma resposta ligeiramente diferente:</p>
+<pre><code>```text
+#import necessary packages
+import flask
+from flask import request, jsonify
+
+#create the Flask application
+app = flask.Flask(__name__)
+app.config["DEBUG"] = True
+
+#create a list of books
+books = [
+    {'id': 0,
+     'title': 'A Fire Upon the Deep',
+     'author': 'Vernor Vinge',
+     'first_sentence': 'The coldsleep itself was dreamless.',
+     'year_published': '1992'},
+    {'id': 1,
+     'title': 'The Ones Who Walk Away From Omelas',
+     'author': 'Ursula K. Le Guin',
+     'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.',
+     'published': '1973'},
+    {'id': 2,
+     'title': 'Dhalgren',
+     'author': 'Samuel R. Delany',
+     'first_sentence': 'to wound the autumnal city.',
+     'published': '1975'}
+]
+
+#create an endpoint for the API
+@app.route('/', methods=['GET'])
+def home():
+    return '''&lt;h1&gt;Books API&lt;/h1&gt;
+&lt;p&gt;A prototype API for retrieving books.&lt;/p&gt;'''
+
+#create an endpoint to return all books
+@app.route('/api/v1/resources/books/all', methods=['GET'])
+def api_all():
+    return jsonify(books)
+
+#create an endpoint to return a single book
+@app.route('/api/v1/resources/books', methods=['GET'])
+def api_id():
+    #check if an ID was provided as part of the URL
+    #if ID is provided, assign it to a variable
+    #if no ID is provided, display an error
+    if 'id' in request.args:
+        id = int(request.args['id'])
+    else:
+        return "Error: No id field provided. Please specify an id."
+
+    #create an empty list for our results
+    results = []
+
+    #loop through the data and match results that fit the requested ID
+    #IDs are unique, but other fields might return many results
+    for book in books:
+        if book['id'] == id:
+            results.append(book)
+
+    #use the jsonify function from Flask to convert our list of
+    #Python dictionaries to the JSON format
+    return jsonify(results)
+
+app.run()
+```
+</code></pre>
+<blockquote>
+<p>Então, a saída diferente é um problema?</p>
+</blockquote>
+<p>Depende do que você está tentando fazer. Se você deseja uma resposta específica, é um problema. Se você está bem com uma saída variada como "Gerar 3 perguntas sobre geografia", então não é um problema.</p>
+<h3 id="usando-a-temperatura-para-variar-sua-saida">Usando a temperatura para variar sua saída</h3>
+<p>Ok! Então, decidimos que queremos limitar a saída para ser mais previsível, ou seja, mais determinística. Como fazemos isso?</p>
+<p>Temperatura é um valor entre 0 e 1, onde 0 é o mais determinístico e 1 é o mais variado. O valor padrão é 0.7. Vamos ver o que acontece com duas execuções do mesmo prompt com temperatura definida como 0.1:</p>
+<blockquote>
+<p>"Generate code for a Python Web API"</p>
+</blockquote>
+<pre><code>```python
+#import necessary libraries
+import flask
+from flask import request, jsonify
+
+#create an instance of the Flask class
+app = flask.Flask(__name__)
+
+#create an endpoint for the API
+@app.route('/api/v1/endpoint', methods=['GET'])
+def api_endpoint():
+    #get the request data
+    data = request.get_json()
+
+    #process the data
+    result = process_data(data)
+
+    #return the result
+    return jsonify(result)
+
+#function to process the data
+def process_data(data):
+    #process the data
+    result = {'result': 'success'}
+
+    #return the result
+    return result
+
+#run the Flask app
+if __name__ == '__main__':
+    app.run()
+
+```
+</code></pre>
+<p>Execute o prompt novamente e você verá este resultado:</p>
+<pre><code>```python
+#import necessary libraries
+import flask
+from flask import request, jsonify
+
+#create a Flask app
+app = flask.Flask(__name__)
+
+#create a route for the API
+@app.route('/api', methods=['GET'])
+def api_call():
+    #get the data from the request
+    data = request.get_json()
+
+    #process the data
+    result = process_data(data)
+
+    #return the result
+    return jsonify(result)
+
+#define the process_data function
+def process_data(data):
+    #do something with the data
+    result = data + 1
+
+    #return the result
+    return result
+
+#run the app
+if __name__ == '__main__':
+    app.run()
+
+```
+</code></pre>
+<p>Há apenas uma pequena diferença entre essas duas saídas. Vamos fazer o contrário desta vez, vamos definir a temperatura para 0.9:</p>
+<pre><code>```python
+# Import necessary libraries
+import flask
+from flask import request, jsonify
+
+# Create a Flask app
+app = flask.Flask(__name__)
+
+# Create a route for the API
+@app.route('/api', methods=['GET'])
+def api_call():
+    # Get the data from the request
+    data = request.args
+
+    # Process the data
+    result = process_data(data)
+
+    # Return the result
+    return jsonify(result)
+
+# Function to process the data
+def process_data(data):
+    # Do something with the data
+    result = data + 1
+
+    # Return the result
+    return result
+
+# Run the app
+if __name__ == '__main__':
+    app.run()
+
+```
+</code></pre>
+<p>e a segunda tentativa em 0,9 como valor de temperatura:</p>
+<pre><code>```python
+import flask
+from flask import request, jsonify
+
+# create the Flask app
+app = flask.Flask(__name__)
+app.config['DEBUG'] = True
+
+# create some test data
+books = [
+    {'id': 0, 'title': 'A Fire Upon The Deep', 'author': 'Vernor Vinge', 'first_sentence': 'The coldsleep itself was dreamless.', 'year_published': '1992'},
+    {'id': 1, 'title': 'The Ones Who Walk Away From Omelas', 'author': 'Ursula K. Le Guin', 'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.', 'published': '1973'},
+    {'id': 2, 'title': 'Dhalgren', 'author': 'Samuel R. Delany', 'first_sentence': 'to wound the autumnal city.', 'published': '1975'}
+]
+
+# create an endpoint
+@app.route('/', methods=['GET'])
+def home():
+    return '''&lt;h1&gt;Welcome to our book API!&lt;/h1&gt;'''
+
+@app.route('/api/v1/resources/books
+
+```
+</code></pre>
+<p>Como você pode ver, os resultados não poderiam ser mais variados.</p>
+<blockquote>
+<p>Observe que, existem mais parâmetros que você pode alterar para variar a saída, como top-k, top-p, penalidade de repetição, penalidade de comprimento e penalidade de diversidade, mas estes estão fora do escopo deste currículo.</p>
+</blockquote>
+<h2 id="boas-praticas">Boas práticas</h2>
+<p>Há muitas práticas que você pode aplicar para tentar obter o que deseja. Você encontrará seu próprio estilo à medida que usar mais e mais prompts.</p>
+<p>Além das técnicas que cobrimos, existem algumas boas práticas a serem consideradas ao solicitar um LLM.</p>
+<p>Aqui estão algumas boas práticas a serem consideradas:</p>
+<ul>
+<li><strong>Especifique o contexto</strong>: O contexto é importante. Quanto mais você puder especificar, como domínio, tópico, etc., será muito melhor.</li>
+<li><strong>Limite a saída</strong>: Se você deseja um número específico de itens ou um comprimento específico, especifique.</li>
+<li><strong>Especifique tanto o que, quanto e como</strong>: Lembre-se de mencionar tanto o que você deseja quanto como deseja. Por exemplo: <em>Crie uma API da Web em Python com rotas para produtos e clientes, dividindo-a em 3 arquivos</em>.</li>
+<li><strong>Use modelos</strong>: Muitas vezes, você desejará enriquecer suas solicitações com dados da sua empresa. Use modelos para fazer isso. Os modelos podem ter variáveis que você substitui por dados reais.</li>
+<li><strong>Escreva corretamente</strong>: Os LLMs podem fornecer uma resposta correta. Mas, se você escrever corretamente, obterá uma resposta melhor.</li>
+</ul>
+<h2 id="tarefa">Tarefa</h2>
+<p>Aqui está o código em Python que mostra como criar uma API simples usando o Flask:</p>
+<pre><code>```python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    name = request.args.get('name', 'World')
+    return f'Hello, {name}!'
+
+if __name__ == '__main__':
+    app.run()
+```
+</code></pre>
+<p>Use um assistente de IA como o GitHub Copilot ou o ChatGPT e aplique a técnica de "auto-aperfeiçoamento" para melhorar o código.</p>
+<h2 id="solucao">Solução</h2>
+<p>Por favor, tente resolver a tarefa adicionando prompts adequados ao código.</p>
+<blockquote>
+<p>[!DICA]
+Formule um prompt para pedir que ele melhor. É uma boa ideia limitar quantas melhorias devem ter. Você também pode pedir para melhorar de uma certa maneira, por exemplo, arquitetura, desempenho, segurança, etc.</p>
+</blockquote>
+<p><a href="../../python/aoai-solution.py?WT.mc_id=academic-105485-koreyst">Solution</a></p>
+<h2 id="verificacao-de-conhecimento">Verificação de conhecimento</h2>
+<p>Por que eu usaria a técnica de prompt de corrente de pensamento? Mostre-me 1 resposta correta e 2 respostas incorretas.</p>
+<p>Para ensinar o LLM a resolver um problema.
+B, Para ensinar o LLM a encontrar erros no código.
+C, Para instruir o LLM a propor diferentes soluções.</p>
+<p>Resposta correta: A, 1, porque o prompt de corrente de pensamento trata de mostrar ao LLM como resolver um problema, fornecendo uma série de passos e problemas semelhantes e como foram resolvidos.</p>
+<h2 id="desafio">🚀 Desafio</h2>
+<p>Você acabou de usar a técnica de auto-aperfeiçoamento na atribuição. Pegue qualquer programa que você criou e considere quais melhorias você gostaria de aplicar a ele. Agora, use a técnica de auto-aperfeiçoamento para aplicar as alterações propostas. O que você achou do resultado, melhor ou pior?</p>
+<h2 id="otimo-trabalho-continue-seu-aprendizado">Ótimo trabalho! Continue seu aprendizado</h2>
+<p>Após concluir esta lição, confira nossa <a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">coleção de aprendizado de IA generativa</a> para continuar a aprimorar seus conhecimentos sobre IA generativa!</p>
+<p>Agora, vamos para a Lição 6, onde aplicaremos nosso conhecimento de Engenharia de Prompt, <a href="../../../06-text-generation-apps/translations/pt-br/?WT.mc_id=academic-105485-koreyst">construindo aplicativos de geração de texto</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>テキスト生成アプリケーションの構築 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u30c6\u30ad\u30b9\u30c8\u751f\u6210\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u306e\u69cb\u7bc9";
+        var mkdocs_page_input_path = "06-text-generation-apps\\translations\\ja-jp\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">テキスト生成アプリケーションの構築</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">テキスト生成アプリケーションの構築</h1>
+<p><a href="https://aka.ms/gen-ai-lesson6-gh?WT.mc_id=academic-105485-koreyst"><img alt="Building Text Generation Applications" src="../../images/06-lesson-banner.png?WT.mc_id=academic-105485-yoterada" /></a></p>
+<blockquote>
+<p><em>(上記の画像をクリックすると、レッスン・ビデオを表示します)</em></p>
+</blockquote>
+<p>これまでのレッスンを通じて、プロンプトの基本的な概念や、「プロンプト・エンジニアリング」と呼ぶテクニックについて学んできました。ChatGPT、Office 365、Microsoft Power Platform 　など、プロンプトで操作可能な多くのツールは、皆様が何かを成し遂げるためのサポートを行います。</p>
+<p>皆様のアプリケーションに、このような機能を追加するためには、プロンプトや Completion といった概念を理解し、使用するライブラリを選択する必要があります。この章では、それらを具体的に学んでいきます。</p>
+<h2 id="_2">はじめに</h2>
+<p>このレッスンでは、下記の内容について説明します。</p>
+<ul>
+<li>OpenAI のライブラリとその基本概念について学習します</li>
+<li>OpenAI を使用して、テキスト生成アプリを構築します</li>
+<li>プロンプト、温度、トークンなどの概念を使用してテキスト生成アプリを構築する方法を理解します</li>
+</ul>
+<h2 id="_3">学習目標</h2>
+<p>このレッスンを修了すると、下記を理解できます：</p>
+<ul>
+<li>テキスト生成アプリケーションとは何かを説明できる</li>
+<li>OpenAI を使用してテキスト生成アプリを構築する</li>
+<li>使用するトークン数を増減させたり、温度を変更し、さまざまな出力が得られるようにアプリを構成する</li>
+</ul>
+<h2 id="_4">テキスト生成アプリについて</h2>
+<p>通常、アプリを作る際、下記のようなインターフェースがあります：</p>
+<ul>
+<li>コマンドベース：コンソール・アプリは典型的な例で、コマンドを入力するとタスクを実行できます。例えば、git はコマンド・ベースのアプリです</li>
+<li>ユーザー・インターフェース（UI）：一部のアプリは、ボタンをクリックしたり、テキストを入力したり、オプションを選択したりするグラフィカル・ユーザーインターフェース（GUI）を持っています。</li>
+</ul>
+<h3 id="ui">コンソールや UI アプリには制限があります</h3>
+<p>コマンドを入力するコマンド・ベースのアプリと比較してください。</p>
+<ul>
+<li><strong>入力可能なコマンド数は有限</strong>：任意のコマンドを入力できるわけではなく、アプリがサポートしているコマンドのみ入力可能です。</li>
+<li><strong>言語特有</strong>：一部のアプリはまれに多言語をサポートしていますが、たとえ追加言語のサポートがされている場合でも、基本的には特定の言語用にアプリは実装されています。</li>
+</ul>
+<h3 id="_5">テキスト生成アプリの利点</h3>
+<p>それでは、テキスト生成アプリはどう違うのでしょうか?</p>
+<p>テキスト生成アプリは、コマンド数や特定の入力言語に制約されず、より柔軟に操作でき、自然言語を使ってアプリと対話できます。さらに、既に大量のテキストや音声データの情報から訓練されたデータ・ソースを利用しているため、従来のアプリがデータベースの内容に限定されるのとは対照的に、利用可能な情報量が大幅に増えます。</p>
+<h3 id="_6">テキスト生成アプリで何が作れるのでしょうか？</h3>
+<p>作れるものはたくさんあります。例えば：</p>
+<ul>
+<li><strong>チャットボット</strong>：所属する会社や、提供する製品について質問に答えられるチャットボットは有用です</li>
+<li><strong>ヘルパー</strong>：LLM は、テキストの要約、テキストから知見の抽出、履歴書作成のように、様々なテキスト生成で利用できます</li>
+<li><strong>コード・アシスタント</strong>：使用する言語モデルによっては、プログラミング・コードの作成を支援するコード・アシスタントも作れます。例えば、GitHub Copilot や ChatGPT のような製品を使って、コード作成の支援もできます。</li>
+</ul>
+<h2 id="_7">どこから始めればよいのでしょうか？</h2>
+<p>まず、LLM と統合する方法を理解する必要があります。これには通常、以下の 2 つのアプローチが含まれます：</p>
+<ul>
+<li>API の使用：プロンプトを含む HTTP (RESTful) リクエストを作成し、生成されたテキストを取得</li>
+<li>ライブラリの使用：上記の API 呼び出しより簡単に利用可能で、API 呼び出しを隠蔽したライブラリを使用</li>
+</ul>
+<h2 id="sdk">ライブラリ/SDK</h2>
+<p>LLM を操作するために、いくつかの有名なライブラリがあります：</p>
+<ul>
+<li><strong>OpenAI</strong> このライブラリを使用すると、モデルに対する接続とプロンプトの送信が簡単になります</li>
+</ul>
+<p>また、より高レベルで動作するライブラリもあります：</p>
+<ul>
+<li><strong>Langchain</strong>：Langchain はよく知られており、Python をサポートしています</li>
+<li><strong>Semantic Kernel</strong>：Semantic Kernel は、C#、Python、Java をサポートする Microsoft 純正のライブラリです</li>
+</ul>
+<h2 id="openai">OpenAI を使用した最初のアプリ</h2>
+<p>以降で、最初のアプリを実装する方法、実装に必要なライブラリ、どの位のコード量が必要かなど、ご確認ください。</p>
+<h3 id="openai_1">OpenAI のインストール</h3>
+<p>OpenAI や Azure OpenAI と対話するためのライブラリはたくさんあります。また、C#、Python、JavaScript、Java など、さまざまなプログラミング言語で利用可能です。今回は、Python 用の <code>OpenAI</code> ライブラリを使用します。そして、ライブラリのインストールには <code>pip</code> を使用します。</p>
+<pre><code class="language-bash">pip install openai
+</code></pre>
+<h3 id="_8">リソースの作成</h3>
+<p>下記の手順に従い操作を行なってください：</p>
+<ul>
+<li>Azure のアカウントを作成します。<a href="https://azure.microsoft.com/free/?WT.mc_id=academic-105485-yoterada">https://azure.microsoft.com/free/</a></li>
+<li>Azure Open AI へのアクセス権限を取得します。<a href="https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai?WT.mc_id=academic-105485-yoterada">https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai</a> からアクセス申請を提出します</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+本記事の執筆時には、Azure Open AI へのアクセスを申請する必要があります。</p>
+</blockquote>
+<ul>
+<li>Python をインストールします。 <a href="https://www.python.org/">https://www.python.org/</a></li>
+<li>Azure OpenAI Service リソースを作成します。<a href="https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal?WT.mc_id=academic-105485-yoterada">リソースの作成方法</a>については、こちらのガイドをご参照ください。</li>
+</ul>
+<h3 id="api">API キーとエンドポイントを取得</h3>
+<p>ここで、<code>OpenAI</code> ライブラリに対してどの API キーを使用するか指定します。API キーを見つけるためには、Azure OpenAI リソースの「Keys and Endpoint」セクションに移動し、「Key 1」の値をコピーしてください。</p>
+<p><img alt="Keys and Endpoint resource blade in Azure Portal" src="https://learn.microsoft.com/azure/ai-services/openai/media/quickstarts/endpoint.png?WT.mc_id=academic-105485-yoterada" /></p>
+<p>キーをコピーしたので、それをライブラリで利用できるように指定します。</p>
+<blockquote>
+<p>[!NOTE]
+API キーはコード中に直接書き込まずに管理すべきです。下記のように環境変数を使用して設定できます。</p>
+<ul>
+<li>環境変数 <code>OPENAI_API_KEY</code> に API キーを設定します<br />
+<code>export OPENAI_API_KEY='sk-...'</code></li>
+</ul>
+</blockquote>
+<h3 id="azure">Azure の設定</h3>
+<p>Azure OpenAI を使用している場合、下記の設定を追加で行います：</p>
+<pre><code class="language-python">openai.api_type = 'azure'
+openai.api_key = os.environ[&quot;OPENAI_API_KEY&quot;]
+openai.api_version = '2023-05-15'
+openai.api_base = os.getenv(&quot;API_BASE&quot;)
+</code></pre>
+<p>上記は、それぞれ下記の設定を行っています：</p>
+<ul>
+<li><code>api_type</code>を<code>azure</code>に設定します。これにより、ライブラリは OpenAI ではなく Azure Open AI に接続します。</li>
+<li><code>api_key</code>は、Azure Portal で取得した API キーを設定します。</li>
+<li><code>api_version</code>は、使用する API のバージョンです。執筆時点での最新バージョンは<code>2023-05-15</code>です。</li>
+<li><code>api_base</code> は API のエンドポイントです。これは、Azure Portal の API キーの下側に記載されています。</li>
+</ul>
+<blockquote>
+<p>[!NOTE] &gt; <code>os.getenv</code> は環境変数を読み取る関数です。<code>OPENAI_API_KEY</code> や <code>API_BASE</code> などの環境変数を読み取るために使用します。これらの環境変数は、ターミナルで設定するか、もしくは <code>dotenv</code> のようなライブラリを使用して設定します。</p>
+<p>[!NOTE]
+訳者追記<br />
+訳者が確認した所、記載している OpenAI の Python ライブラリが古い 0.28.1 で記載されています。
+現在はより新しい、OpenAI Python 1.x がリリースされています。
+新しい 1.x のライブラリへバージョン・アップするため際には、こちらの <a href="https://learn.microsoft.com/azure/ai-services/openai/how-to/migration?WT.mc_id=academic-105485-yoterada">Migrating to the OpenAI Python API library 1.x</a> をご参照ください</p>
+</blockquote>
+<h2 id="_9">テキストの生成</h2>
+<p><code>Completion</code> クラスを使用してテキストを生成する方法をご覧ください。下記にサンプルを記述しています：</p>
+<pre><code class="language-python">prompt = &quot;次の文を完成させてください: むかしむかしある所に&quot;
+
+completion = openai.Completion.create(model=&quot;davinci-002&quot;, prompt=prompt)
+print(completion.choices[0].text)
+</code></pre>
+<p>上記のコードでは、Completion オブジェクトを作成し、使用するモデルに対してプロンプトを渡しています。その後、生成されたテキストを出力しています。</p>
+<h3 id="chat-completions">Chat completions</h3>
+<p>上記では、<code>Completion</code> クラスを使用してテキストを生成する方法を見てきました。
+しかし、チャット・ボット用には、より適した <code>ChatCompletion</code> という別のクラスが用意されています。下記にサンプルを記述しています。</p>
+<pre><code class="language-python">import openai
+
+openai.api_key = &quot;sk-...&quot;
+
+completion = openai.ChatCompletion.create(model=&quot;gpt-3.5-turbo&quot;, messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;こんにちは世界 (Hello world)&quot;}])
+print(completion.choices[0].message.content)
+</code></pre>
+<p>この機能の詳細は、次の章で詳しく説明します。</p>
+<h2 id="-">エクササイズ - 初めてのテキスト生成アプリ</h2>
+<p>OpenAI のセットアップと設定方法を学んだので、次に初めてのテキスト生成アプリを実装してみましょう。アプリの実装は、下記の手順で行ないます：</p>
+<ol>
+<li>仮想環境を作成し、OpenAI をインストールします：</li>
+</ol>
+<pre><code class="language-bash">python -m venv venv
+source venv/bin/activate
+pip install openai
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+Windows 環境で行う場合は、<code>source venv/bin/activate</code> の代わりに<code>venv\Scripts\activate</code> を入力してください。</p>
+<p>[!NOTE]
+Azure OpenAI キーは、<a href="https://portal.azure.com/?WT.mc_id=academic-105485-yoterada">https://portal.azure.com/</a> から <code>OpenAI</code> を検索し、<code>OpenAI Resource</code> を選択してください。その後 <code>Keys and Endpoint</code> を選択し、<code>Key 1</code> の値をコピーてください。</p>
+</blockquote>
+<ol>
+<li><em>app.py</em> ファイルを作成し、下記のコードを記述してください：</li>
+</ol>
+<pre><code class="language-python">import openai
+
+openai.api_key = &quot;&lt;OpenAI のキーまたは Azure OpenAI のキーを入力&gt;&quot;
+
+openai.api_type = 'azure'
+openai.api_version = '2023-05-15'
+openai.api_base = &quot;&lt;Azure Portal でキーと同一の場所に記載されている接続用エンドポイント&gt;&quot;
+deployment_name = &quot;&lt;デプロイ名&gt;&quot;
+
+# ここに Completion コードを追加
+prompt = &quot;次の文を完成させてください: むかしむかし、あるところに&quot;
+
+# Completion を作成
+completion = openai.Completion.create(engine= deployment_name, model=&quot;davinci-002&quot;, prompt=prompt)
+
+# レスポンスを出力
+print(completion.choices[0].text)
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+Azure OpenAI を使用している場合、<code>api_type</code> として <code>azure</code> を設定し、<code>api_key</code> に Azure OpenAI キーを設定する必要があります。</p>
+</blockquote>
+<p>下記のような結果が表示されるはずです：</p>
+<pre><code class="language-output">おじいさんとおばあさんが住んでいました。
+
+(※ 上記の回答内容は、訳者が日本語環境での実行にあわせて変更しました。英語で実行した場合と異なる結果が得られます。)
+</code></pre>
+<h2 id="_10">さまざまな種類のプロンプト、さまざまな用途</h2>
+<p>これまで、プロンプトを使用してテキストを生成する方法を見てきました。色々な種類のテキストを生成するため、今動いているアプリケーションに対して修正・変更を加えテキスト生成機能を追加できます。</p>
+<p>プロンプトは様々なタスクに使用できます。例えば：</p>
+<ul>
+<li><strong>様々なテキストを生成</strong>：詩やクイズの質問などを生成できます</li>
+<li><strong>情報の検索</strong>：「Web 開発における CORS の意味は何ですか？」のような情報を検索するためにプロンプトを使用できます</li>
+<li><strong>コード生成</strong>：電子メール・アドレスの検証に使用する正規表現を作成したり、Web アプリケーションのようなプログラム全体のコードを生成するためにプロンプトを使用できます。</li>
+</ul>
+<h2 id="_11">より実用的な使用例：料理レシピの作成</h2>
+<p>家に食材があって、何か料理を作りたい場合を想像してください。そのためにレシピが必要です。適切なレシピを見つける方法の一つに検索エンジンがありますが、LLM（大規模言語モデル）もレシピを出力できます。</p>
+<p>たとえば、下記のようなプロンプトを記述できます：</p>
+<blockquote>
+<p>「鶏肉、じゃがいも、にんじん」を使った料理のレシピを 5 つ教えてください。レシピごとに使用する全ての食材をリストしてください。</p>
+</blockquote>
+<p>上記のプロンプトを使用すると、以下のようなレスポンスが得られるかもしれません：</p>
+<pre><code class="language-output">1. ローストチキンと野菜：
+材料：
+- チキンのもも肉 4 枚
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- オリーブオイル大さじ 2 杯
+- にんにく 2 片、みじん切り
+- ドライタイム小さじ 1 杯
+- ドライオレガノ小さじ 1
+- 塩と胡椒、適量
+
+2. チキンとポテトのシチュー：
+材料：
+- オリーブオイル大さじ 2 杯
+- 玉ねぎ 1 個、みじん切り
+- にんにく 2 片、みじん切り
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 1 カップ
+- 塩と胡椒、適量
+
+3. チキンとポテトのベイク：
+材料：
+- オリーブオイル大さじ 2
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- 玉ねぎ 1 個、みじん切り
+- にんにく 2 片、みじん切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 1 カップ
+- 塩と胡椒、適量
+
+4. チキンとポテトのスープ：
+材料：
+- オリーブオイル大さじ2
+- 玉ねぎ 1 個、みじん切り
+- にんにく 2 片、みじん切り
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 4 カップ
+- 塩と胡椒、適量
+
+5. チキンとポテトのハッシュ：
+材料：
+- オリーブオイル大さじ 2
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- 玉ねぎ 1 個、みじん切り
+- にんにく 2 片、みじん切り
+- ドライオレガノ小さじ1
+</code></pre>
+<p>この結果は素晴らしいですね、食材からどのような料理を作れるかわかりました。ここで役に立つ、改善点２つをご覧ください：</p>
+<ul>
+<li>好きでない食材やアレルギーのある食材を除外する</li>
+<li>家に全ての食材がない場合に備え、買い物リストを作成する</li>
+</ul>
+<p>上記に対して、追加のプロンプトを作成しましょう：</p>
+<blockquote>
+<p>"ニンニク・アレルギーがあるので、ニンニクを含むレシピを除外し、別のものに置き換えてください。また、家にはすでに鶏肉、じゃがいも、にんじんがあります、それ以外でレシピに必要な買い物リストを作成してください。"</p>
+</blockquote>
+<p>これで、下記のような新しい結果が得られます</p>
+<pre><code class="language-output">1. ローストチキンと野菜：
+材料：
+- チキンのもも肉 4 枚
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- オリーブオイル大さじ 2
+- ドライタイム小さじ 1
+- ドライオレガノ小さじ 1
+- 塩と胡椒、適量
+
+2. チキンとポテトのシチュー：
+材料：
+- オリーブオイル大さじ 2
+- 玉ねぎ 1 個、みじん切り
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 1 カップ
+- 塩と胡椒、適量
+
+3. チキンとポテトのベイク：
+材料：
+- オリーブオイル大さじ 2
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- 玉ねぎ 1 個、みじん切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 1 カップ
+- 塩と胡椒、適量
+
+4. チキンとポテトのスープ：
+材料：
+- オリーブオイル大さじ 2
+- 玉ねぎ 1 個、みじん切り
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- ドライオレガノ小さじ 1
+- ドライタイム小さじ 1
+- チキンブロス 4 カップ
+- 塩と胡椒、適量
+
+5. チキンとポテトのハッシュ：
+材料：
+- オリーブオイル大さじ 2
+- チキンの胸肉 2 枚、角切り
+- じゃがいも 2 個、角切り
+- にんじん 2 本、角切り
+- 玉ねぎ 1 個、みじん切り
+- ドライオレガノ小さじ 1
+
+買い物リスト：
+- オリーブオイル
+- 玉ねぎ
+- タイム
+- オレガノ
+- 塩
+- 胡椒
+</code></pre>
+<p>以上が新しい、5 つのレシピで、ニンニクは記載されておらず、家にすでにあるものを考慮し、買い物リストも記載されています。</p>
+<h2 id="-_1">演習 - レシピ作成を構築する</h2>
+<p>シナリオを一通り試したところで、そのシナリオに合わせたコードを実装してみましょう。下記の手順に従い実装してください。</p>
+<ol>
+<li>既存の <em>app.py</em> ファイルを利用します。</li>
+<li><code>prompt</code>という変数を探し、下記のようにコードを修正してください。</li>
+</ol>
+<pre><code class="language-python">prompt = f&quot;鶏肉、じゃがいも、にんじんを使った料理のレシピを 5 つ教えてください。レシピごとに、使用するすべての食材をリストしてください&quot;
+</code></pre>
+<p>コードを実行すると、下記のような結果が表示されます。</p>
+<pre><code class="language-output">-鶏肉とじゃがいも、人参のシチュー: サラダ油大さじ3, 玉ねぎ1個（みじん切り）, ニンニク2片（みじん切り）, 人参1本（皮をむいてみじん切り）, じゃがいも1個（皮をむいてみじん切り）, ローリエ1枚, タイム1枝, 塩小さじ1/2, 黒コショウ小さじ1/4, 鶏ガラスープ1 1/2カップ, ドライホワイトワイン1/2カップ, パセリ（みじん切り）大さじ2, 無塩バター大さじ2, 骨なし鶏もも肉1 1/2ポンド（1インチ角に切る）
+
+-オーブン焼き鶏肉とじゃがいも、人参: エキストラバージンオリーブオイル大さじ3, ディジョンマスタード大さじ1, ローズマリー（みじん切り）大さじ1, タイム（みじん切り）大さじ1, ニンニク4片（みじん切り）, 小さめの赤じゃがいも1 1/2ポンド（4等分に切る）, 人参1 1/2ポンド（縦に4等分に切る）, 塩小さじ1/2, 黒コショウ小さじ1/4, 丸鶏1羽（4ポンド）
+
+-鶏肉、じゃがいも、人参のキャセロール: クッキングスプレー, 大きめの玉ねぎ1個（みじん切り）, ニンニク2片（みじん切り）, 人参1本（皮をむいてみじん切り）, じゃがいも1個（皮をむいてみじん切り）, タイム（乾燥）小さじ1/2, 塩小さじ1/4, 黒コショウ小さじ1/4, 脂肪無添加、低ナトリウムの鶏ガラスープ2カップ, 冷凍グリーンピース1カップ, 中力粉1/4カップ, 低脂肪牛乳1カップ, パルメザンチーズ（おろしたもの）1/4カップ
+
+-ワンポットチキンとじゃがいもディナー: オリーブオイル大さじ2, 骨なし鶏もも肉1ポンド（1インチ角に切る）, 大きめの玉ねぎ1個（みじん切り）, ニンニク3片（みじん切り）, 人参1本（皮をむいてみじん切り）, じゃがいも1個（皮をむいてみじん切り）, ローリエ1枚, タイム1枝, 塩小さじ1/2, 黒コショウ小さじ1/4, 鶏ガラスープ2カップ, ドライホワイトワイン1/2カップ
+
+-鶏肉、じゃがいも、人参のカレー: サラダ油大さじ1, 大きめの玉ねぎ1個（みじん切り）, ニンニク2片（みじん切り）, 人参1本（皮をむいてみじん切り）, じゃがいも1個（皮をむいてみじん切り）, コリアンダー（パウダー）小さじ1, クミン（パウダー）小さじ1, ターメリック（パウダー）小さじ1/2, ジンジャー（パウダー）小さじ1/2, ケイエンペッパー小さじ1/4, 鶏ガラスープ2カップ, ドライホワイトワイン1/2カップ, ヒヨコ豆1缶（15オンス、水切り）, レーズン1/2カップ, シラントロ（みじん切り）1/2カップ
+</code></pre>
+<blockquote>
+<p>注意: LLM 　は非決定的(非確実)なので、プログラムを実行するたびに上記とは異なる結果が得られるかもしれません。</p>
+</blockquote>
+<p>さてそれでは、どうすれば改善できるのかを見てみましょう。改善するために、コードに柔軟性を持たせ、材料やレシピの数を変更できるようにします。</p>
+<ol>
+<li>以下のようにコードを修正してください。</li>
+</ol>
+<pre><code class="language-python">no_recipes = input(&quot;レシピの数を入力してください（例：5）: &quot;)
+
+ingredients = input(&quot;食材のリストを入力してください（例：鶏肉、じゃがいも、人参）: &quot;)
+
+# レシピの数と材料をプロンプトに挿入
+prompt = f&quot;{ingredients} を使った料理のレシピを {no_recipes} つ教えてください。レシピごとに、使用するすべての食材をリストしてください&quot;
+</code></pre>
+<p>このコードを実行すると、下記のような結果が得られます。</p>
+<pre><code class="language-output">レシピの数を入力してください（例：5）: 3
+材料のリストを入力してください（例：鶏肉、じゃがいも、人参）: ミルク、イチゴ
+
+-イチゴのミルクシェイク: ミルク、イチゴ、砂糖、バニラエキス、氷
+-イチゴのショートケーキ: ミルク、小麦粉、ベーキングパウダー、砂糖、塩、無塩バター、イチゴ、ホイップクリーム
+-イチゴミルク: ミルク、イチゴ、砂糖、バニラエキス
+</code></pre>
+<h3 id="_12">フィルターと買い物リストを追加して改善する</h3>
+<p>上記で、入力に基づいてレシピを生成し、その数や使用する食材を柔軟に変更できるアプリが完成しました。</p>
+<p>さらに改善するために、下記の機能を追加したいと思います。</p>
+<ul>
+<li><strong>材料のフィルタリング</strong>。嫌いな食材やアレルギーのある食材をフィルタリングできるようにしたいと考えています。これを実現するために、既存のプロンプトを編集し、下記のようにフィルター条件をプロンプトの最後に追加してください。</li>
+</ul>
+<pre><code class="language-python">filter = input(&quot;フィルター（例：ベジタリアン、ビーガン、グルテンフリー）: &quot;)
+
+prompt = f&quot;{ingredients} を使った料理のレシピを {no_recipes} つ教えてください。レシピごとに、使用するすべての食材をリストしてください。ただし、{filter}は除外してください。&quot;
+</code></pre>
+<p>上記では、プロンプトの最後に <code>{filter}</code> を追加し、利用者からフィルターの値も取得しています。</p>
+<p>プログラムを実行すると、下記のような入出力結果が得られます。</p>
+<pre><code class="language-output">レシピの数を入力してください（例：5）: 3
+材料のリストを入力してください（例：鶏肉、じゃがいも、人参）: 玉ねぎ、ミルク
+フィルター（例：ベジタリアン、ビーガン、グルテンフリー）: ミルクなし
+
+1. フレンチオニオンスープ
+材料:
+-大きな玉ねぎ1個、スライス
+-ビーフブロス3カップ
+-ミルク1カップ
+-フレンチブレッド6枚
+-パルメザンチーズ、おろしたもの1/4カップ
+-バター大さじ1
+-乾燥タイム小さじ1
+-塩小さじ1/4
+-黒コショウ小さじ1/4
+
+作り方:
+1. 大きな鍋で、バターで玉ねぎをゴールデンブラウンになるまで炒めます。
+2. ビーフブロス、ミルク、タイム、塩、コショウを加えて沸騰させます。
+3. 火を弱めて10分間煮ます。
+4. スープボウルにフレンチブレッドのスライスを置きます。
+5. スープをパンの上にかけます。
+6. パルメザンチーズを振りかけます。
+
+2. 玉ねぎとじゃがいものスープ
+材料:
+-大きな玉ねぎ1個、みじん切り
+-じゃがいも2カップ、さいの目に切る
+-野菜ブロス3カップ
+-ミルク1カップ
+-黒コショウ小さじ1/4
+
+作り方:
+1. 大きな鍋で、バターで玉ねぎをゴールデンブラウンになるまで炒めます。
+2. じゃがいも、野菜ブロス、ミルク、コショウを加えて沸騰させます。
+3. 火を弱めて10分間煮ます。
+4. 熱々で提供します。
+
+3. クリーミーオニオンスープ
+材料:
+-大きな玉ねぎ1個、みじん切り
+-野菜ブロス3カップ
+-ミルク1カップ
+-黒コショウ小さじ1/4
+-中力粉1/4カップ
+-パルメザンチーズ、おろしたもの1/2カップ
+
+作り方:
+1. 大きな鍋で、バターで玉ねぎをゴールデンブラウンになるまで炒めます。
+2. 野菜ブロス、ミルク、コショウを加えて沸騰させます。
+3. 火を弱めて10分間煮ます。
+4. 小さなボウルで、中力粉とパルメザンチーズを滑らかになるまで混ぜます。
+5. スープに加えてさらに5分間煮ます、またはスープがとろみを帯びるまで。
+</code></pre>
+<p>ご覧頂いたの通り、ミルクを含むレシピは全てフィルタリングされています。しかし、もし乳製品を摂取すると体調が悪くなる方であれば、チーズを含むレシピもフィルタリングしたいとお考えになるでしょう。その場合は、明確化にフィルタリングで指示する必要があります。</p>
+<ul>
+<li><strong>買い物リストを作成</strong> 次に、家にすでにあるものを考慮して、買い物リストを作成したいと考えています。</li>
+</ul>
+<p>この機能は、一つのプロンプト内に全てを記述できますし、二つのプロンプトに分けて記述できます。ここでは後者の二つに分けるアプローチを採用します。ここでは、追加のプロンプトを提案していますが、それを機能させるためには、前のプロンプトの結果を後ろのプロンプトのコンテキストに追加する必要があります。</p>
+<p>最初のプロンプトの結果を出力するコードを見つけ、下記のコードを追加します：</p>
+<pre><code class="language-python">old_prompt_result = completion.choices[0].text
+prompt = &quot;生成されたレシピの買い物リストを作成してください。ただし、すでに持っている食材は含めないでください。&quot;
+
+new_prompt = f&quot;{old_prompt_result} {prompt}&quot;
+completion = openai.Completion.create(engine=deployment_name, prompt=new_prompt, max_tokens=1200)
+
+# レスポンスを出力
+print(&quot;買い物リスト:&quot;)
+print(completion.choices[0].text)
+</code></pre>
+<p>以下の点にご注意ください：</p>
+<ol>
+<li>最初のプロンプトの結果を新しいプロンプトに追加して、新しいプロンプトを作成します：</li>
+</ol>
+<pre><code class="language-python">new_prompt = f&quot;{old_prompt_result} {prompt}&quot;
+</code></pre>
+<ol>
+<li>新しいリクエストを作成しますが、最初のプロンプトで要求したトークン数も考慮に入れて、今回は <code>max_tokens</code> を 1200 とします。</li>
+</ol>
+<pre><code class="language-python">completion = openai.Completion.create(engine=deployment_name, prompt=new_prompt, max_tokens=1200)
+</code></pre>
+<p>このコードを実行すると、下記のような結果が得られます：</p>
+<pre><code class="language-output">レシピの数（例えば、5）: 2
+食材のリスト（例えば、チキン、ポテト、キャロット）: リンゴ、小麦粉
+フィルター（例えば、ベジタリアン、ビーガン、グルテンフリー）: 砂糖
+
+-リンゴと小麦粉のパンケーキ: 小麦粉1カップ、ベーキングパウダー1/2小さじ、ベーキングソーダ1/2小さじ、塩1/4小さじ、砂糖1大さじ、卵1個、バターミルクまたはサワーミルク1カップ、溶かしたバター1/4カップ、皮を剥いてすりおろしたグラニースミスリンゴ1個
+-リンゴのフリッター: 小麦粉1-1/2カップ、ベーキングパウダー1小さじ、塩1/4小さじ、ベーキングソーダ1/4小さじ、ナツメグ1/4小さじ、シナモン1/4小さじ、オールスパイス1/4小さじ、砂糖1/4カップ、植物性ショートニング1/4カップ、ミルク1/4カップ、卵1個、皮を剥いて細かく刻んだリンゴ2カップ
+
+買い物リスト:
+-小麦粉、ベーキングパウダー、ベーキングソーダ、塩、砂糖、卵、バターミルク、バター、リンゴ、ナツメグ、シナモン、オールスパイス
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+訳者追記<br />
+上記の買い物リストの結果は、自宅にある食材（リンゴ、小麦粉）も含まれています。これらを除外するには、プロンプトを修正する必要があります。これは追加課題として、ご自身で実装してみてください。</p>
+</blockquote>
+<h2 id="_13">セットアップを改善しましょう</h2>
+<p>現状で、動作するコードができていますが、さらに改善するためにはいくつかの調整が必要です。以下に、改善すべき点をいくつか挙げてみます。</p>
+<ul>
+<li>
+<p><strong>API キーの機密情報をコードから分離する</strong>　機密情報はコードに含めるべきではなく、安全な場所に保存すべきです。機密情報をコードから分離するために、環境変数や <code>python-dotenv</code> のようなライブラリを使ってファイルから読み込めます。実装は下記のようになります：</p>
+</li>
+<li>
+<p>下記の内容を含む <code>.env</code> ファイルを作成します：</p>
+</li>
+</ul>
+<pre><code class="language-bash">OPENAI_API_KEY=sk-...
+</code></pre>
+<blockquote>
+<p>ご注意：Azure を使用する場合は、下記の環境変数を設定する必要があります：</p>
+</blockquote>
+<pre><code class="language-bash">OPENAI_API_TYPE=azure
+OPENAI_API_VERSION=2023-05-15
+OPENAI_API_BASE=&lt;replace&gt;
+</code></pre>
+<p>コード上では、下記のように記述し環境変数から読み込めます：</p>
+<pre><code class="language-python">from dotenv import load_dotenv
+
+load_dotenv()
+
+openai.api_key = os.environ[&quot;OPENAI_API_KEY&quot;]
+</code></pre>
+<ul>
+<li><strong>トークンの長さ</strong> 生成するテキストに必要なトークン数を考慮してください。トークンは増えれば増えるほど費用がかかるため、可能な限りトークン数を節約するようにしましょう。例えば、プロンプトをどのように表現すればトークンを少なくできるかご検討ください。</li>
+</ul>
+<p>扱うトークン数を変更するには、<code>max_tokens</code> パラメータを使用します。例えば、100 トークンを使用したい場合は、以下のようにします：</p>
+<pre><code class="language-python">completion = openai.Completion.create(model=&quot;davinci-002&quot;, prompt=prompt, max_tokens=100)
+</code></pre>
+<ul>
+<li><strong>温度 (Temperature)</strong> これまで触れていなかった温度ですが、プログラムの実行結果に大きな影響を与えます。温度が高いほど（値が 1 に近いほど）、出力はランダムになります。逆に、温度値が低いほど(値が 0 に近いほど)、出力結果は予測可能になります。ご自身のアプリで出力にバリエーションが必要かどうかを考えてください。</li>
+</ul>
+<p>温度を変更するには、<code>temperature</code> パラメータを使用します。例えば、温度を 0.5 に設定したい場合は、以下のようにします：</p>
+<pre><code class="language-python">completion = openai.Completion.create(model=&quot;davinci-002&quot;, prompt=prompt, temperature=0.5)
+</code></pre>
+<blockquote>
+<p>注意：1.0 に近づくほど、出力のバリエーションが大きくなります。</p>
+</blockquote>
+<h2 id="_14">課題</h2>
+<p>この課題で何を作るかは任意です。</p>
+<p>下記にいくつかの例を挙げます：</p>
+<ul>
+<li>レシピ生成アプリを微調整してさらに改善しましょう。温度の値やプロンプトを変えて、どのような結果が得られるかお試しください。</li>
+<li>「勉強仲間」を作ってみましょう。このアプリは、例えば Python に関する質問に対して答えます。「Python の "特定のトピック" は何ですか？」といったプロンプトを受け付けたり、「"特定のトピック" に関するコードを教えてください」といったプロンプトを受け付けられます。</li>
+<li>「歴史ボット」を作って、歴史を鮮やかに再現してみましょう。ボットに特定の歴史的人物を演じさせ、その人物の生涯やその時代について質問してみましょう。</li>
+</ul>
+<h2 id="_15">解法</h2>
+<h3 id="_16">勉強仲間</h3>
+<p>下記は、あくまでも参考のプロンプトですので、使い方を確認し、お好みに合わせて微調整してください。</p>
+<pre><code class="language-text">- &quot;あなたは Python 言語のエキスパートです
+
+下記の形式で Python の初心者用レッスンを提案してください：
+
+形式：
+    - 概念：
+    - レッスンの簡単な説明：
+    - 解答付きのコード演習&quot;
+</code></pre>
+<h3 id="_17">歴史ボット</h3>
+<p>ここで、使用できるプロンプトをいくつか紹介します。</p>
+<pre><code class="language-text">- &quot;あなたはエイブラハム・リンカーンです。あなたご自身について 3 つの文章を使って教えてください、そしてエイブラハムが使ったであろう文法と言葉を使って答えてください&quot;
+- &quot;あなたはエイブラハム・リンカーンです。エイブラハムが使ったであろう文法と言葉を使って答えてください：
+
+   あなたの最大の功績について、300文字で教えてください&quot;
+</code></pre>
+<h2 id="_18">知識チェック</h2>
+<p>概念「温度」は何を行うのでしょうか？</p>
+<ol>
+<li>出力のランダム性を制御します。</li>
+<li>応答の規模を制御します。</li>
+<li>使用するトークンの数を制御します。</li>
+</ol>
+<h2 id="_19">🚀 チャレンジ</h2>
+<p>課題に取り組む際、温度を 0、0.5、1 に変えて設定してみてください。0 が最も変化が少なく、1 が最も大きくなります。ぜひ覚えておいてください、皆様のアプリにとって最適な値は何ですか?</p>
+<h2 id="_20">お疲れ様でした!　学習を続ける</h2>
+<p>このレッスン修了後、<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-yoterada">生成 AI 学習コレクション</a> をチェックして、Generative AI の知識をレベルアップさせましょう。</p>
+<p>レッスン 7 では、<a href="../../../07-building-chat-applications/translations/ja-jp/?WT.mc_id=academic-105485-yoterada">チャットアプリケーションの構築</a>方法を見ていきます。</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>第三章：负责任地使用生成式人工智能 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c\u4e09\u7ae0\uff1a\u8d1f\u8d23\u4efb\u5730\u4f7f\u7528\u751f\u6210\u5f0f\u4eba\u5de5\u667a\u80fd";
+        var mkdocs_page_input_path = "03-using-generative-ai-responsibly\\translations\\cn\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">第三章：负责任地使用生成式人工智能</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">本章概述</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">负责任的人工智能原则</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">为什么你应该优先考虑负责任的人工智能</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">幻觉</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">有害内容</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">缺乏公平性</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">如何负责任地使用生成式人工智能</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">衡量潜在危害</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">减轻潜在危害</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">运营负责任的生成式人工智能解决方案</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_13">相关工具</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">知识检查</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_15">🚀 知识拓展</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_16">继续学习</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">第三章：负责任地使用生成式人工智能</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">第三章 ： 负责任地使用生成式人工智能</h1>
+<p><a href="https://aka.ms/gen-ai-lesson3-gh?WT.mc_id=academic-105485-koreyst"><img alt="Using Generative AI Responsibly" src="../../images/03-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<p>人们很容易对人工智能尤其是生成式人工智能着迷，但你需要考虑如何负责任地使用它。 你需要考虑如何确保输出是公平的、无害的等等。 本章旨在为您提供上述相关背景信息、需要考虑的事项以及如何采取积极措施来改善人工智能的使用。</p>
+<h2 id="_2">本章概述</h2>
+<p>本章内容包括：</p>
+<ul>
+<li>为什么在构建生成式人工智能应用程序时应优先考虑负责任的人工智能。</li>
+<li>负责任的人工智能的核心原则以及它们与生成式人工智能的关系。</li>
+<li>如何通过策略和工具将这些负责任的人工智能原则付诸实践。</li>
+</ul>
+<h2 id="_3">学习目标</h2>
+<p>学完本章内容后您将了解到：</p>
+<ul>
+<li>构建生成式人工智能应用程序时负责任的人工智能的重要性。</li>
+<li>在构建生成式 AI 应用程序时何时思考和应用 Responsible AI 的核心原则。</li>
+<li>您可以使用哪些工具和策略来将 Responsible AI 的概念付诸实践。</li>
+</ul>
+<h2 id="_4">负责任的人工智能原则</h2>
+<p>生成式人工智能的热度非常高。 这种热度为这个领域带来了许多新的开发人员、关注和资金。 虽然这对于任何想要使用生成式人工智能构建产品和公司的人来说都是非常积极的，但我们负责任地行事也很重要。</p>
+<p>在整个课程中，我们专注于构建“Our startup”和相关人工智能教育产品。 我们将使用负责任的人工智能的原则：公平、包容、可靠性/安全、安全和隐私、透明度和问责制。 根据这些原则，我们将探讨它们与我们在产品中使用生成式人工智能的关系。</p>
+<h2 id="_5">为什么你应该优先考虑负责任的人工智能</h2>
+<p>在构建产品时，采取以人为本的方法并牢记用户的最大利益会带来最大的爱意</p>
+<p>生成式人工智能的独特性在于它能够为用户创建有用的答案、信息、指导和内容。 无需许多手动步骤即可完成此操作，这可以带来非常令人印象深刻的结果。 不幸的是如果没有适当的规划和策略，它也可能会给您的用户、产品和整个社会带来一些有害的结果。</p>
+<p>让我们看看这些潜在有害结果中的一些（但不是全部）：</p>
+<h3 id="_6">幻觉</h3>
+<p>幻觉是一个术语，用于描述 LLMs 产生的内容要么完全无意义，要么根据给出其他错误的信息。</p>
+<p>举个例子，我们为“Our startup”构建了一个功能，允许学生向模型提出历史问题。 一名学生问“泰坦尼克号的唯一幸存者是谁？”</p>
+<p>该模型产生如下响应：</p>
+<p><img alt="提示说“谁是泰坦尼克号的唯一幸存者”" src="../../images/ChatGPT-titanic-survivor-prompt.webp?WT.mc_id=academic-105485-koreyst" /></p>
+<blockquote>
+<p><em>（来源：<a href="https://flyingbisons.com?WT.mc_id=academic-105485-koreyst">飞翔的野牛</a>)</em></p>
+</blockquote>
+<p>给出了一个非常确切的答案。 不幸的是，这是不正确的。 即使极少了解，人们也会发现泰坦尼克号幸存者不止一名。 但对于刚开始研究这个领域的学生来说，这个答案足以有说服力，不会被质疑并被视为事实。 这样做的后果可能会导致人工智能系统不可靠，并对我们初创公司的声誉产生负面影响。</p>
+<p>在任何给定的 LLMs 的每次迭代中，我们都看到了在最大限度地减少幻觉方面的性能改进。 即使有了这样的改进，我们作为应用程序构建者和用户仍然需要意识到这些限制。</p>
+<h3 id="_7">有害内容</h3>
+<p>我们在前面的部分中介绍了 LLMs 会产生不正确或毫无意义的回答。 我们需要注意的另一个风险是模型产生有害内容。</p>
+<p>有害内容可以定义为：</p>
+<ul>
+<li>提供指示或鼓励自残或伤害某些群体。</li>
+<li>仇恨或侮辱性内容。</li>
+<li>指导策划任何类型的攻击或暴力行为。</li>
+<li>提供有关如何查找非法内容或实施非法行为的说明。</li>
+<li>展示露骨的色情内容。</li>
+</ul>
+<p>对于我们的初创公司来说，我们希望确保拥有正确的工具和策略来防止学生看到此类内容。</p>
+<h3 id="_8">缺乏公平性</h3>
+<p>公平的定义是“确保人工智能系统没有偏见和歧视，并公平、平等地对待每个人。” 在生成式人工智能的世界中，我们希望确保模型的输出不会强化边缘群体的排他性世界观。</p>
+<p>这些类型的输出不仅会破坏为用户建立积极的产品体验，还会造成进一步对社会进行危害。 作为应用程序构建者，在使用生成式人工智能构建解决方案时，我们应该始终牢记广泛且多样化的用户群。</p>
+<h2 id="_9">如何负责任地使用生成式人工智能</h2>
+<p>现在我们已经确定了负责任的生成式人工智能的重要性，让我们看看我们可以采取的 4 个步骤来负责任地构建我们的人工智能解决方案：</p>
+<p><img alt="缓解循环" src="../../images/mitigate-cycle.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h3 id="_10">衡量潜在危害</h3>
+<p>在软件测试中，我们测试用户对应用程序的预期操作。 同样，测试用户最有可能使用的一组不同的提示是衡量潜在危害的好方法。</p>
+<p>由于“Our startup”正在开发教育产品，因此最好准备一份与教育相关的提示列表。 这可以涉及某个主题、历史事实和有关学生生活的提示。</p>
+<h3 id="_11">减轻潜在危害</h3>
+<p>现在是时候寻找方法来预防或限制模型及其响应造成的潜在危害了。 我们可以从 4 个不同的层面来看待这个问题：</p>
+<p><img alt="缓解层" src="../../images/mitigation-layers.png?WT.mc_id=academic-105485-koreyst" /></p>
+<ul>
+<li>
+<p><strong>模型</strong>。 为正确的用例选择正确的模型。 当应用于更小、更具体的用例时，更大、更复杂的模型（例如 GPT-4）可能会导致更大的有害内容风险。 使用训练数据进行微调还可以降低有害内容的风险。</p>
+</li>
+<li>
+<p><strong>安全系统</strong>。 安全系统是平台上为模型服务的一组工具和配置，有助于减轻伤害。 Azure OpenAI Service 上的内容过滤系统就是一个例子。 系统还应该检测越狱攻击和不需要的活动，例如来自网络机器人的请求。</p>
+</li>
+<li>
+<p><strong>元提示</strong>。 元提示和基础是我们可以根据某些行为和信息指导或限制模型的方法。 这可以使用系统输入来定义模型的某些限制。 此外，提供与系统范围或领域更相关的输出。</p>
+</li>
+</ul>
+<p>它还可以使用检索增强生成 (RAG) 等技术，让模型仅从选定的可信来源中提取信息。 本课程后面有一章关于<a href="../../../08-building-search-applications/translations/cn/?WT.mc_id=academic-105485-koreyst">构建搜索应用程序</a>的内容</p>
+<ul>
+<li><strong>用户体验</strong>。 最后一层是用户通过应用程序界面以某种方式直接与模型交互的地方。 通过这种方式，我们可以设计 UI/UX 来限制用户可以发送到模型的输入类型以及向用户显示的文本或图像。 在部署人工智能应用程序时，我们还必须透明地了解我们的生成式人工智能应用程序可以做什么和不能做什么。</li>
+</ul>
+<p>我们有一章内容致力于<a href="../../../12-designing-ux-for-ai-applications/translations/cn/?WT.mc_id=academic-105485-koreyst">为人工智能应用程序设计用户体验</a></p>
+<ul>
+<li><strong>评估模型</strong>。 与 LLMs 合作可能具有挑战性，因为我们并不总是能够控制模型训练的数据。 无论如何，我们应该始终评估模型的性能和输出。 衡量模型的准确性、相似性、基础性和输出的相关性仍然很重要。 这有助于为应用相关人员和用户提供透明度和信任。</li>
+</ul>
+<h3 id="_12">运营负责任的生成式人工智能解决方案</h3>
+<p>围绕人工智能应用程序构建操作实践是最后阶段。 这包括与“Our startup”的其他部门（例如法律和安全部门）合作，以确保我们遵守所有监管政策。 在发布之前，我们还希望围绕交付、处理事件和回滚制定计划，以防止扩大对用户造成的任何伤害。</p>
+<h2 id="_13">相关工具</h2>
+<p>虽然开发负责任 AI 解决方案的工作量可能看起来很多，但这是值得付出的。 随着生成式人工智能领域的发展，更多帮助开发人员有效地将责任整合到工作流程中的工具将会更成熟。 如，<a href="https://learn.microsoft.com/azure/ai-services/content-safety/overview?WT.mc_id=academic-105485-koreyst">Azure AI 内容安全</a> 可以通过 API 请求帮助检测有害内容和图像。</p>
+<h2 id="_14">知识检查</h2>
+<p>为了确保负责任地使用人工智能，您需要注意哪些事项？</p>
+<ol>
+<li>答案正确。</li>
+<li>有害使用，即人工智能不用于犯罪目的。</li>
+<li>确保人工智能不存在偏见和歧视。</li>
+</ol>
+<p>答：2 和 3 是正确的。 负责任的人工智能可以帮助您考虑如何减轻有害影响和偏见等。</p>
+<h2 id="_15">🚀 知识拓展</h2>
+<p>阅读 <a href="https://learn.microsoft.com/azure/ai-services/content-safety/overview?WT.mc_id=academic-105485-koreyst">Azure AI 内容安全</a> 并了解您可以采用什么方法。</p>
+<h2 id="_16">继续学习</h2>
+<p>想要了解更多有关如何负责任地使用生成式 AI 进行构建的信息？ 转至<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">进阶学习的页面</a> 查找有关本章的其他重要资源。</p>
+<p>前往第四章，我们将了解 <a href="../../../04-prompt-engineering-fundamentals/translations/cn/?WT.mc_id=academic-105485-koreyst">提示工程基础</a>！</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../02-exploring-and-comparing-different-llms/translations/cn/" class="btn btn-neutral float-left" title="第二章：探索和比较不同的 LLMs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../04-prompt-engineering-fundamentals/translations/cn/" class="btn btn-neutral float-right" title="第四章：提示工程基础">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../02-exploring-and-comparing-different-llms/translations/cn/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../04-prompt-engineering-fundamentals/translations/cn/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

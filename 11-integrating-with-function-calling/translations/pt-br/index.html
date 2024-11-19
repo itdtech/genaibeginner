@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Integrando com chamadas de função - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Integrando com chamadas de fun\u00e7\u00e3o";
+        var mkdocs_page_input_path = "11-integrating-with-function-calling\\translations\\pt-br\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Integrando com chamadas de função</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="integrando-com-chamadas-de-funcao">Integrando com chamadas de função</h1>
+<p><a href="https://aka.ms/gen-ai-lesson11-gh?WT.mc_id=academic-105485-koreyst"><img alt="Integrating with function calling" src="../../images/11-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<p>Você aprendeu bastante até agora nas lições anteriores. No entanto, podemos melhorar ainda mais. Algumas coisas que podemos abordar são como podemos obter um formato de resposta mais consistente para facilitar o trabalho com a resposta a jusante. Além disso, podemos querer adicionar dados de outras fontes para enriquecer ainda mais nossa aplicação.</p>
+<p>Os problemas mencionados acima são o que este capítulo pretende abordar.</p>
+<h2 id="introducao">Introdução</h2>
+<p>Esta lição abordará:</p>
+<ul>
+<li>Explicará o que é a chamada de função e seus casos de uso.</li>
+<li>Criar uma chamada de função usando o Azure OpenAI.</li>
+<li>Como integrar uma chamada de função em um aplicativo.</li>
+</ul>
+<h2 id="metas-de-aprendizado">Metas de Aprendizado</h2>
+<p>Após concluir esta lição, você será capaz de:</p>
+<ul>
+<li>Explicar o propósito de usar chamadas de função.</li>
+<li>Configurar a Chamada de Função usando o Serviço Azure Open AI.</li>
+<li>Projetar chamadas de função eficazes para o caso de uso do seu aplicativo.</li>
+</ul>
+<h2 id="cenario-melhorando-nosso-chatbot-com-funcoes">Cenário: melhorando nosso chatbot com funções</h2>
+<p>Para esta lição, queremos criar um recurso para nossa startup de educação que permite aos usuários usar um chatbot para encontrar cursos técnicos. Vamos recomendar cursos que se encaixem no nível de habilidade deles, função atual e tecnologia de interesse.</p>
+<p>Para completar este cenário, usaremos uma combinação de:</p>
+<ul>
+<li><code>Azure Open AI</code> para criar uma experiência de chat para o usuário.</li>
+<li><code>Microsoft Learn Catalog API</code> para ajudar os usuários a encontrar cursos com base na solicitação do usuário.</li>
+<li><code>Chamada de Função</code> para pegar a consulta do usuário e enviá-la a uma função para fazer a solicitação à API.</li>
+</ul>
+<p>Para começar, vamos ver por que queremos usar chamada de função em primeiro lugar:</p>
+<h2 id="por-que-a-chamada-de-funcao">Por que a Chamada de Função</h2>
+<p>Antes da chamada de função, as respostas de um LLM eram desestruturadas e inconsistentes. Os desenvolvedores eram obrigados a escrever código de validação complexo para garantir que pudessem lidar com cada variação de uma resposta. Os usuários não podiam obter respostas como "Qual é a temperatura atual em Estocolmo?". Isso ocorre porque os modelos eram limitados ao tempo em que os dados foram treinados.</p>
+<p>A Chamada de Função é um recurso do Serviço Azure Open AI para superar as seguintes limitações:</p>
+<ul>
+<li><strong>Formato de resposta consistente</strong>. Se pudermos controlar melhor o formato da resposta, podemos integrar mais facilmente a resposta a jusante em outros sistemas.</li>
+<li><strong>Dados externos</strong>. Capacidade de usar dados de outras fontes de um aplicativo em um contexto de chat.</li>
+</ul>
+<h2 id="ilustrando-o-problema-por-meio-de-um-cenario">Ilustrando o problema por meio de um cenário</h2>
+<blockquote>
+<p>Recomendamos que você crie um arquivo <em>Notebook.ipynb</em> e cole o código abaixo em células de código separadas se quiser executar o cenário abaixo. Você também pode apenas ler enquanto tentamos ilustrar um problema em que as funções podem ajudar a resolver o problema.</p>
+</blockquote>
+<p>Vamos dar uma olhada no exemplo que ilustra o problema do formato de resposta:</p>
+<p>Digamos que queremos criar um banco de dados de dados de estudantes para que possamos sugerir o curso certo para eles. Abaixo temos duas descrições de estudantes que são muito semelhantes nos dados que contêm.</p>
+<ol>
+<li>Crie uma conexão com nosso recurso Azure Open AI:</li>
+</ol>
+<p><code>python
+   import os
+   import openai
+   import json
+   openai.api_type = "azure"
+   openai.api_base = "YOUR OPENAI API BASE URL"
+   openai.api_version = "2023-07-01-preview"
+   openai.api_key = os.getenv("OPENAI_API_KEY")</code></p>
+<p>Acima está algum código Python para configurar nossa conexão com o Azure Open AI, onde definimos <code>api_type</code>, <code>api_base</code>, <code>api_version</code> e <code>api_key</code>.</p>
+<ol>
+<li>Crie duas descrições de estudantes usando as variáveis <code>student_1_description</code> e <code>student_2_description</code>.</li>
+</ol>
+<p>```python
+   student_1_description="Emily Johnson is a sophomore majoring in computer science at Duke University. She has a 3.7 GPA. Emily is an active member of the university's Chess Club and Debate Team. She hopes to pursue a career in software engineering after graduating."</p>
+<p>student_2_description = "Michael Lee is a sophomore majoring in computer science at Stanford University. He has a 3.8 GPA. Michael is known for his programming skills and is an active member of the university's Robotics Club. He hopes to pursue a career in artificial intelligence after finishing his studies."
+   ```</p>
+<p>Nós queremos enviar as descrições de estudantes acima para um LLM para analisar os dados. Esses dados podem ser usados posteriormente em nosso aplicativo e enviados para uma API ou armazenados em um banco de dados.</p>
+<ol>
+<li>Vamos criar duas solicitações idênticas nas quais instruímos o LLM sobre as informações que nos interessam:</li>
+</ol>
+<p>```python
+   prompt1 = f'''
+   Please extract the following information from the given text and return it as a JSON object:</p>
+<p>name
+   major
+   school
+   grades
+   club</p>
+<p>This is the body of text to extract the information from:
+   {student_1_description}
+   '''</p>
+<p>prompt2 = f'''
+   Please extract the following information from the given text and return it as a JSON object:</p>
+<p>name
+   major
+   school
+   grades
+   club</p>
+<p>This is the body of text to extract the information from:
+   {student_2_description}
+   '''
+   ```</p>
+<p>O prompt acima instrui o LLM a extrair informações e retornar a resposta no formato JSON.</p>
+<ol>
+<li>Após configurar os prompts e a conexão com o Azure Open AI, agora enviaremos os prompts para o LLM usando <code>openai.ChatCompletion</code>. Armazenamos o prompt na variável <code>messages</code> e atribuímos a função <code>user</code>. Isso é para imitar uma mensagem de um usuário sendo escrita em um chatbot.</li>
+</ol>
+<p>```python
+   # response from prompt one
+   openai_response1 = openai.ChatCompletion.create(
+     engine="gpt-function",
+     messages = [{'role': 'user', 'content': prompt1}]
+   )
+   openai_response1['choices'][0]['message']['content']</p>
+<p># response from prompt two
+   openai_response2 = openai.ChatCompletion.create(
+     engine="gpt-function",
+     messages = [{'role': 'user', 'content': prompt2 }]
+   )
+   openai_response2['choices'][0]['message']['content']
+   ```</p>
+<p>Agora nós podemos enviar ambas as solicitações para o LLM e examinar a resposta que recebemos encontrando-a assim <code>openai_response1['choices'][0]['message']['content']</code>.</p>
+<ol>
+<li>Por fim, podemos converter a resposta para o formato JSON chamando <code>json.loads</code>:</li>
+</ol>
+<p><code>python
+   # Loading the response as a JSON object
+   json_response1 = json.loads(openai_response1['choices'][0]['message']['content'])
+   json_response1</code></p>
+<p>Resposta 1:</p>
+<p><code>json
+   {
+     "name": "Emily Johnson",
+     "major": "computer science",
+     "school": "Duke University",
+     "grades": "3.7",
+     "club": "Chess Club"
+   }</code></p>
+<p>Resposta 2:</p>
+<p><code>json
+   {
+     "name": "Michael Lee",
+     "major": "computer science",
+     "school": "Stanford University",
+     "grades": "3.8 GPA",
+     "club": "Robotics Club"
+   }</code></p>
+<p>Embora os prompts sejam os mesmos e as descrições sejam semelhantes, vemos que os valores da propriedade <code>Grades</code> são formatados de maneira diferente, como <code>3.7</code> ou <code>3.7 GPA</code>, por exemplo.</p>
+<p>Isso ocorre porque o LLM recebe dados não estruturados na forma do prompt escrito e também retorna dados não estruturados. Precisamos ter um formato estruturado para saber o que esperar ao armazenar ou usar esses dados.</p>
+<p>Então, como resolvemos o problema de formatação? Ao usar chamadas de função, podemos garantir que recebemos dados estruturados de volta. Ao usar chamadas de função, o LLM na verdade não chama ou executa funções. Em vez disso, criamos uma estrutura para o LLM seguir para suas respostas. Em seguida, usamos essas respostas estruturadas para saber qual função executar em nossos aplicativos.</p>
+<p><img alt="fluxo de função" src="../../images/Function-Flow.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>Podemos então pegar o que é retornado da função e enviar isso de volta ao LLM. O LLM responderá usando linguagem natural para responder à consulta do usuário.</p>
+<h2 id="casos-de-uso-para-chamadas-de-funcao">Casos de uso para chamadas de função</h2>
+<p>Existem muitos casos de uso diferentes em que chamadas de função podem aprimorar seu aplicativo, como:</p>
+<ul>
+<li>
+<p><strong>Chamando Ferramentas Externas</strong>. Chatbots são ótimos para fornecer respostas a perguntas dos usuários. Ao usar chamadas de função, os chatbots podem usar mensagens dos usuários para concluir determinadas tarefas. Por exemplo, um aluno pode pedir ao chatbot para "Enviar e-mail ao meu instrutor dizendo que preciso de mais ajuda com este assunto". Isso pode fazer uma chamada de função para <code>send_email(to: string, body: string)</code>.</p>
+</li>
+<li>
+<p><strong>Criando Consultas de API ou Banco de Dados</strong>. Os usuários podem encontrar informações usando linguagem natural que é convertida em uma consulta ou solicitação de API formatada. Um exemplo disso pode ser um professor que solicita "Quais são os alunos que concluíram a última tarefa", o que poderia chamar uma função chamada <code>get_completed(student_name: string, assignment: int, current_status: string)</code>.</p>
+</li>
+<li>
+<p><strong>Criando Dados Estruturados</strong>. Os usuários podem pegar um bloco de texto ou CSV e usar o LLM para extrair informações importantes. Por exemplo, um aluno pode converter um artigo da Wikipedia sobre acordos de paz para criar cartões de memória de IA. Isso pode ser feito usando uma função chamada <code>get_important_facts(agreement_name: string, date_signed: string, parties_involved: list)</code>.</p>
+</li>
+</ul>
+<h2 id="criando-sua-primeira-chamada-de-funcao">Criando Sua Primeira Chamada de Função</h2>
+<p>O processo de criar uma chamada de função inclui 3 etapas principais:</p>
+<ol>
+<li><strong>Chamando</strong> a API de Completions de Chat com uma lista de suas funções e uma mensagem do usuário.</li>
+<li><strong>Lendo</strong> a resposta do modelo para realizar uma ação, ou seja, executar uma função ou chamada de API.</li>
+<li><strong>Fazendo</strong> outra chamada para a API de Completions de Chat com a resposta de sua função para usar essas informações e criar uma resposta para o usuário.</li>
+</ol>
+<p><img alt="Fluxo LLM" src="../../images/LLM-Flow.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h3 id="etapa-1-criando-mensagens">Etapa 1 - criando mensagens</h3>
+<p>A primeira etapa é criar uma mensagem do usuário. Isso pode ser atribuído dinamicamente, pegando o valor de uma entrada de texto, ou você pode atribuir um valor aqui. Se esta é a sua primeira vez trabalhando com a API de Completions de Chat, precisamos definir o <code>role</code> e o <code>content</code> da mensagem.</p>
+<p>O <code>role</code> pode ser <code>system</code> (criando regras), <code>assistant</code> (o modelo) ou <code>user</code> (o usuário final). Para chamadas de função, vamos atribuir isso como <code>user</code> e uma pergunta de exemplo.</p>
+<pre><code class="language-python">messages= [ {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Find me a good course for a beginner student to learn Azure.&quot;} ]
+</code></pre>
+<p>Ao atribuir diferentes papéis, fica claro para o LLM se é o sistema dizendo algo ou o usuário, o que ajuda a criar um histórico de conversação no qual o LLM pode se basear.</p>
+<h3 id="etapa-2-criando-funcoes">Etapa 2 - criando funções</h3>
+<p>Em seguida, definiremos uma função e os parâmetros dessa função. Usaremos apenas uma função aqui chamada <code>search_courses</code>, mas você pode criar várias funções.</p>
+<blockquote>
+<p><strong>Importante</strong>: As funções são incluídas na mensagem do sistema para o LLM e serão contadas na quantidade de tokens disponíveis.</p>
+</blockquote>
+<p>Abaixo, criamos as funções como uma matriz de itens. Cada item é uma função e tem propriedades <code>name</code>, <code>description</code> e <code>parameters</code>:</p>
+<pre><code class="language-python">functions = [
+   {
+      &quot;name&quot;:&quot;search_courses&quot;,
+      &quot;description&quot;:&quot;Retrieves courses from the search index based on the parameters provided&quot;,
+      &quot;parameters&quot;:{
+         &quot;type&quot;:&quot;object&quot;,
+         &quot;properties&quot;:{
+            &quot;role&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The role of the learner (i.e. developer, data scientist, student, etc.)&quot;
+            },
+            &quot;product&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The product that the lesson is covering (i.e. Azure, Power BI, etc.)&quot;
+            },
+            &quot;level&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The level of experience the learner has prior to taking the course (i.e. beginner, intermediate, advanced)&quot;
+            }
+         },
+         &quot;required&quot;:[
+            &quot;role&quot;
+         ]
+      }
+   }
+]
+</code></pre>
+<p>Vamos descrever cada instância de função mais detalhadamente abaixo:</p>
+<ul>
+<li><code>name</code> - O nome da função que queremos que seja chamada.</li>
+<li><code>description</code> - Esta é a descrição de como a função funciona. Aqui é importante ser específico e claro.</li>
+<li><code>parameters</code> - Uma lista de valores e formatos que você deseja que o modelo produza em sua resposta. A matriz de parâmetros consiste em itens, onde cada item tem as seguintes propriedades:</li>
+<li><code>type</code> - O tipo de dados no qual as propriedades serão armazenadas.</li>
+<li><code>properties</code> - Lista dos valores específicos que o modelo usará para sua resposta<ol>
+<li><code>name</code> - A chave é o nome da propriedade que o modelo usará em sua resposta formatada, por exemplo, <code>product</code>.</li>
+<li><code>type</code> - O tipo de dados desta propriedade, por exemplo, <code>string</code>.</li>
+<li><code>description</code> - Descrição da propriedade específica.</li>
+</ol>
+</li>
+</ul>
+<p>Há também uma propriedade opcional <code>required</code> - propriedade necessária para que a chamada da função seja concluída.</p>
+<h3 id="etapa-3-fazendo-a-chamada-da-funcao">Etapa 3 - Fazendo a chamada da função</h3>
+<p>Depois de definir uma função, agora precisamos incluí-la na chamada à API de Completção de Bate-papo. Fazemos isso adicionando <code>functions</code> à solicitação. Neste caso, <code>functions=functions</code>.</p>
+<p>Também há a opção de definir <code>function_call</code> como <code>auto</code>. Isso significa que vamos deixar o LLM decidir qual função deve ser chamada com base na mensagem do usuário, em vez de atribuirmos.</p>
+<p>Aqui está algum código abaixo onde chamamos <code>ChatCompletion.create</code>, observe como definimos <code>functions=functions</code> e <code>function_call="auto"</code>, dando assim ao LLM a escolha de quando chamar as funções que fornecemos:</p>
+<pre><code class="language-python">response = openai.ChatCompletion.create( engine=&quot;gpt-function&quot;,
+                                        messages=messages,
+                                        functions=functions,
+                                        function_call=&quot;auto&quot;, )
+
+print(response['choices'][0]['message'])
+</code></pre>
+<p>The response coming back now looks like so:</p>
+<pre><code class="language-json">{
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;function_call&quot;: {
+    &quot;name&quot;: &quot;search_courses&quot;,
+    &quot;arguments&quot;: &quot;{\n  \&quot;role\&quot;: \&quot;student\&quot;,\n  \&quot;product\&quot;: \&quot;Azure\&quot;,\n  \&quot;level\&quot;: \&quot;beginner\&quot;\n}&quot;
+  }
+}
+</code></pre>
+<p>Aqui nós podemos ver como a função <code>search_courses</code> foi chamada e com quais argumentos, conforme listado na propriedade <code>arguments</code> na resposta JSON.</p>
+<p>A conclusão de que o LLM foi capaz de encontrar os dados para se encaixar nos argumentos da função, pois estava extraindo-o do valor fornecido ao parâmetro <code>messages</code> na chamada de conclusão do chat. Abaixo está um lembrete do valor <code>messages</code>:</p>
+<pre><code class="language-python">messages= [ {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Find me a good course for a beginner student to learn Azure.&quot;} ]
+</code></pre>
+<p>Como você pode ver, <code>student</code>, <code>Azure</code> e <code>beginner</code> foram extraídos de <code>messages</code> e definidos como entrada para a função. Usar funções dessa maneira é uma ótima maneira de extrair informações de um prompt, mas também de fornecer estrutura ao LLM e ter funcionalidade reutilizável.</p>
+<p>Agora, precisamos ver como podemos usar isso em nosso aplicativo.</p>
+<h2 id="integrando-chamadas-de-funcao-em-um-aplicativo">Integrando Chamadas de Função em um Aplicativo</h2>
+<p>Após testarmos a resposta formatada do LLM, agora podemos integrá-la a um aplicativo.</p>
+<h3 id="gerenciando-o-fluxo">Gerenciando o fluxo</h3>
+<p>Para integrar isso ao nosso aplicativo, siga estas etapas:</p>
+<ol>
+<li>
+<p>First, let's make the call to the Open AI services and store the message in a variable called <code>response_message</code>.</p>
+</li>
+<li>
+<p>Primeiro, vamos fazer a chamada aos serviços Open AI e armazenar a mensagem em uma variável chamada <code>response_message</code>.</p>
+</li>
+</ol>
+<p><code>python
+   response_message = response["choices"][0]["message"]</code></p>
+<ol>
+<li>Agora vamos definir a função que chamará a API Microsoft Learn para obter uma lista de cursos:</li>
+</ol>
+<p>```python
+   import requests</p>
+<p>def search_courses(role, product, level):
+     url = "https://learn.microsoft.com/api/catalog/"
+     params = {
+        "role": role,
+        "product": product,
+        "level": level
+     }
+     response = requests.get(url, params=params)
+     modules = response.json()["modules"]
+     results = []
+     for module in modules[:5]:
+        title = module["title"]
+        url = module["url"]
+        results.append({"title": title, "url": url})
+     return str(results)
+   ```</p>
+<p>Observe como agora criamos uma função Python real que mapeia para os nomes de função introduzidos na variável <code>functions</code>. Também estamos fazendo chamadas reais de API externa para buscar os dados de que precisamos. Neste caso, vamos contra a API Microsoft Learn para pesquisar módulos de treinamento.</p>
+<p>Ok! Então criamos variáveis <code>functions</code> e uma função Python correspondente, como dizemos ao LLM como mapear essas duas coisas para que nossa função Python seja chamada?</p>
+<ol>
+<li>Para ver se precisamos chamar uma função Python, precisamos olhar para a resposta LLM e ver se <code>function_call</code> faz parte dela e chamar a função apontada. Veja como você pode fazer a verificação mencionada abaixo:</li>
+</ol>
+<p>```python
+   # Check if the model wants to call a function
+   if response_message.get("function_call"):
+     print("Recommended Function call:")
+     print(response_message.get("function_call"))
+     print()</p>
+<pre><code># Call the function.
+function_name = response_message["function_call"]["name"]
+
+available_functions = {
+        "search_courses": search_courses,
+}
+function_to_call = available_functions[function_name]
+
+function_args = json.loads(response_message["function_call"]["arguments"])
+function_response = function_to_call(**function_args)
+
+print("Output of function call:")
+print(function_response)
+print(type(function_response))
+
+
+# Add the assistant response and function response to the messages
+messages.append( # adding assistant response to messages
+    {
+        "role": response_message["role"],
+        "function_call": {
+            "name": function_name,
+            "arguments": response_message["function_call"]["arguments"],
+        },
+        "content": None
+    }
+)
+messages.append( # adding function response to messages
+    {
+        "role": "function",
+        "name": function_name,
+        "content":function_response,
+    }
+)
+</code></pre>
+<p>```</p>
+<p>Essas três linhas garantem que extraímos o nome da função, os argumentos e fazemos a chamada:</p>
+<p>```python
+   function_to_call = available_functions[function_name]</p>
+<p>function_args = json.loads(response_message["function_call"]["arguments"])
+   function_response = function_to_call(**function_args)
+   ```</p>
+<p>Acima está a saída da execução do nosso código:</p>
+<p><strong>Saída</strong></p>
+<p>```Recommended Function call:
+   {
+     "name": "search_courses",
+     "arguments": "{\n  \"role\": \"student\",\n  \"product\": \"Azure\",\n  \"level\": \"beginner\"\n}"
+   }</p>
+<p>Output of function call:
+   [{'title': 'Describe concepts of cryptography', 'url': 'https://learn.microsoft.com/training/modules/describe-concepts-of-cryptography/?
+   WT.mc_id=api_CatalogApi'}, {'title': 'Introduction to audio classification with TensorFlow', 'url': 'https://learn.microsoft.com/en-
+   us/training/modules/intro-audio-classification-tensorflow/?WT.mc_id=api_CatalogApi'}, {'title': 'Design a Performant Data Model in Azure SQL
+   Database with Azure Data Studio', 'url': 'https://learn.microsoft.com/training/modules/design-a-data-model-with-ads/?
+   WT.mc_id=api_CatalogApi'}, {'title': 'Getting started with the Microsoft Cloud Adoption Framework for Azure', 'url':
+   'https://learn.microsoft.com/training/modules/cloud-adoption-framework-getting-started/?WT.mc_id=api_CatalogApi'}, {'title': 'Set up the
+   Rust development environment', 'url': 'https://learn.microsoft.com/training/modules/rust-set-up-environment/?WT.mc_id=api_CatalogApi'}]
+   <class 'str'>
+   ```</p>
+<ol>
+<li>Agora enviaremos a mensagem atualizada, <code>messages</code> para o LLM para que possamos receber uma resposta em linguagem natural em vez de uma resposta formatada em JSON da API.</li>
+</ol>
+<p>```python
+   print("Messages in next request:")
+   print(messages)
+   print()</p>
+<p>second_response = openai.ChatCompletion.create(
+     messages=messages,
+     engine="gpt-function",
+     function_call="auto",
+     functions=functions,
+     temperature=0
+        )  # get a new response from GPT where it can see the function response</p>
+<p>print(second_response["choices"][0]["message"])
+   ```</p>
+<p><strong>Saída</strong></p>
+<p>```python
+   {
+     "role": "assistant",
+     "content": "I found some good courses for beginner students to learn Azure:\n\n1. [Describe concepts of cryptography] (https://learn.microsoft.com/training/modules/describe-concepts-of-cryptography/?WT.mc_id=api_CatalogApi)\n2. <a href="https://learn.microsoft.com/training/modules/intro-audio-classification-tensorflow/?WT.mc_id=api_CatalogApi">Introduction to audio classification with TensorFlow</a>\n3. <a href="https://learn.microsoft.com/training/modules/design-a-data-model-with-ads/?WT.mc_id=api_CatalogApi">Design a Performant Data Model in Azure SQL Database with Azure Data Studio</a>\n4. <a href="https://learn.microsoft.com/training/modules/cloud-adoption-framework-getting-started/?WT.mc_id=api_CatalogApi">Getting started with the Microsoft Cloud Adoption Framework for Azure</a>\n5. <a href="https://learn.microsoft.com/training/modules/rust-set-up-environment/?WT.mc_id=api_CatalogApi">Set up the Rust development environment</a>\n\nYou can click on the links to access the courses."
+   }</p>
+<p>```</p>
+<h2 id="tarefa">Tarefa</h2>
+<p>Para continuar seu aprendizado sobre a Chamada de Função do Azure Open AI, você pode:</p>
+<ul>
+<li>Adicionar mais parâmetros à função que podem ajudar os aprendizes a encontrar mais cursos.</li>
+<li>Criar outra chamada de função que obtenha mais informações do aprendiz, como o idioma nativo.</li>
+<li>Implementar tratamento de erro quando a chamada de função e/ou a chamada da API não retornar cursos adequados.</li>
+</ul>
+<p>Dica: Consulte a <a href="https://learn.microsoft.com/training/support/catalog-api-developer-reference?WT.mc_id=academic-105485-koreyst">documentação de referência da API Learn</a> para ver como e onde esses dados estão disponíveis.</p>
+<h2 id="otimo-trabalho-continue-a-jornada">Ótimo trabalho! Continue a jornada</h2>
+<p>Após completar esta lição, confira nossa <a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">coleção de aprendizado sobre IA Generativa</a> para continuar a aprimorar seus conhecimentos em IA Generativa!</p>
+<p>Vá para a Lição 12, onde veremos como <a href="../../../12-designing-ux-for-ai-applications/translations/pt-br/?WT.mc_id=academic-105485-koreyst">Projetando UX para aplicativos de IA</a>!</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

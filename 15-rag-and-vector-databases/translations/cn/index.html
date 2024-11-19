@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>第十五章：检索增强生成和向量数据库 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c\u5341\u4e94\u7ae0\uff1a\u68c0\u7d22\u589e\u5f3a\u751f\u6210\u548c\u5411\u91cf\u6570\u636e\u5e93";
+        var mkdocs_page_input_path = "15-rag-and-vector-databases\\translations\\cn\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">第十五章：检索增强生成和向量数据库</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">引言</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#llm">场景设定：用个人数据增强LLM</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rag_1">检索增强生成 (RAG)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rag_2">RAG如何工作</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rag_3">为什么使用RAG？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">创建知识库</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">向量数据库</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">从文本到嵌入</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">检索和向量搜索</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">检索</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-">- 关键字搜索 - 用于文本搜索。</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-_1">- 语义搜索 - 使用单词的语义含义进行搜索。</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-_2">- 向量搜索 - 使用嵌入模型将文档从文本转换为向量表示。检索通过查询与用户问题最接近的文档向量表示来完成。</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">向量相似度</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">搜索索引</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">重新排序</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">整合所有元素</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_12">评估我们的应用</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">评估指标</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ragretervival-augmented-generation">使用RAG(Retervival Augmented Generation)和向量数据库的用例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">总结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_15">作业</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_16">学习之旅未结束，继续前行</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">第十五章：检索增强生成和向量数据库</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="rag">检索增强生成 (RAG) 与向量数据库</h1>
+<p>在之前的搜索应用课程中，我们简单探讨了如何将个人数据融入到大型语言模型（LLM）中。本节课将更深入地讲述如何在LLM应用中实现数据基础化，包括数据处理的机制和方法，以及如何存储包括嵌入和文本在内的数据。</p>
+<blockquote>
+<p><strong>视频教程即将上线</strong></p>
+</blockquote>
+<h2 id="_1">引言</h2>
+<p>本课程内容包括：</p>
+<ul>
+<li>RAG简介，探讨其在人工智能中的应用及其重要性。</li>
+<li>了解向量数据库并创建一个用于应用的实例。</li>
+<li>通过实践示例展示如何在应用程序中集成RAG。</li>
+</ul>
+<h2 id="_2">学习目标</h2>
+<p>课程完成后，您将能够：</p>
+<ul>
+<li>阐述RAG在数据检索和处理中的重要作用。</li>
+<li>配置RAG应用，并将数据与LLM结合。</li>
+<li>在LLM应用中有效地整合RAG和向量数据库。</li>
+</ul>
+<h2 id="llm">场景设定：用个人数据增强LLM</h2>
+<p>本课程旨在通过加入个人笔记来增强教育初创公司的LLM，让聊天机器人能够获取更多关于不同学科的信息。利用这些笔记，学习者可以更好地学习理解不同的主题，从而更轻松地为考试做准备。我们的场景包括：</p>
+<ul>
+<li><code>Azure Open AI:</code> 我们选用的LLM，用于创建聊天机器人。</li>
+<li><code>AI初学者的神经网络课程</code>：这是我们将基础化到LLM的数据。</li>
+<li><code>Azure AI Search</code> 和 <code>Azure Cosmos DB:</code> 用于存储数据并创建搜索索引的向量数据库。</li>
+</ul>
+<p>用户可以利用这些笔记创建练习测验、复习卡片，并将其概括为简洁的总结。在开始之前，让我们先了解RAG及其工作原理：</p>
+<h2 id="rag_1">检索增强生成 (RAG)</h2>
+<p>LLM驱动的聊天机器人通过处理用户的提示来生成回答。它旨在与用户就广泛的话题进行互动。然而，它的回答仅限于所提供的上下文和其基础训练数据。例如，GPT-4的知识截止日期是2021年9月，这意味着它缺少在此之后发生事件的知识。此外，用于训练LLM的数据不包括个人笔记或公司产品手册等机密信息。</p>
+<h3 id="rag_2">RAG如何工作</h3>
+<p>如果您想部署一个能从笔记创建测验的聊天机器人，您需要连接到知识库。这正是RAG发挥作用的地方。RAG的工作流程如下：</p>
+<ul>
+<li><strong>知识库：</strong> 在检索之前，需要将这些文档摄入并预处理，通常是将大型文档拆分为更小的块，将它们转换成文本嵌入，并存储在数据库中。</li>
+<li><strong>用户查询：</strong> 用户提问。</li>
+<li><strong>检索：</strong> 当用户提出问题时，嵌入模型从知识库中检索相关信息，为提示提供更多上下文。</li>
+<li><strong>增强生成：</strong> LLM根据检索到的数据增强其回答，使得生成的回答不仅基于预先训练的数据，还包括从添加的上下文中获得的相关信息。检索到的数据用于增强LLM的回答，LLM随后向用户提供问题的答案。</li>
+</ul>
+<h3 id="rag_3">为什么使用RAG？</h3>
+<ul>
+<li><strong>信息丰富：</strong> 确保文本回答是最新和相关的，因此通过访问内部知识库，提高了特定领域任务的性能。</li>
+<li>通过利用知识库中的<strong>可验证数据</strong>来减少错误信息，为用户查询提供上下文。</li>
+<li><strong>成本效益：</strong> 与微调LLM相比，它们更加经济。</li>
+</ul>
+<h2 id="_3">创建知识库</h2>
+<p>我们的应用是基于我们个人的数据，即AI初学者课程中的神经网络课程。</p>
+<h3 id="_4">向量数据库</h3>
+<p>向量数据库与传统数据库不同，它是专门设计来存储、管理和搜索嵌入向量的。它存储文档的数值表示形式。将数据分解为数值嵌入，使AI系统更容易理解和处理数据。</p>
+<p>我们将嵌入存储在向量数据库中，因为LLM对作为输入接受的标记数量有限制。由于不能将整个嵌入传递给LLM，我们需要将它们分解成块，当用户提问时，最相似的嵌入将与提示一起返回。分块还有助于减少通过LLM传递的标记数量的成本。</p>
+<p>一些流行的向量数据库包括Azure Cosmos DB、Clarifyai、Pinecone、Chromadb、ScaNN、Quadrants和DeepLake。您可以使用以下命令通过Azure CLI创建Azure Cosmos DB模型：</p>
+<pre><code class="language-bash">az login
+az group create -n &lt;resource-group-name&gt; -l &lt;location&gt;
+az cosmosdb create -n &lt;cosmos-db-name&gt; -r &lt;resource-group-name&gt;
+az cosmosdb list-keys -n &lt;cosmos-db-name&gt; -g &lt;resource-group-name&gt;
+</code></pre>
+<h3 id="_5">从文本到嵌入</h3>
+<p>在存储数据之前，我们需要将其转换为向量嵌入。如果您处理的是大型文档或长文本，可以根据预期的查询进行分块。分块可以在句子级别或段落级别进行。由于分块从周围的词汇中提取含义，您可以向块中添加额外的上下文，例如，通过添加文档标题或包含块前后的文本。您可以按以下方式进行分块：</p>
+<pre><code class="language-python">def split_text(text, max_length, min_length):
+    words = text.split()
+    chunks = []
+    current_chunk = []
+
+    for word in words:
+        current_chunk.append(word)
+        if len(' '.join(current_chunk)) &gt; max_length and len(' '.join(current_chunk)) &lt; min_length:
+            chunks.append(' '.join(current_chunk))
+            current_chunk = []
+
+    # 如果最后一个块没有达到最小长度，无论如何都要添加它
+    if current_chunk:
+        chunks.append(' '.join(current_chunk))
+
+    return chunks
+</code></pre>
+<p>一旦完成分块，我们就可以使用不同的嵌入模型来嵌入我们的文本。您可以使用的一些模型包括word2vec、OpenAI的ada-002、Azure Computer Vision等。选择使用哪个模型将取决于您使用的语言、编码的内容类型（文本/图像/音频）、它可以编码的输入大小以及嵌入输出的长度。</p>
+<p>使用OpenAI的<code>text-embedding-ada-002</code>模型嵌入文本的示例是：<img alt="嵌入单词cat的示例" src="../../images/cat.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h2 id="_6">检索和向量搜索</h2>
+<p>当用户提问时，检索器使用查询编码器将其转换为向量，然后在我们的文档搜索索引中搜索与输入相关的文档中的相关向量。完成后，它将输入向量和文档向量转换为文本，并将其传递给LLM。</p>
+<h3 id="_7">检索</h3>
+<p>检索是系统尝试快速找到索引中满足搜索条件的文档的过程。检索器的目标是获取将用于提供上下文并将LLM基础化在您的数据上的文档。</p>
+<p>在我们的数据库中执行搜索的几种方式包括：</p>
+<h2 id="-">- <strong>关键字搜索</strong> - 用于文本搜索。</h2>
+<h2 id="-_1">- <strong>语义搜索</strong> - 使用单词的语义含义进行搜索。</h2>
+<h2 id="-_2">- <strong>向量搜索</strong> - 使用嵌入模型将文档从文本转换为向量表示。检索通过查询与用户问题最接近的文档向量表示来完成。</h2>
+<ul>
+<li><strong>混合搜索</strong> - 关键字和向量搜索的结合。</li>
+</ul>
+<p>检索的一个挑战是，当数据库中没有与查询类似的响应时，系统将返回它们能找到的最佳信息。然而，您可以使用策略，如设置相关性的最大距离或使用结合了关键字和向量搜索的混合搜索。在本课中，我们将使用混合搜索，即关键字和向量搜索的结合。我们将数据存储到一个包含块和嵌入的数据帧中。</p>
+<h3 id="_8">向量相似度</h3>
+<p>检索器通过知识数据库搜索嵌入彼此接近的向量，即最近的邻居，因为它们是相似的文本。在用户提出查询的情况下，首先对其进行嵌入，然后与相似的嵌入匹配。用于找出不同向量有多相似的常用测量是余弦相似度，它基于两个向量之间的角度。</p>
+<p>我们可以使用其他方法来测量相似度，包括欧几里得距离，这是向量端点之间的直线距离，以及点积，它测量两个向量对应元素的乘积之和。</p>
+<h3 id="_9">搜索索引</h3>
+<p>在进行检索时，我们需要先为知识库构建一个搜索索引。索引存储我们的嵌入，并能在大型数据库中快速检索最相似的块。我们可以使用以下代码在本地创建我们的索引：</p>
+<pre><code class="language-python">from sklearn.neighbors import NearestNeighbors
+
+embeddings = flattened_df['embeddings'].tolist()
+
+# 创建搜索索引
+nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(embeddings)
+
+# 查询索引，可以使用kneighbors方法
+distances, indices = nbrs.kneighbors(embeddings)
+</code></pre>
+<h3 id="_10">重新排序</h3>
+<p>查询数据库后，可能需要按照相关性从高到低对结果进行排序。重新排序的LLM使用机器学习来提高搜索结果的相关性，通过从最相关的排序。使用Azure AI Search，重新排序会自动使用语义重新排序器为您完成。使用最近邻居重新排序的示例：</p>
+<pre><code class="language-python"># 查找最相似的文档
+distances, indices = nbrs.kneighbors([query_vector])
+
+# 打印最相似的文档
+for i in range(3):
+    index = indices[0][i]
+    for index in indices[0]:
+        print(flattened_df['chunks'].iloc[index])
+        print(flattened_df['path'].iloc[index])
+        print(flattened_df['distances'].iloc[index])
+    else:
+        print(f&quot;DataFrame中未找到索引 {index}&quot;)
+</code></pre>
+<h2 id="_11">整合所有元素</h2>
+<p>最后一步是将我们的LLM融入进来，以便能够得到基于我们数据的响应。我们可以按以下方式实现：</p>
+<pre><code class="language-python">user_input = &quot;什么是感知？&quot;
+
+def chatbot(user_input):
+    # 将问题转换为查询向量
+    query_vector = create_embeddings(user_input)
+
+    # 查找最相似的文档
+    distances, indices = nbrs.kneighbors([query_vector])
+
+    # 将文档添加到查询中以提供上下文
+    history = []
+    for index in indices[0]:
+        history.append(flattened_df['chunks'].iloc[index])
+
+    # 组合历史记录和用户输入
+    history.append(user_input)
+
+    # 创建消息对象
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;你是一个帮助解答AI问题的AI助手。&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: history[-1]}
+    ]
+
+    # 使用聊天完成生成回应
+    response = openai.chat.completions.create(
+        model=&quot;gpt-4&quot;,
+        temperature=0.7,
+        max_tokens=800,
+        messages=messages
+    )
+
+    return response.choices[0].message
+
+chatbot(user_input)
+</code></pre>
+<h2 id="_12">评估我们的应用</h2>
+<h3 id="_13">评估指标</h3>
+<ul>
+<li>
+<p>确保提供的回应质量自然、流畅且类似人类。</p>
+</li>
+<li>
+<p>数据的基础性：评估回应是否来源于提供的文档。</p>
+</li>
+<li>
+<p>相关性：评估回应与提出的问题是否匹配且相关。</p>
+</li>
+<li>
+<p>语法正确性：评估回应在语法上是否通顺。</p>
+</li>
+</ul>
+<h2 id="ragretervival-augmented-generation">使用RAG(Retervival Augmented Generation)和向量数据库的用例</h2>
+<p>RAG和向量数据库的应用场景广泛，包括：</p>
+<ul>
+<li>问答系统：将公司数据基础化到一个聊天系统中，员工可以用来提问。</li>
+<li>推荐系统：创建一个系统，匹配最相似的项，如电影、餐馆等。</li>
+<li>聊天机器人服务：可以存储聊天历史，并基于用户数据个性化对话。</li>
+<li>基于向量嵌入的图像搜索，适用于图像识别和异常检测。</li>
+</ul>
+<h2 id="_14">总结</h2>
+<p>我们详细介绍了RAG的基本概念，从添加我们的数据到应用、用户查询和输出。为简化RAG的创建，可以使用如Semanti Kernel、Langchain或Autogen等框架。</p>
+<h2 id="_15">作业</h2>
+<p>为了深入学习检索增强生成（RAG），您可以：</p>
+<ul>
+<li>使用您选择的框架为应用构建前端。</li>
+<li>利用LangChain或Semantic Kernel等框架，重新创建您的应用。</li>
+</ul>
+<p>恭喜您完成了本课 👏。</p>
+<h2 id="_16">学习之旅未结束，继续前行</h2>
+<p>完成本课程后，继续探索我们的<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">生成式AI学习集合</a>，以进一步提升您的生成式AI知识！</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../14-the-generative-ai-application-lifecycle/translations/cn/" class="btn btn-neutral float-left" title="第十四章：生成式AI应用生命周期"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../16-open-source-models/translations/tw/" class="btn btn-neutral float-right" title="第十六章：开源模型">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../14-the-generative-ai-application-lifecycle/translations/cn/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../16-open-source-models/translations/tw/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

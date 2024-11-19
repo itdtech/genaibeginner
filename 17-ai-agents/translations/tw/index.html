@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>第十七章：AI Agent - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c\u5341\u4e03\u7ae0\uff1aAI Agent";
+        var mkdocs_page_input_path = "17-ai-agents\\translations\\tw\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../11-integrating-with-function-calling/translations/cn/">第十一章：集成函数调用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">第十七章：AI Agent</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">第十七章：AI Agent</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://aka.ms/gen-ai-lesson17-gh?WT.mc_id=academic-105485-koreyst"><img alt="開放原始碼模型" src="../../images/17-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<h2 id="_1">簡介</h2>
+<p>AI代理代表了生成式AI的一個令人興奮的發展，使大型語言模型（LLMs）從助手演變為能夠採取行動的代理。AI代理框架使開發者能夠建立應用程式，讓LLMs能夠訪問工具和狀態管理。這些框架還增強了可見性，使用戶和開發者能夠監控LLMs計劃的行動，從而改善體驗管理。</p>
+<p>這節課將涵蓋以下領域:</p>
+<ul>
+<li>理解什麼是 AI Agent - AI Agent 到底是什麼？</li>
+<li>探索四種不同的 AI Agent 框架 - 它們有什麼獨特之處？</li>
+<li>將這些 AI Agent 應用於不同的使用案例 - 我們應該何時使用 AI Agent？</li>
+</ul>
+<h2 id="_2">學習目標</h2>
+<p>完成這節課後，你將能夠：</p>
+<ul>
+<li>解釋什麼是 AI 代理以及它們如何使用。</li>
+<li>了解一些流行的 AI 代理框架之間的差異，以及它們的不同之處。</li>
+<li>了解 AI 代理如何運作，以便使用它們建構應用程式。</li>
+</ul>
+<h2 id="ai">什麼是 AI 代理？</h2>
+<p>AI代理是一個在生成式AI世界中非常令人興奮的領域。隨著這種興奮，有時會出現術語和其應用的混淆。為了保持簡單並包含大多數提到AI代理的工具，我們將使用這一定義:</p>
+<p>AI Agents 允許大型語言模型（LLMs）透過提供<strong>狀態</strong>和<strong>工具</strong>來執行任務。</p>
+<p><img alt="代理模型" src="../../images/what-agent.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>讓我們定義這些術語:</p>
+<p><strong>大型語言模型</strong> - 這些是本課程中提到的模型，例如 GPT-3.5、GPT-4、Llama-2 等。</p>
+<p><strong>狀態</strong> - 這指的是LLM正在工作的上下文。LLM使用其過去行動的上下文和當前上下文，指導其後續行動的決策。AI代理框架允許開發人員更容易地維護此上下文。</p>
+<p><strong>工具</strong> - 為了完成使用者請求的任務以及 LLM 所規劃的任務，LLM 需要訪問工具。一些工具的範例可以是資料庫、API、外部應用程式甚至是另一個 LLM！</p>
+<p>這些定義希望能在我們了解它們如何實現時，為你打下良好的基礎。讓我們來探索幾個不同的 AI Agent 框架:</p>
+<h2 id="langchain-agents">LangChain Agents</h2>
+<p><a href="https://python.langchain.com/docs/modules/agents/?WT.mc_id=academic-105485-koreyst">LangChain Agents</a> 是我們上述定義的實現。</p>
+<p>要管理<strong>狀態</strong>，它使用一個名為 <code>AgentExecutor</code> 的內建函式。這個函式接受定義的 <code>agent</code> 和可用的 <code>tools</code>。</p>
+<p><code>Agent Executor</code> 也儲存聊天記錄以提供聊天的上下文。</p>
+<p><img alt="Langchain Agents" src="../../images/langchain-agents.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>LangChain 提供一個<a href="https://integrations.langchain.com/tools?WT.mc_id=academic-105485-koreyst">工具目錄</a>，可以匯入到您的應用程式中，LLM 可以存取這些工具。這些工具由社群和 LangChain 團隊製作。</p>
+<p>然後你可以定義這些工具並將它們傳遞給 <code>Agent Executor</code>。</p>
+<p>可見性是討論 AI 代理時另一個重要方面。應用程式開發人員需要了解 LLM 使用的是哪種工具以及為什麼。為此，LangChain 團隊開發了 LangSmith。</p>
+<h2 id="autogen">AutoGen</h2>
+<p>下一個我們將討論的 AI Agent 框架是 <a href="https://microsoft.github.io/autogen/?WT.mc_id=academic-105485-koreyst">AutoGen</a>。AutoGen 的主要焦點是對話。Agents 既是<strong>可對話的</strong>也是<strong>可定制的</strong>。</p>
+<p><strong>Conversable -</strong> LLMs 可以啟動並繼續與另一個 LLM 的對話以完成任務。這是通過建立 <code>AssistantAgents</code> 並給予它們特定的系統訊息來完成的。</p>
+<pre><code class="language-python">
+autogen.AssistantAgent( name=&quot;Coder&quot;, llm_config=llm_config, ) pm = autogen.AssistantAgent( name=&quot;Product_manager&quot;, system_message=&quot;Creative in software product ideas.&quot;, llm_config=llm_config, )
+
+</code></pre>
+<p><strong>可自訂</strong> - Agent 不僅可以定義為 LLMs，也可以是使用者或工具。作為開發者，你可以定義一個 <code>UserProxyAgent</code>，負責與使用者互動以獲取完成任務的反饋。這些反饋可以繼續執行任務或停止它。</p>
+<pre><code class="language-python">user_proxy = UserProxyAgent(name=&quot;user_proxy&quot;)
+</code></pre>
+<h3 id="_3">狀態和工具</h3>
+<p>為了改變和管理狀態，助手代理生成Python程式碼來完成任務。</p>
+<p>這裡是一個過程的範例:</p>
+<p><img alt="AutoGen" src="../../images/autogen.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h4 id="llm">定義 LLM 的系統訊息</h4>
+<pre><code class="language-python">system_message=&quot;對於天氣相關的任務，只使用提供給你的函式。任務完成後回覆 TERMINATE。&quot;
+</code></pre>
+<p>此系統訊息指導此特定 LLM 哪些函式與其任務相關。請記住，使用 AutoGen 時，您可以有多個具有不同系統訊息的 AssistantAgents。</p>
+<h4 id="_4">聊天由使用者發起</h4>
+<pre><code class="language-python">user_proxy.initiate_chat( chatbot, message=&quot;我計劃下週去紐約旅行，你能幫我選擇穿什麼嗎？&quot;, )
+</code></pre>
+<p>此訊息來自 user_proxy (人類) 是啟動代理探索應執行的可能函式的過程。</p>
+<h4 id="_5">函式被執行</h4>
+<pre><code class="language-bash">聊天機器人 (to user_proxy):
+
+***** 建議的工具呼叫: get_weather ***** 參數: {&quot;location&quot;:&quot;New York City, NY&quot;,&quot;time_periond:&quot;7&quot;,&quot;temperature_unit&quot;:&quot;Celsius&quot;} ******************************************************** --------------------------------------------------------------------------------
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 執行函式 get_weather... user_proxy (to 聊天機器人): ***** 呼叫函式 &quot;get_weather&quot; 的回應 ***** 112.22727272727272 EUR ****************************************************************
+
+</code></pre>
+<p>一旦初始聊天處理完成，代理將發送建議的工具來呼叫。在這種情況下，它是一個名為 <code>get_weather</code> 的函式。根據您的配置，這個函式可以由代理自動執行和讀取，或者可以根據用戶輸入來執行。</p>
+<p>你可以找到<a href="https://microsoft.github.io/autogen/docs/Examples/?WT.mc_id=academic-105485-koreyst">AutoGen 程式碼範例</a>來進一步探索如何開始建構。</p>
+<h2 id="taskweaver">Taskweaver</h2>
+<p>接下來我們將探討的代理框架是 <a href="https://microsoft.github.io/TaskWeaver/?WT.mc_id=academic-105485-koreyst">Taskweaver</a>。它被稱為「程式碼優先」代理，因為它不僅僅是嚴格地與 <code>strings</code> 一起工作，它還可以與 Python 中的 DataFrames 一起工作。這對於資料分析和生成任務變得非常有用。這可以是建立圖表或生成隨機數等事情。</p>
+<h3 id="_6">狀態和工具</h3>
+<p>為了管理對話的狀態，TaskWeaver 使用了 <code>Planner</code> 的概念。<code>Planner</code> 是一個 LLM，它接收用戶的請求並規劃出需要完成的任務，以滿足這些請求。</p>
+<p>為了完成任務，<code>Planner</code> 會接觸到稱為 <code>Plugins</code> 的工具集合。這可以是 Python 類別或一般的程式碼解釋器。這些插件被儲存為嵌入，以便 LLM 能夠更好地搜尋正確的插件。</p>
+<p><img alt="Taskweaver" src="../../images/taskweaver.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>這裡是一個處理異常檢測的插件範例:</p>
+<pre><code class="language-python">類別 AnomalyDetectionPlugin(Plugin): def __call__(self, df: pd.DataFrame, time_col_name: str, value_col_name: str):
+</code></pre>
+<p>程式碼在執行前會被驗證。Taskweaver 中管理上下文的另一個功能是 <code>experience</code>。Experience 允許將對話的上下文長期存儲在 YAML 檔案中。這可以配置，使得 LLM 隨著時間的推移在某些任務上有所改進，前提是它接觸到先前的對話。</p>
+<h2 id="jarvis">JARVIS</h2>
+<p>最後我們將探討的代理框架是 <a href="https://github.com/microsoft/JARVIS?tab=readme-ov-file?WT.mc_id=academic-105485-koreyst">JARVIS</a>。JARVIS 的獨特之處在於它使用 LLM 來管理對話的 <code>state</code>，而 <code>tools</code> 是其他 AI 模型。每個 AI 模型都是專門的模型，執行某些任務，例如物件檢測、轉錄或圖像標註。</p>
+<p><img alt="JARVIS" src="../../images/jarvis.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>LLM 作為一個通用模型，接收來自使用者的請求並識別特定任務及完成任務所需的任何參數/資料。</p>
+<pre><code class="language-python">[{&quot;task&quot;: &quot;物件-detection&quot;, &quot;id&quot;: 0, &quot;dep&quot;: [-1], &quot;args&quot;: {&quot;image&quot;: &quot;e1.jpg&quot; }}]
+</code></pre>
+<p>LLM 然後以專門的 AI 模型能夠解釋的方式格式化請求，例如 JSON。一旦 AI 模型根據任務返回其預測，LLM 便會接收回應。</p>
+<p>如果需要多個模型來完成任務，它還會解釋這些模型的回應，然後將它們整合起來生成對用戶的回應。</p>
+<p>範例如下顯示當使用者請求描述和計算圖片中的物件時，這將如何運作:</p>
+<h2 id="_7">作業</h2>
+<p>為了繼續學習可以使用 AutoGen 建構的 AI 代理:</p>
+<ul>
+<li>一個模擬教育初創公司不同部門商務會議的應用程式。</li>
+<li>建立系統訊息，引導LLM理解不同角色和優先事項，並使使用者能夠提出新的產品創意。</li>
+<li>然後，LLM應從每個部門生成後續問題，以完善和改進提案和產品創意。</li>
+</ul>
+<h2 id="_8">學習不止於此，繼續旅程</h2>
+<p>完成本課程後，請查看我們的<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">生成式 AI 學習集合</a>以繼續提升您的生成式 AI 知識！</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../16-open-source-models/translations/tw/" class="btn btn-neutral float-left" title="第十六章：开源模型"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../18-fine-tuning/translations/tw/" class="btn btn-neutral float-right" title="第十八章：微调">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../16-open-source-models/translations/tw/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../18-fine-tuning/translations/tw/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

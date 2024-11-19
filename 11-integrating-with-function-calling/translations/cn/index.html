@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>第十一章：集成函数调用 - GenAI新手入门</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c\u5341\u4e00\u7ae0\uff1a\u96c6\u6210\u51fd\u6570\u8c03\u7528";
+        var mkdocs_page_input_path = "11-integrating-with-function-calling\\translations\\cn\\README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> GenAI新手入门
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../00-course-setup/translations/cn/">课程介绍和学习环境设置</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../01-introduction-to-genai/translations/cn/">第一章：生成式人工智能和 LLMs 介绍</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../02-exploring-and-comparing-different-llms/translations/cn/">第二章：探索和比较不同的 LLMs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../03-using-generative-ai-responsibly/translations/cn/">第三章：负责任地使用生成式人工智能</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../04-prompt-engineering-fundamentals/translations/cn/">第四章：提示工程基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../05-advanced-prompts/translations/cn/">第五章：创建高级的提示工程技巧</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../06-text-generation-apps/translations/cn/">第六章：创建文本生成应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../07-building-chat-applications/translations/cn/">第七章：创建聊天应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../08-building-search-applications/translations/cn/">第八章：创建搜索应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../09-building-image-applications/translations/cn/">第九章：创建图像应用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../10-building-low-code-ai-applications/translations/cn/">第十章：创建低代码AI应用</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">第十一章：集成函数调用</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">本章概述</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">场景：通过功能改进我们的聊天机器人</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#function-calling">为什么需要 Function Calling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">通过场景说明问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#function-calling_1">使用 function calling 的用例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#function-calling_2">创建您的第一个 function calling</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-">Step 1 - 创建消息</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-functions">Step 2 - 创建 functions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-function-call">Step 3 - 进行 function call</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#function-calling_3">将 function calling 集成到应用程序中</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">管理流程</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">作业</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#great-work-continue-the-journey">Great Work! Continue the Journey</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">继续学习</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../12-designing-ux-for-ai-applications/translations/cn/">第十二章：为人工智能应用程序设计用户体验</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../13-securing-ai-applications/translations/cn/">第十三章：保护AI应用程序</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../14-the-generative-ai-application-lifecycle/translations/cn/">第十四章：生成式AI应用生命周期</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../15-rag-and-vector-databases/translations/cn/">第十五章：检索增强生成和向量数据库</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../16-open-source-models/translations/tw/">第十六章：开源模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../17-ai-agents/translations/tw/">第十七章：AI Agent</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../18-fine-tuning/translations/tw/">第十八章：微调</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../19-slm/">第十九章：SLM模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../20-mistral/">第二十章：Mistral的模型</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../21-meta/">第二十一章：Meta的模型</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">GenAI新手入门</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">第十一章：集成函数调用</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ai-function-calling">第十一章：为生成式 AI 添加 function calling</h1>
+<p><a href="https://aka.ms/gen-ai-lesson11-gh?WT.mc_id=academic-105485-koreyst"><img alt="Integrating with function calling" src="../../images/11-lesson-banner.png?WT.mc_id=academic-105485-koreyst" /></a></p>
+<p>到目前为止，您在之前的章节中已经学到了相当多的知识。 然而，我们可以进一步改进。 可以解决的一些问题是如何获得更一致的响应格式，以便更轻松地处理下游响应。 此外，我们可能希望添加来自其他来源的数据以进一步丰富我们的应用程序。</p>
+<p>上述问题正是本章要解决的问题。</p>
+<h2 id="_1">本章概述</h2>
+<p>在本章中，您将学习到:</p>
+<ul>
+<li>解释什么是 function calling 及其用例。</li>
+<li>使用 Azure OpenAI 创建 function calling。</li>
+<li>如何将 function calling 集成到应用程序中。</li>
+</ul>
+<h2 id="_2">学习目标</h2>
+<p>在完成本章的学习，您将能够：</p>
+<ul>
+<li>解释使用 function calling 的目的。</li>
+<li>使用 Azure OpenAI Service 设置 function calling 。</li>
+<li>为您的应用程序用例设计有效的 function calling 。
+  。</li>
+</ul>
+<h2 id="_3">场景：通过功能改进我们的聊天机器人</h2>
+<p>在本课程中，我们希望为 "Our Startup" 构建一个功能，允许用户使用聊天机器人来查找技术课程。 我们将推荐适合他们的技能水平、当前角色和感兴趣的技术的课程。</p>
+<p>为了完成这个场景，我们将使用以下组合：</p>
+<ul>
+<li>“Azure Open AI” 为用户创建聊天体验。</li>
+<li>“Microsoft Learn Catalog API” 帮助用户根据用户的请求查找课程。</li>
+<li>“Function Calling” 接受用户的查询并将其发送到相关函数以发出 API 请求。</li>
+</ul>
+<p>首先，让我们看看为什么我们要首先使用 Function Calling：</p>
+<h2 id="function-calling">为什么需要 Function Calling</h2>
+<p>在函数调用之前，LLMs 的回复是非结构化且不一致的。 开发人员需要编写复杂的验证代码，以确保他们能够处理响应的每种变化。 用户无法获得诸如“斯德哥尔摩现在的天气怎么样？”之类的答案。 这是因为模型局限于数据训练的时间。</p>
+<p>Function Calling 是 Azure Open AI Service 的一项功能，旨在克服以下限制：</p>
+<ul>
+<li><strong>一致的响应格式</strong>。 如果我们能够更好地控制响应格式，我们就可以更轻松地将响应下游集成到其他系统。</li>
+<li><strong>外部数据</strong>。 能够在聊天上下文中使用应用程序其他来源的数据</li>
+</ul>
+<h2 id="_4">通过场景说明问题</h2>
+<blockquote>
+<p>如果您想运行以下场景，我们建议您创建一个文件 <em>Notebook.ipynb</em> 并将以下代码粘贴到单独的代码单元格中。 您也可以继续阅读，因为我们正在尝试说明函数可以帮助解决问题的问题。</p>
+</blockquote>
+<p>让我们看一下说明响应格式问题的示例：</p>
+<p>假设我们想要创建一个学生数据数据库，以便我们可以向他们建议正确的课程。 下面我们有两个对学生的描述，它们所包含的数据非常相似。</p>
+<ol>
+<li>创建与我们的 Azure OpenAI 资源的连接：</li>
+</ol>
+<p><code>python
+   import os
+   import openai
+   import json
+   openai.api_type = "azure"
+   openai.api_base = "YOUR OPENAI API BASE URL"
+   openai.api_version = "2023-07-01-preview"
+   openai.api_key = os.getenv("OPENAI_API_KEY")</code></p>
+<p>Below is some Python code for configuring our connection to Azure Open AI where we set <code>api_type</code>, <code>api_base</code>, <code>api_version</code> and <code>api_key</code>.</p>
+<ol>
+<li>使用变量 'student_1_description' 和 'student_2_description' 创建两个学生描述。</li>
+</ol>
+<p>```python
+   student_1_description="Emily Johnson is a sophomore majoring in computer science at Duke University. She has a 3.7 GPA. Emily is an active member of the university's Chess Club and Debate Team. She hopes to pursue a career in software engineering after graduating."</p>
+<p>student_2_description = "Michael Lee is a sophomore majoring in computer science at Stanford University. He has a 3.8 GPA. Michael is known for his programming skills and is an active member of the university's Robotics Club. He hopes to pursue a career in artificial intelligence after finishing his studies."
+   ```</p>
+<p>We want to send the above student descriptions to an LLM to parse the data. This data can later be used in our application and be sent to an API or stored in a database.</p>
+<ol>
+<li>让我们创建两个相同的提示，指引 LLM 给我们指出哪些兴趣点：</li>
+</ol>
+<p>```python
+   prompt1 = f'''
+   Please extract the following information from the given text and return it as a JSON object:</p>
+<p>name
+   major
+   school
+   grades
+   club</p>
+<p>This is the body of text to extract the information from:
+   {student_1_description}
+   '''</p>
+<p>prompt2 = f'''
+   Please extract the following information from the given text and return it as a JSON object:</p>
+<p>name
+   major
+   school
+   grades
+   club</p>
+<p>This is the body of text to extract the information from:
+   {student_2_description}
+   '''
+   ```</p>
+<p>上述提示指示 LLM 提取信息并以 JSON 格式返回响应。</p>
+<ol>
+<li>设置提示并连接到 Azure OpenAI 后，我们现在将使用 <code>openai.ChatCompletion</code> 将提示发送到 LLM。 我们将提示存储在 <code>messages</code> 变量中，并将角色分配给 <code>user</code>.。 这是为了模仿用户写入聊天机器人的消息。</li>
+</ol>
+<p>```python
+   # response from prompt one
+   openai_response1 = openai.ChatCompletion.create(
+     engine="gpt-function",
+     messages = [{'role': 'user', 'content': prompt1}]
+   )
+   openai_response1['choices'][0]['message']['content']</p>
+<p># response from prompt two
+   openai_response2 = openai.ChatCompletion.create(
+     engine="gpt-function",
+     messages = [{'role': 'user', 'content': prompt2 }]
+   )
+   openai_response2['choices'][0]['message']['content']
+   ```</p>
+<p>现在我们可以将两个请求发送到 LLM 并通过查找 <code>openai_response1['choices'][0]['message']['content']</code> 来检查我们收到的响应。</p>
+<ol>
+<li>最后，我们可以通过调用 <code>json.loads</code> 将响应结果转换为 JSON 格式：</li>
+</ol>
+<p><code>python
+   # Loading the response as a JSON object
+   json_response1 = json.loads(openai_response1['choices'][0]['message']['content'])
+   json_response1</code></p>
+<p>Response 1:</p>
+<p><code>json
+   {
+     "name": "Emily Johnson",
+     "major": "computer science",
+     "school": "Duke University",
+     "grades": "3.7",
+     "club": "Chess Club"
+   }</code></p>
+<p>Response 2:</p>
+<p><code>json
+   {
+     "name": "Michael Lee",
+     "major": "computer science",
+     "school": "Stanford University",
+     "grades": "3.8 GPA",
+     "club": "Robotics Club"
+   }</code></p>
+<p>尽管提示相同且描述相似，但我们看到 <code>Grades</code> 属性值的格式不同，例如有时我们可以获得“3.7”或“3.7 GPA”格式。</p>
+<p>这个结果是因为 LLM 以书面提示的形式获取非结构化数据并返回非结构化数据。 我们需要有一个结构化的格式，以便我们知道在存储或使用这些数据时会发生什么</p>
+<p>那么我们该如何解决格式化问题呢？ 通过使用 function calling，我们可以确保收到返回的结构化数据。 当使用 function calling 时，LLM 实际上并不调用或运行任何函数。 相反，我们为 LLMs 创建了一个响应结构。 然后，我们使用这些结构化响应来了解要在应用程序中运行哪些功能。.</p>
+<p><img alt="function flow" src="../../images/Function-Flow.png?WT.mc_id=academic-105485-koreyst" /></p>
+<p>然后我们可以获取函数返回的内容并将其发送回 LLM。 然后， LLM 将使用自然语言来回答用户的查询。</p>
+<h2 id="function-calling_1">使用 function calling 的用例</h2>
+<p>在许多不同的用例中，function calling 可以改进您的应用程序，例如：</p>
+<ul>
+<li>
+<p><strong>调用外部工具</strong>。 聊天机器人非常擅长回答用户的问题。 通过使用函数调用，聊天机器人可以使用来自用户的消息来完成某些任务。 例如，学生可以要求聊天机器人“向我的老师发送电子邮件，说我需要有关该主题的更多帮助”。 这可以对 'send_email(to: string, body: string)' 进行函数调用</p>
+</li>
+<li>
+<p><strong>创建 API 或数据库查询</strong>。 用户可以使用自然语言查找信息，并将其转换为格式化查询或 API 请求。 举个例子，老师请求“谁是完成最后作业的学生”，该老师可以调用名为 'get_completed(student_name: string, assignment: int, current_status: string)' 的函数</p>
+</li>
+<li>
+<p><strong>创建结构化数据</strong>。 用户可以获取一段文本或 CSV 并使用 LLM 从中提取重要信息。 例如，学生可以将有关和平协议的维基百科文章转换为创建人工智能闪存卡。 这可以通过使用名为 'get_important_facts（agreement_name：string，date_signed：string，partys_involved：list）' 的函数来完成</p>
+</li>
+</ul>
+<h2 id="function-calling_2">创建您的第一个 function calling</h2>
+<p>创建 function calling 的过程包括 3 个主要步骤：</p>
+<ol>
+<li><strong>调用</strong> Chat Completions API，并提供您的函数列表和用户消息。</li>
+<li><strong>读取</strong>模型的响应以执行操作，即执行函数或 API 调用。</li>
+<li><strong>使用</strong>函数的响应再次调用 Chat Completions API，以使用该信息创建对用户的响应。</li>
+</ol>
+<p><img alt="LLM Flow" src="../../images/LLM-Flow.png?WT.mc_id=academic-105485-koreyst" /></p>
+<h3 id="step-1-">Step 1 - 创建消息</h3>
+<p>Step 1 是创建用户消息。 这可以通过获取文本输入的值来动态分配，或者您可以在此处分配一个值。 如果这是您第一次使用聊天完成 API，我们需要定义消息的“角色”和“内容”。</p>
+<p><code>role</code> 可以是<code>system</code> （创建规则）、<code>assistant</code> 模型）或<code>user</code>最终用户）。 对于函数调用，我们将其指定为 <code>user</code> 和一个示例问题。</p>
+<pre><code class="language-python">messages= [ {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Find me a good course for a beginner student to learn Azure.&quot;} ]
+</code></pre>
+<p>通过分配不同的角色， LLMs 可以清楚地知道是系统在说话还是用户在说话，这有助于建立 LLMs 可以建立的对话历史记录。</p>
+<h3 id="step-2-functions">Step 2 - 创建 functions</h3>
+<p>接下来，我们将定义一个函数以及该函数的参数。 我们在这里仅使用一个名为“search_courses”的函数，但您可以创建多个函数。</p>
+<blockquote>
+<p><strong>重要</strong>：功能包含在发给 LLM 的系统消息中，并将包含在您拥有的可用 tokens 数量中。</p>
+</blockquote>
+<p>下面，我们将函数创建为项目数组。 每个项目都是一个函数，并具有属性 <code>name</code>, <code>description</code> 和 <code>parameters</code>：</p>
+<pre><code class="language-python">functions = [
+   {
+      &quot;name&quot;:&quot;search_courses&quot;,
+      &quot;description&quot;:&quot;Retrieves courses from the search index based on the parameters provided&quot;,
+      &quot;parameters&quot;:{
+         &quot;type&quot;:&quot;object&quot;,
+         &quot;properties&quot;:{
+            &quot;role&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The role of the learner (i.e. developer, data scientist, student, etc.)&quot;
+            },
+            &quot;product&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The product that the lesson is covering (i.e. Azure, Power BI, etc.)&quot;
+            },
+            &quot;level&quot;:{
+               &quot;type&quot;:&quot;string&quot;,
+               &quot;description&quot;:&quot;The level of experience the learner has prior to taking the course (i.e. beginner, intermediate, advanced)&quot;
+            }
+         },
+         &quot;required&quot;:[
+            &quot;role&quot;
+         ]
+      }
+   }
+]
+</code></pre>
+<p>下面让我们更详细地描述每个函数实例：</p>
+<ul>
+<li><code>name</code> - 我们想要调用的函数的名称。</li>
+<li><code>description</code> - 这是函数如何工作的描述。 在这里，重要的是要具体和清晰。</li>
+<li><code>parameters</code> - 您希望模型在其响应中生成的值和格式的列表。 参数数组由项目组成，其中项目具有以下属性：</li>
+<li><code>type</code> - 将存储属性的数据类型。</li>
+<li><code>properties</code> - 模型将用于其响应的特定值的列表<ol>
+<li><code>name</code> - 键是模型将在其格式化响应中使用的属性的名称，例如，<code>product</code>。</li>
+<li><code>type</code> - 该属性的数据类型，例如，<code>string</code>。</li>
+<li><code>description</code> - 特定属性的描述。</li>
+</ol>
+</li>
+</ul>
+<p>还有一个可选属性“required” - 完成 function call 所需的属性。</p>
+<h3 id="step-3-function-call">Step 3 - 进行 function call</h3>
+<p>定义函数后，我们现在需要将其包含在对聊天完成 API 的调用中。 我们通过向请求添加 <code>functions</code> 来做到这一点。 在这种情况下 <code>functions=functions</code>。</p>
+<p>还有一个选项可以将“function_call”设置为“auto”。 这意味着我们将让 LLM 根据用户消息决定应该调用哪个函数，而不是我们自己分配它。</p>
+<p>下面是我们调用 <code>ChatCompletion.create</code> 的一些代码，请注意我们如何设置 <code>functions=functions</code> 和 <code>function_call="auto"</code> ，从而让 LLM 选择何时调用我们提供的函数：</p>
+<pre><code class="language-python">response = openai.ChatCompletion.create( engine=&quot;gpt-function&quot;,
+                                        messages=messages,
+                                        functions=functions,
+                                        function_call=&quot;auto&quot;, )
+
+print(response['choices'][0]['message'])
+</code></pre>
+<p>现在返回的响应结果如下所示：</p>
+<pre><code class="language-json">{
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;function_call&quot;: {
+    &quot;name&quot;: &quot;search_courses&quot;,
+    &quot;arguments&quot;: &quot;{\n  \&quot;role\&quot;: \&quot;student\&quot;,\n  \&quot;product\&quot;: \&quot;Azure\&quot;,\n  \&quot;level\&quot;: \&quot;beginner\&quot;\n}&quot;
+  }
+}
+</code></pre>
+<p>在这里，我们可以看到如何调用函数 <code>search_courses</code> 以及使用哪些参数，如 JSON 响应中的 <code>arguments</code> 属性中所列。</p>
+<p>结论是，LLMs 能够找到适合函数参数的数据，因为它从聊天完成调用中提供给“messages”参数的值中提取数据。 下面是“messages”值的提醒：</p>
+<pre><code class="language-python">messages= [ {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Find me a good course for a beginner student to learn Azure.&quot;} ]
+</code></pre>
+<p>如您所见，<code>student</code>, <code>Azure</code> 和 <code>beginner</code> 是从<code>messages</code> 中提取的，并设置为函数的输入。 以这种方式使用函数是从提示中提取信息的好方法，同时也可以为 LLM 提供结构并具有可重用的功能。</p>
+<p>接下来，我们需要看看如何在我们的应用程序中使用它。</p>
+<h2 id="function-calling_3">将 function calling 集成到应用程序中</h2>
+<p>在我们测试了 LLM 的格式化响应后，现在我们可以将其集成到应用程序中。</p>
+<h3 id="_5">管理流程</h3>
+<p>要将其集成到我们的应用程序中，我们需要执行以下步骤：</p>
+<ol>
+<li>首先，我们调用 Open AI 服务并将消息存储在名为 <code>response_message</code> 的变量中。</li>
+</ol>
+<p><code>python
+   response_message = response["choices"][0]["message"]</code></p>
+<ol>
+<li>现在我们将定义调用 Microsoft Learn API 来获取课程列表的函数：</li>
+</ol>
+<p>```python
+   import requests</p>
+<p>def search_courses(role, product, level):
+     url = "https://learn.microsoft.com/api/catalog/"
+     params = {
+        "role": role,
+        "product": product,
+        "level": level
+     }
+     response = requests.get(url, params=params)
+     modules = response.json()["modules"]
+     results = []
+     for module in modules[:5]:
+        title = module["title"]
+        url = module["url"]
+        results.append({"title": title, "url": url})
+     return str(results)
+   ```</p>
+<p>请注意我们现在如何创建一个实际的 Python 函数，该函数映射到 <code>functions</code> 变量中引入的函数名称。 我们还进行真正的外部 API 调用来获取我们需要的数据。 在这种情况下，我们根据 Microsoft Learn API 来搜索培训模块。</p>
+<p>好的，我们创建了 <code>functions</code> 变量和相应的 Python 函数，我们如何告诉 LLM 如何将这两个映射在一起，以便调用我们的 Python 函数？</p>
+<ol>
+<li>要查看是否需要调用 Python 函数，我们需要查看 LLM 响应并查看“function_call”是否是其中的一部分并调用所指出的函数。 以下是进行下面提到的检查的方法：</li>
+</ol>
+<p>```python
+   # Check if the model wants to call a function
+   if response_message.get("function_call"):
+     print("Recommended Function call:")
+     print(response_message.get("function_call"))
+     print()</p>
+<pre><code># Call the function.
+function_name = response_message["function_call"]["name"]
+
+available_functions = {
+        "search_courses": search_courses,
+}
+function_to_call = available_functions[function_name]
+
+function_args = json.loads(response_message["function_call"]["arguments"])
+function_response = function_to_call(**function_args)
+
+print("Output of function call:")
+print(function_response)
+print(type(function_response))
+
+
+# Add the assistant response and function response to the messages
+messages.append( # adding assistant response to messages
+    {
+        "role": response_message["role"],
+        "function_call": {
+            "name": function_name,
+            "arguments": response_message["function_call"]["arguments"],
+        },
+        "content": None
+    }
+)
+messages.append( # adding function response to messages
+    {
+        "role": "function",
+        "name": function_name,
+        "content":function_response,
+    }
+)
+</code></pre>
+<p>```</p>
+<p>These three lines, ensure we extract the function name, the arguments and make the call:</p>
+<p>```python
+   function_to_call = available_functions[function_name]</p>
+<p>function_args = json.loads(response_message["function_call"]["arguments"])
+   function_response = function_to_call(**function_args)
+   ```</p>
+<p>以下是运行代码的输出：</p>
+<p><strong>Output</strong></p>
+<p>```Recommended Function call:
+   {
+     "name": "search_courses",
+     "arguments": "{\n  \"role\": \"student\",\n  \"product\": \"Azure\",\n  \"level\": \"beginner\"\n}"
+   }</p>
+<p>Output of function call:
+   [{'title': 'Describe concepts of cryptography', 'url': 'https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-cryptography/?
+   WT.mc_id=api_CatalogApi'}, {'title': 'Introduction to audio classification with TensorFlow', 'url': 'https://learn.microsoft.com/en-
+   us/training/modules/intro-audio-classification-tensorflow/?WT.mc_id=api_CatalogApi'}, {'title': 'Design a Performant Data Model in Azure SQL
+   Database with Azure Data Studio', 'url': 'https://learn.microsoft.com/en-us/training/modules/design-a-data-model-with-ads/?
+   WT.mc_id=api_CatalogApi'}, {'title': 'Getting started with the Microsoft Cloud Adoption Framework for Azure', 'url':
+   'https://learn.microsoft.com/en-us/training/modules/cloud-adoption-framework-getting-started/?WT.mc_id=api_CatalogApi'}, {'title': 'Set up the
+   Rust development environment', 'url': 'https://learn.microsoft.com/en-us/training/modules/rust-set-up-environment/?WT.mc_id=api_CatalogApi'}]
+   <class 'str'>
+   ```</p>
+<ol>
+<li>现在我们将向 LLM 发送更新后的消息 <code>messages</code> ，以便我们可以接收自然语言响应，而不是 API JSON 格式的响应。</li>
+</ol>
+<p>```python
+   print("Messages in next request:")
+   print(messages)
+   print()</p>
+<p>second_response = openai.ChatCompletion.create(
+     messages=messages,
+     engine="gpt-function",
+     function_call="auto",
+     functions=functions,
+     temperature=0
+        )  # get a new response from GPT where it can see the function response</p>
+<p>print(second_response["choices"][0]["message"])
+   ```</p>
+<p><strong>Output</strong></p>
+<p>```python
+   {
+     "role": "assistant",
+     "content": "I found some good courses for beginner students to learn Azure:\n\n1. [Describe concepts of cryptography] (https://learn.microsoft.com/training/modules/describe-concepts-of-cryptography/?WT.mc_id=api_CatalogApi)\n2. <a href="https://learn.microsoft.com/training/modules/intro-audio-classification-tensorflow/?WT.mc_id=api_CatalogApi">Introduction to audio classification with TensorFlow</a>\n3. <a href="https://learn.microsoft.com/training/modules/design-a-data-model-with-ads/?WT.mc_id=api_CatalogApi">Design a Performant Data Model in Azure SQL Database with Azure Data Studio</a>\n4. <a href="https://learn.microsoft.com/training/modules/cloud-adoption-framework-getting-started/?WT.mc_id=api_CatalogApi">Getting started with the Microsoft Cloud Adoption Framework for Azure</a>\n5. <a href="https://learn.microsoft.com/training/modules/rust-set-up-environment/?WT.mc_id=api_CatalogApi">Set up the Rust development environment</a>\n\nYou can click on the links to access the courses."
+   }</p>
+<p>```</p>
+<h2 id="_6">作业</h2>
+<p>要继续学习 Azure 开放 AI function calling，您可以构建：</p>
+<ul>
+<li>该功能的更多参数可以帮助学习者找到更多课程。 您可以在此处找到可用的 API 参数：</li>
+<li>创建另一个函数调用，从学习者那里获取更多信息，例如他们的母语</li>
+<li>当函数调用和/或 API 调用未返回任何合适的课程时创建错误处理</li>
+</ul>
+<p>提示：按照 <a href="https://learn.microsoft.com/training/support/catalog-api-developer-reference?WT.mc_id=academic-105485-koreyst">Learn API 参考文档</a> 页面了解此操作的方式和和哪些数据是可用的</p>
+<h2 id="great-work-continue-the-journey">Great Work! Continue the Journey</h2>
+<h2 id="_7">继续学习</h2>
+<p>想要了解有关 Function Calling 的更多信息？ 转至<a href="https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst">进阶学习的页面</a> 查找有关此主章节的其他学习资源。</p>
+<p>前往第十二章，我们将学习 <a href="../../../12-designing-ux-for-ai-applications/translations/cn/?WT.mc_id=academic-105485-koreyst">为人工智能应用程序添加用户体验</a>!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../10-building-low-code-ai-applications/translations/cn/" class="btn btn-neutral float-left" title="第十章：创建低代码AI应用"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../12-designing-ux-for-ai-applications/translations/cn/" class="btn btn-neutral float-right" title="第十二章：为人工智能应用程序设计用户体验">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../10-building-low-code-ai-applications/translations/cn/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../12-designing-ux-for-ai-applications/translations/cn/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
