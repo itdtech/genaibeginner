@@ -1,4 +1,4 @@
-site_name: GenAI for Beginner
+site_name: genaibeginner
 nav:
   - 课程介绍和学习环境设置: 00-course-setup\translations\cn\README.md
   - 第一章：生成式人工智能和 LLMs 介绍: 01-introduction-to-genai\translations\cn\README.md
